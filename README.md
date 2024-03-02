@@ -1,3 +1,5 @@
+Morefi © 2024 by Hugo Aguirre is licensed under CC BY-NC 4.0 
+
 ## README
 
 The *Morefi* package: *Morphological Relationships Fitted by Robust Regression*. It is a methodological package developed to carry out the analysis of the article: Aguirre-Villaseñor & Morales-Bojórquez (IN PREPARATION). For this purpose, some functions and a vignette were created to explain the process step by step. The tables and figures were personalized. The lmrob() and nlrob() from robustbase (version 0.99-2), are used to perform robust regression.
