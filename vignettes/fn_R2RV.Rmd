@@ -1,0 +1,113 @@
+---
+title: "fn_R2RV  {Morefi}"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fn_R2RV  {Morefi}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# Robust version of the coefficient of determination
+
+## Description
+
+The function calculates a robust version of the coefficient of determination $R^{2}_{RV}$
+
+This is the consistency corrected robust coefficient of determination by Renaud and Victoria-Feser (2010) which allows for a possible correction factor **a** for consistency considerations.
+
+Inside the function:
+
+  The vectors of observed (**y1**), predicted (**yc**) and weighted (**W**) values are obtained from the summary model (**eq**).
+
+  The value of the Weighted Estimate Average (**ywea**), the  modified sum of squares for explained (**SSEw**), total (**SSTw**), and residual (**SSRw**) were estimated.
+
+  A vector with the robust version of the coefficient of determination **R2wa** and its adjusted value **R2wa_adj** were returned as a vector.
+
+
+In the function, the following were estimated:
+
+The Weighted Estimate Average $\overline{\widehat{y}}_{w}$  (called as **ywea**).
+  
+$$\overline{\widehat{y}}_{w}=\left(1/\Sigma w_{i}\right)\times \Sigma w_{i} \widehat{y}_{i}$$
+
+
+The modified sum of squares explained **SSEw**
+$$SSEw= \sum_{}^{}w_{i}(\widehat{y}_{i}-\overline{\widehat{y}}_{w}) ^2)$$
+The modified sum of squared residuals **SSRw**
+$$SSRw= \sum_{}^{}w_{i}(y1_{i}-\widehat{y}_{i}) ^2)$$
+
+The robust version of the coefficient of determination $R^{2}_{w,a}$ 
+$$R^{2}_{w,a}=\frac{SSEw}{SSEw+a\times SSRw}$$
+The adjusted coefficient of determination $R^{2}_{adj,w,a}$
+$$R^{2}_{adj,w,a}=1- \left(1- R^{2}_{w,a}\right)\times \left( \frac{n-1 }{n-q} \right)$$
+
+
+where $y1_{i}$, and $\widehat{y}_{i}$ are the $i_{th}$ observed and predicted 
+values, $a$ is the correction factor value for consistency considerations 
+(By default $a$ = 1), $n$ the number of pairs of observations and $q$ the number 
+of variables included in the model.
+
+
+The function requires defining:
+
+ * **eq**: Summary of the equation fitted.
+ * **a**:  the correction factor value for consistency considerations.
+
+The function returns the a vector with the robust version of the coefficient of 
+determination $R^{2}_{w,a}$ and its adjusted value $R^{2}_{adj,w,a}$.
+
+
+## fn_R2RV
+
+
+The function is included in the `Morefi` package **Morphological Relationships Fitted by Robust Regression**.
+
+
+```{r setup}
+library(Morefi)
+```
+
+
+The function is detailed below.
+
+```{r, warning=FALSE, message=FALSE}
+fn_R2RV <- function(eq,a=1){
+      w <- eq$rweights   # w a vector of weights values
+      yc <- eq$fitted.values # yc a vector of predicted values
+      ywea <-  (1/sum(w)) * sum(w*yc) # a value of the Weighted Estimate Average
+      y1 <- eq$model[,1]
+      SSEw <- sum(w*(yc-ywea)^2)
+      SSRw <- sum(w*(y1-yc)^2)
+      a <- a
+      R2wa <- SSEw/(SSEw+a*SSRw)
+      R2wa_adj <- 1-(1-R2wa)*((length(y1)-1)/summary(eq)$df[2])
+      R2was <- c(R2wa,R2wa_adj)
+      print(R2was)
+    }
+```
+
+
+## Examples
+
+
+Do not execute, it's just a syntax example.
+<!-- Falta describir el ejemplo y que corra.... -->
+
+```{r, warning=FALSE, message=FALSE, eval = FALSE}
+R2RV <- fn_R2RV(eq,a)
+```
+
+
+## References
+
+Renaud, O., & Victoria-Feser, M. P. (2010). A robust coefficient of determination
+for regression. Journal of Statistical Planning and Inference, 140(7), 1852-1862.
+doi:10.1016/j.jspi.2010.01.008.

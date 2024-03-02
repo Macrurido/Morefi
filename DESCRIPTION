@@ -1,0 +1,33 @@
+Package: Morefi
+Type: Package
+Title: Morphological Relationships Fitted by Robust Regression 
+Version: 0.1.0
+Author: Hugo Aguirre-Villaseñor
+Maintainer: Hugo Aguirre-Villaseñor <hugo.aguirre@inapesca.gob.mx>
+Description: It is a methodological package developed to carry out the
+    analyzes of the article: Aguirre-Villaseñor et al. (IN PREPARATION).
+    For this purpose, some functions and a vignette were created to explain 
+    the process step by step. The tables and figures were personalized. The
+    lmrob() and nlrob() from robustbase (version 0.99-2), is used to perform
+    robust regression.
+Depends: R (>= 4.1.0)    
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat (>= 3.2.1),
+          knitr (>= 1.44),
+          rmarkdown (>= 2.25),
+	  htmltools (>= 0.5.7)
+Config/testthat/edition: 3
+RoxygenNote: 7.2.3
+Imports:
+    dplyr (>= 1.0.10),
+    ggplot2 (>= 3.4.4),
+    investr (>= 1.4.2),
+    kableExtra (>= 1.3.4),
+    patchwork (>= 1.1.3),
+    reshape2 (>= 1.4.4),
+    robustbase (>= 0.99.0),
+    stats (>= 3.6.2)
+VignetteBuilder: knitr
+
