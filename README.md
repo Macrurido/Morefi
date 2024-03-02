@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 README
 ================
 Hugo Aguirre
 2024-03-02
+=======
+Morefi © 2024 by Hugo Aguirre is licensed under CC BY-NC 4.0 
+
+## README
+>>>>>>> 24497f9770064c084bdfac7b6663bb26b736e936
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
