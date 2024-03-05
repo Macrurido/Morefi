@@ -34,7 +34,7 @@ intervals using the function predFit() from the package investr (version
 1.4.2).
 
 `fn_R2RV`: Calculates a robust version of the coefficient of
-determination \$R^{2}\_{RV} (Renaud & Victoria-Feser, 2010).
+determination $R^{2}_{RV}$ (Renaud & Victoria-Feser, 2010).
 
 `fn_summary`: Customizes and stores the summary of each fitted
 regression.
