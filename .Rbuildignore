@@ -2,3 +2,7 @@
 ^\.Rproj\.user$
 ^README.Rmd
 ^Morefi_0.1.0.tar
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
