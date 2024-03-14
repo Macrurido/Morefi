@@ -83,7 +83,9 @@
 <h3 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h3>
 <p>The function calculates a robust version of the coefficient of
-determination <span class="math inline">\(R^{2}_{RV}\)</span></p>
+determination <span class="math inline">\(R^{2}_{RV}\)</span> using the
+Equation Summary values fitted with the robustbase::nlrob()
+function.</p>
 <p>This is the consistency corrected robust coefficient of determination
 by Renaud and Victoria-Feser (2010) which allows for a possible
 correction factor <strong>a</strong> for consistency considerations.</p>
@@ -95,6 +97,9 @@ obtained from the summary model (<strong>eq</strong>).</p>
 the modified sum of squares for explained (<strong>SSEw</strong>), total
 (<strong>SSTw</strong>), and residual (<strong>SSRw</strong>) were
 estimated.</p>
+<p>The correction factor value for consistency considerations
+<strong>a</strong> for 95 percent was also obtained from summary model
+(<strong>eq</strong>).</p>
 <p>A vector with the robust version of the coefficient of determination
 <strong>R2wa</strong> and its adjusted value <strong>R2wa_adj</strong>
 were returned as a vector.</p>
@@ -112,16 +117,15 @@ SSRw}\]</span> The adjusted coefficient of determination <span class="math inlin
 R^{2}_{w,a}\right)\times \left( \frac{n-1 }{n-q} \right)\]</span></p>
 <p>where <span class="math inline">\(y1_{i}\)</span>, and <span class="math inline">\(\widehat{y}_{i}\)</span> are the <span class="math inline">\(i_{th}\)</span> observed and predicted values,
 <span class="math inline">\(a\)</span> is the correction factor value
-for consistency considerations (By default <span class="math inline">\(a\)</span> = 1), <span class="math inline">\(n\)</span> the number of pairs of observations and
-<span class="math inline">\(q\)</span> the number of variables included
-in the model.</p>
+for consistency considerations for 95<br>
+percent, <span class="math inline">\(n\)</span> the number of pairs of
+observations and <span class="math inline">\(q\)</span> the number of
+variables included in the model.</p>
 <p>The function requires defining:</p>
 <ul>
 <li>
-<strong>eq</strong>: Summary of the equation fitted.</li>
-<li>
-<strong>a</strong>: the correction factor value for consistency
-considerations.</li>
+<strong>eq</strong>: Summary of the equation fitted using
+robustbase::nlrob() function.</li>
 </ul>
 <p>The function returns the a vector with the robust version of the
 coefficient of determination <span class="math inline">\(R^{2}_{w,a}\)</span> and its adjusted value <span class="math inline">\(R^{2}_{adj,w,a}\)</span>.</p>
@@ -136,14 +140,14 @@ Regression</strong>.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://macrurido.github.io/Morefi/">Morefi</a></span><span class="op">)</span></span></code></pre></div>
 <p>The function is detailed below.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">fn_R2RV</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">eq</span>,<span class="va">a</span><span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="va">fn_R2RV</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">eq</span><span class="op">)</span><span class="op">{</span></span>
 <span>      <span class="va">w</span> <span class="op">&lt;-</span> <span class="va">eq</span><span class="op">$</span><span class="va">rweights</span>   <span class="co"># w a vector of weights values</span></span>
 <span>      <span class="va">yc</span> <span class="op">&lt;-</span> <span class="va">eq</span><span class="op">$</span><span class="va">fitted.values</span> <span class="co"># yc a vector of predicted values</span></span>
 <span>      <span class="va">ywea</span> <span class="op">&lt;-</span>  <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">w</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">w</span><span class="op">*</span><span class="va">yc</span><span class="op">)</span> <span class="co"># a value of the Weighted Estimate Average</span></span>
 <span>      <span class="va">y1</span> <span class="op">&lt;-</span> <span class="va">eq</span><span class="op">$</span><span class="va">model</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span>
 <span>      <span class="va">SSEw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">w</span><span class="op">*</span><span class="op">(</span><span class="va">yc</span><span class="op">-</span><span class="va">ywea</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span>      <span class="va">SSRw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">w</span><span class="op">*</span><span class="op">(</span><span class="va">y1</span><span class="op">-</span><span class="va">yc</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
-<span>      <span class="va">a</span> <span class="op">&lt;-</span> <span class="va">a</span></span>
+<span>      <span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html" class="external-link">environment</a></span><span class="op">(</span><span class="va">eq</span><span class="op">[[</span><span class="st">"psi"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[[</span><span class="st">"cc"</span><span class="op">]</span><span class="op">]</span></span>
 <span>      <span class="va">R2wa</span> <span class="op">&lt;-</span> <span class="va">SSEw</span><span class="op">/</span><span class="op">(</span><span class="va">SSEw</span><span class="op">+</span><span class="va">a</span><span class="op">*</span><span class="va">SSRw</span><span class="op">)</span></span>
 <span>      <span class="va">R2wa_adj</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">-</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">R2wa</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">eq</span><span class="op">)</span><span class="op">$</span><span class="va">df</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
 <span>      <span class="va">R2was</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">R2wa</span>,<span class="va">R2wa_adj</span><span class="op">)</span></span>
@@ -156,7 +160,7 @@ Regression</strong>.</p>
 <p>Do not execute, it’s just a syntax example.
 <!-- Falta describir el ejemplo y que corra.... --></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">R2RV</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_R2RV.html">fn_R2RV</a></span><span class="op">(</span><span class="va">eq</span>,<span class="va">a</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">R2RV</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_R2RV.html">fn_R2RV</a></span><span class="op">(</span><span class="va">eq</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
