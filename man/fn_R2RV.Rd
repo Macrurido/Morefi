@@ -4,18 +4,17 @@
 \alias{fn_R2RV}
 \title{fn_R2RV}
 \usage{
-fn_R2RV(eq, a)
+fn_R2RV(eq)
 }
 \arguments{
 \item{eq}{Summary of the equation fitted}
-\item{a}{correction factor value for consistency considerations. By default **a** = 1}
 }
 \value{
 R2RV The robust version of the coefficient of determination.
 }
 \description{
 The function calculates a robust version of the coefficient of determination
-R2RV.
+R2RV using the equation Summary values fitted with the robustbase::nlrob() function.
 }
 \details{
 This is the consistency corrected robust coefficient of determination by Renaud and Victoria-Feser (2010) which allows for a possible correction factor **a** for consistency considerations.
@@ -26,11 +25,13 @@ Inside the function:
 
   The value of the Weighted Estimate Average (**ywea**), the  modified sum of squares for explained (**SSEw**), total (**SSTw**), and residual (**SSRw**) were estimated.
 
+  The correction factor value for consistency considerations a for 95 percent was also obtained from summary model (eq).
+
   A vector with the robust version of the coefficient of determination **R2wa** and its adjusted value **R2wa_adj** were returned as a vector.
 
 }
 \examples{
     \dontrun{
-      R2wa <- fn_R2RV(eq,a)
+      R2wa <- fn_R2RV(eq)
     }
 }

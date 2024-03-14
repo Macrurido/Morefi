@@ -1,7 +1,7 @@
 #' fn_R2RV
 #'
 #' The function calculates a robust version of the coefficient of determination
-#' R2RV.
+#' R2RV using the equation Summary values fitted with the robustbase::nlrob() function.
 #'
 #' This is the consistency corrected robust coefficient of determination by
 #' Renaud and Victoria-Feser (2010) which allows for a possible correction
@@ -16,18 +16,20 @@
 #' squares for explained (SSEw), total (SSTw), and residual (SSRw)
 #' were estimated.
 #'
+#' The correction factor value for consistency considerations a for 95 percent
+#' was also obtained from summary model (eq).
+#'
 #' A vector with the robust version of the coefficient of determination R2wa
 #' and its adjusted value R2wa_adj were returned as a vector.
 #'
 #'
 #' @param: eq Summary of the equation fitted.
-#' @param: a  correction factor value for consistency considerations By default a = 1.
 #'
 #' @return: A vector with the robust version of the coefficient of determination
 #'  R2wa and its adjusted value R2wa_adj were returned as a vector.
 #'
 #'
-#' @examples: R2wa <- fn_R2RV(eq,a)
+#' @examples: R2wa <- fn_R2RV(eq)
 #'
 #'
 #' @References: Renaud, O., & Victoria-Feser, M. P. (2010). A robust coefficient
@@ -36,16 +38,16 @@
 #'
 #'
 #' @export:
-    fn_R2RV <- function(eq,a=1){
-      w <- eq$rweights   # w a vector of weights values
-      yc <- eq$fitted.values # yc a vector of predicted values
-      ywea <-  (1/sum(w)) * sum(w*yc) # a value of the Weighted Estimate Average
-      y1 <- eq$model[,1]
-      SSEw <- sum(w*(yc-ywea)^2)
-      SSRw <- sum(w*(y1-yc)^2)
-      a <- a
-      R2wa <- SSEw/(SSEw+a*SSRw)
-      R2wa_adj <- 1-(1-R2wa)*((length(y1)-1)/summary(eq)$df[2])
-      R2was <- c(R2wa,R2wa_adj)
-      print(R2was)
-    }
+fn_R2RV <- function(eq){
+  w <- eq$rweights   # w a vector of weights values
+  yc <- eq$fitted.values # yc a vector of predicted values
+  ywea <-  (1/sum(w)) * sum(w*yc) # a value of the Weighted Estimate Average
+  y1 <- eq$model[,1]
+  SSEw <- sum(w*(yc-ywea)^2)
+  SSRw <- sum(w*(y1-yc)^2)
+  a <- environment(eq[["psi"]])[["cc"]]
+  R2wa <- SSEw/(SSEw+a*SSRw)
+  R2wa_adj <- 1-(1-R2wa)*((length(y1)-1)/summary(eq)$df[2])
+  R2was <- c(R2wa,R2wa_adj)
+  print(R2was)
+}
