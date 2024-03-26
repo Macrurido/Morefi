@@ -1,9 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-Morefi © 2024 by Hugo Aguirre is licensed under CC BY-NC 4.0
+Shield: [![CC BY
+4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
 
-## Morefi
+Morefi © 2024 by Hugo Aguirre is licensed under a [Creative Commons
+Attribution 4.0 International
+License](http://creativecommons.org/licenses/by/4.0/).
+
+[![CC BY
+4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
+
+# Morefi
 
 The *Morefi* package: *Morphological Relationships Fitted by Robust
 Regression*. It is a methodological package developed to carry out the
@@ -13,7 +21,7 @@ created to explain the process step by step. The tables and figures were
 personalized. The lmrob() and nlrob() from robustbase (version 0.99-2),
 are used to perform robust regression.
 
-The package consists of seven functions that facilitate the
+The package consists of nine functions that facilitate the
 implementation of the methodology used in this analysis:
 
 <a href="https://macrurido.github.io/Morefi/articles/fn_ARSS.html" target="_blank">fn_ARSS</a>
@@ -26,6 +34,12 @@ al. 1992).
 `fn_figs`: Creates a customized scatter plot with the observed values
 (points), fitted regression (solid line), and its confidence interval
 (shaded area).
+
+`fn_freq`: The function calculates a frequency distribution of data.
+
+`fn_freqw` This is a methodological function to calculate the percentage
+frequencies of weights by model adjusted using the robust regression
+approach.
 
 `fn_fyield`: Calculates the fillet yield by dividing a defined weight
 reference point **bm** by the mean, lower, and upper confidence interval
