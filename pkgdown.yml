@@ -5,11 +5,13 @@ articles:
   fn_ARSS: fn_ARSS.html
   fn_R2RV: fn_R2RV.html
   fn_figs: fn_figs.html
+  fn_freq: fn_freq.html
+  fn_freqw: fn_freqw.html
   fn_fyield: fn_fyield.html
   fn_intervals: fn_intervals.html
   fn_summary: fn_summary.html
   fn_xseq: fn_xseq.html
-last_built: 2024-03-14T19:50Z
+last_built: 2024-03-26T21:24Z
 urls:
   reference: https://macrurido.github.io/Morefi/reference
   article: https://macrurido.github.io/Morefi/articles
