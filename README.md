@@ -24,8 +24,6 @@ are used to perform robust regression.
 The package consists of nine functions that facilitate the
 implementation of the methodology used in this analysis:
 
-<a href="https://macrurido.github.io/Morefi/articles/fn_ARSS.html" target="_blank">fn_ARSS</a>
-
 `fn_ARSS`: Perform the Coincident Curves Test, to determine if there are
 significant differences between the fitted curves for each database. It
 is based on the Analysis of the Residual Sum of Squares (ARSS) (Chen et
