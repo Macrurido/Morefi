@@ -125,7 +125,7 @@ the total sample SSR= 2045176.876 and DF= 211. Values are stored in the table
 `Table_CC`, this is stored in a list, and the name of each item is built with 
 the acronyms of the model variables (e.g. LTWT).
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, results='asis'}
 Table_CC <- data.frame(matrix(NA,nrow=4,ncol=8))
 Table_CC[1,1] <- "Lt-WT" 
 Table_CC[,2] <- c("Females","Males","Total","Joined")

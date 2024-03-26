@@ -2,6 +2,8 @@
 
 export(fn_ARSS)
 export(fn_figs)
+export(fn_freq)
+export(fn_freqw)
 export(fn_fyield)
 export(fn_intervals)
 export(fn_R2RV)
