@@ -1,5 +1,6 @@
 ---
-title: "fn_freqw {Morefi}"
+title: "fn_freqw {Morefi} <img src='images/Morefi.png' align='right' height='20%' width='20%'/>"
+date: "`r format(Sys.time(), '%d %B %Y')`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{fn_freqw {Morefi}}

@@ -1,5 +1,6 @@
 ---
-title: "fn_summary {Morefi}"
+title: "fn_summary {Morefi} <img src='images/Morefi.png' align='right' height='20%' width='20%'/>"
+date: "`r format(Sys.time(), '%d %B %Y')`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{fn_summary {Morefi}}
