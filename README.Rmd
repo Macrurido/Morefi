@@ -1,8 +1,6 @@
 ---
 title: "Morefi: Morphological Relationships Fitted by Robust Regression <img src='Macrurido/Morefi/tree/main/image/Morefi.png' align='centre' height='20%' width='20%'/>"
 date: "`r format(Sys.time(), '%d %B %Y')`"
-output: github_document
-
 output: rmarkdown::github_document
 ---
 
