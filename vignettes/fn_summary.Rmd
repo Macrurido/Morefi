@@ -1,0 +1,97 @@
+---
+title: "fn_summary {Morefi} <img src='images/Morefi.png' align='right' height='20%' width='20%'/>"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fn_summary {Morefi}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# Customizes the summary of fitted regression
+
+## Description
+
+Table T1 is a customized table to store the regression summarized by
+model and landed weight categories: Fresh, Frozen-thawed (Frozen) and
+Total. The 95% confidence interval parameter is in parentheses.
+The adjusted robust version of the coefficient of determination. (R2) and Degrees of Freedom (DF) are also reported.
+
+
+List_Tables contains an empty T1 for each element (model) 
+
+The function requires defining:
+
+
+ * **List_Tables**: A list to store summary regression results.
+ * **modelos**: A character vector containing the variables of a function.
+ * **catego**: A character vector containing the landed weight categories.
+ * **eq**: Summary of the equation fitted.
+ * **R2**: A numeric value of the adjusted robust version of the coefficient of determination.
+ * **i**: An integer value indicating the ith regression analyzed. 
+ * **j**: An integer value indicating the jth categorie analyzed.
+
+
+List_Tables with a customized table that stores the regression
+summary of each model. 
+
+seealso: lmrob() and nlrob() from robustbase (version 0.99-0)
+
+
+## fn_summary
+
+
+The function is included in the `Morefi` package (Morphological fit).
+
+
+```{r setup}
+library(Morefi)
+```
+
+
+The function is detailed below.
+
+
+```{r, warning=FALSE, message=FALSE}
+fn_summary <- function(List_Tables, modelos, catego, eq, R2, i, j){
+
+  T1 <- List_Tables[[i]]
+  lvar <- names(List_Tables[i])
+
+  T1[1,1] <- ifelse (i<7,"Linear","Potential")
+  T1[1,2] <- paste0(substr(lvar,1,2)," vs. ",
+                    substr(lvar,3,nchar(lvar)))
+  T1[j,3] <- catego[j]
+  T1[j,4] <- eq$coefficients[1]                          # b0
+  T1[j,5] <- paste0("(",round(confint.default(eq)[1,1],2)," to ",
+                    round(confint.default(eq)[1,2],2), ")") #b0 IC95%
+  T1[j,6] <- eq$coefficients[2]
+  T1[j,7] <- paste0("(",round(confint.default(eq)[2,1],2)," to ",
+                    round(confint.default(eq)[2,2],2), ")")
+  T1[j,8] <- as.numeric(R2)
+  T1[j,9] <- summary(eq)$df[2]
+
+  print(T1[j,])
+
+} # End fn_summary
+```
+
+
+## Examples
+
+
+Do not execute, it's just a syntax example.
+<!-- Falta describir el ejemplo y que corra.... -->
+
+```{r, warning=FALSE, message=FALSE, eval = FALSE}
+T1 <- fn_summary(List_Tables, modelos, catego, eq, R2, i, j)
+```
+

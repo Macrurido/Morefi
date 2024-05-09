@@ -1,0 +1,150 @@
+---
+title: "fn_figs {Morefi} <img src='images/Morefi.png' align='right' height='20%' width='20%'/>"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: rmarkdown::html_vignette
+
+vignette: >
+  %\VignetteIndexEntry{fn_figs {Morefi}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# Customize the appearance of the plot
+
+## Description
+
+
+The function creates a customized scatter plot with the observed values (points), fitted regression (solid line) and its confidence interval (shaded area) using the 
+package ggplot2.
+
+
+The function use the `theme_papers()` to customize the appearance of the plot.
+
+
+The function returns a plot. 
+
+
+The function requires defining:
+
+<!-- <mark>Revisar  (datos, CIPI, i, modelos, etiquetas) cambiar en el script de funcion y de filete</mark> -->
+
+
+   * **datos**: A data frame containing the values of: independent variable (x); dependent (y) and adjusted (yc) variable; and Fleet (as factor)  
+   * **CIPI**:  A data frame containing the a seseqquence of the independent variable; the fitted independent variable and their confidence and predicted intervals (lowest and highest value).
+   * **i**: An integer value indicating the regression analyzed
+   * **modelos**: A list of variables (integer values) that are used for the regression model.   
+   * **etiquetas**: A list indicating the labels of the axes (the name of the variable and its unit of measurement).
+ 
+
+See also: ggplot2 (version 3.4.4)
+See also: theme_papers(): customized for the present work
+
+
+fn_figs 
+
+
+The function is included in the `Morefi` package **Morphological Relationships Fitted by Robust Regression**.
+
+
+```{r setup}
+library(Morefi)
+```
+
+
+The function is detailed below.
+
+
+```{r}
+fn_figs <- function(datos, CIPI, i, etiquetas, modelos){
+          Fig <- ggplot(CIPI,aes(x = CIPI[,1])) +
+                 geom_ribbon(aes(x = CIPI[,1], ymin = CIPI[,3], ymax = CIPI[,4],
+                                 fill = "aquamarine"), alpha = 1/50)    +
+                 geom_ribbon(aes(x = CIPI[,1], ymin = CIPI[,5], ymax = CIPI[,6],
+                                 fill = "grey", alpha = 1/50)) +
+                 geom_line(aes(x= CIPI[,1], y = CIPI[,2])) +
+                 geom_point(datos, mapping=aes(x= datos[,1], y = datos[,2],
+                                 shape = factor(datos[,4]), stroke = 1,
+                                 fill = datos[,4]), alpha = 1/10)+
+                 labs(tag = letters[i],x= etiquetas[modelos[[i]][1]],
+                                 y = etiquetas[modelos[[i]][2]])
+          print(Fig)
+}   # End fn_figs
+```
+
+
+## Examples
+
+A total of 100 simulated data of total length cm (LT) and total weight (g) data for a 
+hypothetical fish species. The **x** values range from 15 to 60 cm. The parameters of 
+the potential model are: ordinate = 0.011 and slope = 2.5.  The values of observed
+**y** were calculated using the parameters of the potential equation plus a random
+number between -20 and 20. The lower `CIl` and upper`CIu` confidence interval 
+values were calculated using the Standard Error of the Estimate **SE**.
+
+<!-- <mark> Me falta terminar el ejemplo y explicar que estoy haciendo, la otra es  -->
+<!-- correr el ejemplo y explicar que los intervalos los saque utilizando el programa -->
+<!-- tal y jalar todo de tablas o listas según se requiera </mark> -->
+
+
+
+```{r}
+set.seed(123)
+rvar <- sample(-20:20, 100, replace=TRUE)
+x <- sample(15:60,100,replace=T)
+y <- (0.011*x^2.5)+rvar
+n <- length(x)
+Fleet <- as.factor(sample(1:2,100,replace = TRUE))
+
+yc <- 0.011*x^2.5
+datos <- data.frame(x1=x,y1=y,yc=yc,Fleet=Fleet)
+
+# CI & PI
+
+#SE <- sqrt(sum((y-yc)^2)/(100-2))
+MSE <- sum((y-yc)^2)/(100-2)
+
+xseq <- seq(15,60, by=2.5)
+yseq <- 0.011*xseq^2.5
+
+CP <- (1/n)+(((xseq-mean(xseq))^2)/sum((xseq-mean(xseq))^2))
+
+ICl <- yseq -(1.96*(sqrt(MSE*CP)))
+ICu <- yseq +(1.96*(sqrt(MSE*CP)))
+
+IPl <- yseq -(1.96*(sqrt(MSE*(1+CP))))
+IPu <- yseq +(1.96*(sqrt(MSE*(1+CP))))
+
+df <- as.data.frame(cbind(xseq, yseq, ICl,ICu, IPl, IPu))
+                    colnames(df) <- c("x1", "fit","IC_L","IC_U", "IP_L","IP_U")
+                    df 
+CIPI <- df
+
+i <- 1
+
+# To create the List etiquetas
+
+
+lLT <- "LT (cm)"
+lWT <- "WT (g)"
+
+etiquetas <- list(lLT,lWT)
+
+#To carry out each of the regressions, a list `modelos` is created to indicate 
+#the variables that will be taken into account.
+
+modelos <- list (LTvs.WT  =  c(1,2))
+
+library(ggplot2)
+#theme_papers <- readRDS("theme_papers.rds")
+FY <- fn_figs(datos, CIPI, i, etiquetas, modelos)
+
+```
+
