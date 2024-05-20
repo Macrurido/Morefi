@@ -20,11 +20,17 @@ The function calculates a frequency distribution of data using the functions:
 }
 \details{
 Inside the function:
+<<<<<<< HEAD
 The non-cumulative absolute frequency is calculated for each user defined class
 interval within the `breaks` object.
 
 The `breaks` object must be defined outside the function by the user. For example
 a sequence of breakpoints of equal distance could be used.
+=======
+The non-cumulative absolute frequency is calculated for each user defined class interval within the `breaks` object.
+
+The `breaks` object must be defined outside the function by the user. For example a sequence of breakpoints of equal distance could be used.
+>>>>>>> 797145bb726cc480b9f31a4fec6f464f87688996
 }
 \seealso{
 : `cut()` and `table()` functions from the R base package.

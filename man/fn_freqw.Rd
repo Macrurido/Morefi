@@ -21,7 +21,11 @@ weights by model adjusted using the robust regression approach.
 \details{
 The function calculates the relative frequency distribution using the function `fn_freq` from `Morefi` package.
 
+<<<<<<< HEAD
 For `fn_freq`, the breaks object must be defined. For this work, a sequence of breakpoints of equal distance is used. To incorporate the number of non-weighted values wi=1, a class interval **1** is added to the sequence.
+=======
+For `fn_freq`, the breaks object must be defined. For this work, a sequence of breakpoints of equal distance is used. To incorporate the number of non-weighted values $(w{i}=1)$, a class interval **1** is added to the sequence.
+>>>>>>> 797145bb726cc480b9f31a4fec6f464f87688996
 }
 \seealso{
 : `cut()` and `table()` functions from the R base package.

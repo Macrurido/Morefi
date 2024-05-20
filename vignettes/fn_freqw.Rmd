@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: "fn_freqw {Morefi}"
+=======
+title: "fn_freqw {Morefi} <img src='images/Morefi.png' align='right' height='20%' width='20%'/>"
+>>>>>>> 797145bb726cc480b9f31a4fec6f464f87688996
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: rmarkdown::html_vignette
 vignette: >
