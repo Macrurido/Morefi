@@ -1,5 +1,5 @@
 ---
-title: "fn_intervals {Morefi} "
+title: "fn_intervals {Morefi}"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: rmarkdown::html_vignette
 vignette: >

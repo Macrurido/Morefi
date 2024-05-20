@@ -1,5 +1,5 @@
 ---
-title: "fn_figs {Morefi} "
+title: "fn_figs {Morefi}"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: rmarkdown::html_vignette
 
