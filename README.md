@@ -1,11 +1,9 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
-<<<<<<< HEAD
-
-=======
-<img src='images/Morefi.png' align='right' height='20%' width='20%'/>
->>>>>>> 797145bb726cc480b9f31a4fec6f464f87688996
 ================
-03 abril 2024
+20 mayo 2024
+
+Morefi
+<a href="https://macrurido.github.io/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 

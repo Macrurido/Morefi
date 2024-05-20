@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
 title: "fn_freqw {Morefi}"
-=======
-title: "fn_freqw {Morefi} <img src='images/Morefi.png' align='right' height='20%' width='20%'/>"
->>>>>>> 797145bb726cc480b9f31a4fec6f464f87688996
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -27,7 +23,7 @@ The function `fn_freqw` is a methodological function to calculate the percentage
 
 The function calculates the relative frequency distribution using the function `fn_freq` from `Morefi` package.
 
-For `fn_freq`, the breaks object must be defined. For this work, a sequence of breakpoints of equal distance is used. To incorporate the number of non-weighted values $(w{i}=1)$, a class interval **1** is added to the sequence.
+For `fn_freq`, the breaks object must be defined. For this work, a sequence of breakpoints of equal distance is used. To incorporate the number of non-weighted values $(w_{i}=1)$, a class interval **1** is added to the sequence.
 
 
 A table with frequencies by class interval is returned.
@@ -40,7 +36,7 @@ The function requires defining:
  * **right**: Logical, indicating if the intervals should be closed on the right (and open on the left) or vice versa.
 
 
-Seealso: cut()` and `table()` functions from the R base package.
+Seealso: `cut()` and `table()` functions from the R base package.
        : `fn_freq` from `Morefi` package
 
 
