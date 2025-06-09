@@ -2,9 +2,9 @@
 #'
 #' Plot of residual structures classified by a Weighted Scale.
 #'
-#' The residual structure was analyzed graphically using the `fn_fig_w()` that shows
-#' the structure of each fitted relationship categorized on base of a color
-#' weighted values scale.
+#' The residual structure was analyzed by graphing standardized residuals against
+#' weighted values. A custom multi-panel plot illustrates the structure of each
+#' fitted relationship, categorized by a color-weighted scale of values.
 #'
 #' To unify the x-axis units among the different fitted models, standardized
 #' residuals were utilized due to the varying dimensions of the variables.
@@ -32,11 +32,6 @@
 #'
 #' @examples
 #'  \dontrun{
-#'  df <- df
-#'  opacity <- 1/5  # alpha
-#'  tint <- c("#000000","#009E73", "#56B4E9")
-#'  my_labeller <- my_labeller
-#'  X_names <- c(LT_LS, WT_WS, LT_WT)
 #'
 #'  p <- fn_fig_w(df, opacity,tint, my_labeller
 #'                order= X_names)
