@@ -15,6 +15,7 @@
 #'
 #' @return xseq A one-column data frame with the sequence selected.
 #'
+#'
 #' @examples
 #' \dontrun{
 #' xseq <- fn_xseq(modelos,List_x_seq, i)

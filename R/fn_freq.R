@@ -19,7 +19,6 @@
 #'
 #' @seealso `cut()` and `table()` from the R base package.
 #'
-#'
 #' @examples
 #' # In the df object, 30 random values between 0.1 and 0.9 are generated.
 #' # The breaks object is a sequence of equal distances.

@@ -17,6 +17,7 @@
 #'
 #' @return List_Tables with a customized table that stores the regression summary of each model.
 #'
+#'
 #' @import robustbase
 #' @importFrom stats confint.default
 #'

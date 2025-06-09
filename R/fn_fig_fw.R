@@ -26,8 +26,6 @@
 #' @import ggplot2
 #' @import forcats
 #'
-#'
-#'
 #' @examples
 #' \dontrun{
 #'  df <- df

@@ -21,7 +21,6 @@
 #' A vector with the robust version of the coefficient of determination R2wa
 #' and its adjusted value R2wa_adj were returned as a vector.
 #'
-#'
 #' @param eq Summary of the equation fitted.
 #'
 #' @return

@@ -51,4 +51,4 @@
               facet_wrap(~forcats::fct_relevel(id, order),
                          scales = "free", labeller = my_labeller)
   print(p)
-}
+  }

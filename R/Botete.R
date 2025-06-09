@@ -43,4 +43,3 @@ save(Botete_land, file="./data/Botete_land.rda")
 
 #usethis::use_data(Botete, Botete_land, internal = TRUE,
 #                  compress= "xz", overwrite= TRUE)
-

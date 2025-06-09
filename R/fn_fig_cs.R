@@ -17,8 +17,6 @@
 #'
 #' @import ggplot2
 #'
-#'
-#'
 #' @examples
 #' \dontrun{
 #' df <- df

@@ -30,3 +30,4 @@ fn_intervals <- function(eq,xseq){
                     colnames(df) <- c("x1", "fit","IC_L","IC_U", "IP_L","IP_U")
                     df
                     }
+

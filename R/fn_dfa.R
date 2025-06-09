@@ -62,3 +62,4 @@ fn_dfa <- function(eq){
   colnames(dfa)[colnames(dfa) == ".resid"] <- "ei"
   return(dfa)
 }
+

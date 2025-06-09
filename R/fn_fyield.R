@@ -24,7 +24,6 @@
 #' @seealso fn_intervals() customized for the present work
 #' @seealso mutate() from the package dplyr (version 1.0.10)
 #'
-#'
 #' @examples
 #' \dontrun{
 #'  FY <- fn_fyield(i,bm,df)

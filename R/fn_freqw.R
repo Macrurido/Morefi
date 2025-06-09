@@ -18,7 +18,6 @@
 #'
 #' @seealso fn_freq` from `Morefi` package; `cut()` and `table()` from the R base package.
 #'
-#'
 #' @examples
 #' # In the df object, 30 random values between 0.1 and 0.9 are generated and
 #' # five values equal to 1 are added.

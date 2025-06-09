@@ -83,7 +83,6 @@ fn_ARSS <- function(List_TCCT, i,  alfa= 0.05){
   return(T)
 }  # End function
 
-
 #' @references
 #'  Chen Y., Jackson, D. A., & Harvey, H. H. 1992. A comparison of
 #' von Bertalanffy and polynomial functions in modelling fish growth data.
