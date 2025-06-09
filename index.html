@@ -5,69 +5,62 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="It is a methodological package developed to carry out the analyzes of the article: Aguirre-Villaseñor et al. (IN PREPARATION). For this purpose, some functions and a vignette were created to explain the process step by step. The tables and figures were personalized. The lmrob() and nlrob() from robustbase (version 0.99-2), is used to perform robust regression.">
 <title>Morphological Relationships Fitted by Robust Regression • Morefi</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Morphological Relationships Fitted by Robust Regression">
-<meta property="og:description" content="It is a methodological package developed to carry out the analyzes of the article: Aguirre-Villaseñor et al. (IN PREPARATION). For this purpose, some functions and a vignette were created to explain the process step by step. The tables and figures were personalized. The lmrob() and nlrob() from robustbase (version 0.99-2), is used to perform robust regression.">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Morphological Relationships Fitted by Robust Regression">
+<meta name="description" content='This is a methodological package developed in R to analyze the submitted article by Aguirre-Villaseñor et al. (FISH13711). Many species are marketed through artisanal fishing in various commercial forms. However, there are currently no biometric relationships that allow for predicting live weight (the total weight of the fish) from the different categories of landed weight, such as fillet weight, gutted weight, or frozen weight. The functions included in the Morefi package enable the evaluation of length-length, weight-weight and length-weight biometric relationships using data that exhibit high variability and do not meet the assumptions necessary for adjustment via least squares. Given this variability, a robust regression method is employed for analysis. The "robustbase" package (version 0.99-2) was utilized to fit robust regression models, using the functions lmrob() for linear and nlrob() for non-linear regression.'>
+<meta property="og:description" content='This is a methodological package developed in R to analyze the submitted article by Aguirre-Villaseñor et al. (FISH13711). Many species are marketed through artisanal fishing in various commercial forms. However, there are currently no biometric relationships that allow for predicting live weight (the total weight of the fish) from the different categories of landed weight, such as fillet weight, gutted weight, or frozen weight. The functions included in the Morefi package enable the evaluation of length-length, weight-weight and length-weight biometric relationships using data that exhibit high variability and do not meet the assumptions necessary for adjustment via least squares. Given this variability, a robust regression method is employed for analysis. The "robustbase" package (version 0.99-2) was utilized to fit robust regression models, using the functions lmrob() for linear and nlrob() for non-linear regression.'>
 <meta property="og:image" content="https://macrurido.github.io/Morefi/logo.png">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="index.html">Morefi</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/fn_ARSS.html">fn_ARSS {Morefi}</a>
-    <a class="dropdown-item" href="articles/fn_figs.html">fn_figs {Morefi}</a>
-    <a class="dropdown-item" href="articles/fn_freq.html">fn_freq {Morefi}</a>
-    <a class="dropdown-item" href="articles/fn_freqw.html">fn_freqw {Morefi}</a>
-    <a class="dropdown-item" href="articles/fn_fyield.html">fn_fyield {Morefi}</a>
-    <a class="dropdown-item" href="articles/fn_intervals.html">fn_intervals {Morefi}</a>
-    <a class="dropdown-item" href="articles/fn_R2RV.html">fn_R2RV {Morefi}</a>
-    <a class="dropdown-item" href="articles/fn_summary.html">fn_summary {Morefi}</a>
-    <a class="dropdown-item" href="articles/fn_xseq.html">fn_xseq  {Morefi}</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/fn_ARSS.html">fn_ARSS {Morefi}</a></li>
+    <li><a class="dropdown-item" href="articles/fn_figs.html">fn_figs {Morefi}</a></li>
+    <li><a class="dropdown-item" href="articles/fn_freq.html">fn_freq {Morefi}</a></li>
+    <li><a class="dropdown-item" href="articles/fn_freqw.html">fn_freqw {Morefi}</a></li>
+    <li><a class="dropdown-item" href="articles/fn_fyield.html">fn_fyield {Morefi}</a></li>
+    <li><a class="dropdown-item" href="articles/fn_intervals.html">fn_intervals {Morefi}</a></li>
+    <li><a class="dropdown-item" href="articles/fn_R2RV.html">fn_R2RV {Morefi}</a></li>
+    <li><a class="dropdown-item" href="articles/fn_summary.html">fn_summary {Morefi}</a></li>
+    <li><a class="dropdown-item" href="articles/fn_xseq.html">fn_xseq  {Morefi}</a></li>
+  </ul>
 </li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav"></ul>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+</form></li>
+      </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-home">
 <div class="row">
@@ -76,29 +69,84 @@
 <img src="logo.png" class="logo" alt=""><h1 id="morefi-morphological-relationships-fitted-by-robust-regression">Morefi: Morphological Relationships Fitted by Robust Regression<a class="anchor" aria-label="anchor" href="#morefi-morphological-relationships-fitted-by-robust-regression"></a>
 </h1>
 </div>
-<p>20 mayo 2024</p>
+<p>22 mayo 2025</p>
 <p>Morefi <a href="https://macrurido.github.io/Morefi/"><img src="reference/figures/logo.png" align="right" height="139" alt="Morefi website"></a></p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <p>Shield: <a href="http://creativecommons.org/licenses/by/4.0/" class="external-link"><img src="https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg" alt="CC BY 4.0"></a></p>
 <p>Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" class="external-link">Creative Commons Attribution 4.0 International License</a>.</p>
 <p><a href="http://creativecommons.org/licenses/by/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="CC BY 4.0"></a></p>
+<div class="section level2">
+<h2 id="morefi">Morefi<a class="anchor" aria-label="anchor" href="#morefi"></a>
+</h2>
+<p>The <em>Morefi</em> package: <em>Morphological Relationships Fitted by Robust Regression</em>. It is a methodological package developed in R to analyze the submitted article:</p>
+<p>Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711).Biometric relationships as a fisheries management tool: A case study of the bullseye puffer (<em>Sphoeroides annulatus</em>. Tetraodontidae). Fisheries Research.</p>
+<p>In fisheries monitoring, body length is the most commonly measured parameter because it is quick and easy to obtain. In contrast, measuring weight requires a level and stable scale, which can be difficult to secure in field sampling. Biometric relationships are crucial in fisheries biology. When accurately calculated, these relationships can be very useful for management purposes, especially for estimating an organism’s total length or weight based on other body measurements.</p>
+<p>Many species are marketed through artisanal fishing in various commercial forms. However, there are currently no biometric relationships that allow for predicting live weight (the total weight of the fish) from the different categories of landed weight, such as fillet weight, gutted weight, or frozen weight.</p>
+<p>The objective of this package is to provide quantitative models for various morphological relationships that help predict: a) the expected live weight of different landed weight categories, b) the expected fillet yield from various commercial presentations, and c) testing the suitability of fillet yield as a reference point in managing the target species.</p>
+<p>For this purpose, some functions and a vignette were created to explain the process step by step. Its implementation streamlines the methodology and enhances the clarity and impact of both the results and graphical presentations (tables and figures are personalized).</p>
+<p>The functions included in the Morefi package enable the evaluation of length-length, weight-weight and length-weight biometric relationships using data that exhibit high variability and do not meet the assumptions necessary for adjustment via least squares. Given this variability, a robust regression method is employed for analysis. The “robustbase” package (version 0.99-2) was utilized to fit robust regression models, using the functions lmrob() for linear and nlrob() for non-linear regression (Maechler et al., 2024).</p>
 </div>
-<div class="section level1">
-<h1 id="morefi">Morefi<a class="anchor" aria-label="anchor" href="#morefi"></a>
-</h1>
-<p>The <em>Morefi</em> package: <em>Morphological Relationships Fitted by Robust Regression</em>. It is a methodological package developed to carry out the analysis of the article: Aguirre-Villaseñor &amp; Morales-Bojórquez (IN PREPARATION). For this purpose, some functions and a vignette were created to explain the process step by step. The tables and figures were personalized. The lmrob() and nlrob() from robustbase (version 0.99-2), are used to perform robust regression.</p>
-<p>The package consists of nine functions that facilitate the implementation of the methodology used in this analysis:</p>
-<p><code>fn_ARSS</code>: Perform the Coincident Curves Test, to determine if there are significant differences between the fitted curves for each database. It is based on the Analysis of the Residual Sum of Squares (ARSS) (Chen et al. 1992).</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version of Morefi from <a href="https://github.com/Macrurido/Morefi.git" class="external-link">GitHub</a> using one of the following options:</p>
+<p>Using the <strong>pak</strong> package</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"Macrurido/Morefi"</span><span class="op">)</span></span></code></pre></div>
+<p>or using the <strong>devtools</strong> package</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
+<span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Macrurido/Morefi"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="data-available-in-the-package">Data available in the package<a class="anchor" aria-label="anchor" href="#data-available-in-the-package"></a>
+</h2>
+<div class="section level3">
+<h3 id="bullseye-puffer-measures-botete_measuresrda">Bullseye puffer measures: botete_measures.rda<a class="anchor" aria-label="anchor" href="#bullseye-puffer-measures-botete_measuresrda"></a>
+</h3>
+<p>To demonstrate how the package functions, we utilize the dataset <code>botete_measures.rda</code>, containing 1,405 fish across 7 variables: the total length(LT), standard length (SL), body trunk length (LB), total weight (WT), body trunk weight (WB), and fillet weight (Wfi) of the bullseye puffer (<em>Sphoeroides annulatus</em>), collected from the Eastern Central Pacific. In this dataset, the landing category is included in the “Fleet” variable, which is categorized as follows: 1 indicates Fresh, while 2 denotes Frozen-thawed.</p>
+</div>
+<div class="section level3">
+<h3 id="bullseye-puffer-fish-landings-botete_landrda">Bullseye puffer fish landings: botete_land.rda<a class="anchor" aria-label="anchor" href="#bullseye-puffer-fish-landings-botete_landrda"></a>
+</h3>
+<p>A second dataset <code>botete_land.rda</code>, provided the Mexican fishing records of bullseye puffer landed on the Pacific coast in 2023 and their live weight corresponding live weight for each weight category (kg): total (WT), body trunk (WB) or fillet (Wfi), either Fresh or Frozen-thawed (SIPESCA, 2024).</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="morefi-functions">Morefi functions<a class="anchor" aria-label="anchor" href="#morefi-functions"></a>
+</h2>
+<p>The Morefi package consists of nine functions designed to facilitate data analysis and ensure that results can be reproduced.</p>
+<p><code>fn_ARSS</code>: Perform the Coincident Curves Test, to determine if there are significant differences between the fitted curves for each database. It is based on the Analysis of the Residual Sum of Squares (ARSS) (Chen et al., 1992).</p>
 <p><code>fn_figs</code>: Creates a customized scatter plot with the observed values (points), fitted regression (solid line), and its confidence interval (shaded area).</p>
 <p><code>fn_freq</code>: The function calculates a frequency distribution of data.</p>
 <p><code>fn_freqw</code> This is a methodological function to calculate the percentage frequencies of weights by model adjusted using the robust regression approach.</p>
 <p><code>fn_fyield</code>: Calculates the fillet yield by dividing a defined weight reference point <strong>bm</strong> by the mean, lower, and upper confidence interval of 95% (IC95%) of the estimated fillet weight, respectively.</p>
 <p><code>fn_intervals</code>: Calculates a non-parametric confidence and predicted intervals using the function predFit() from the package investr (version 1.4.2).</p>
-<p><code>fn_R2RV</code>: Calculates a robust version of the coefficient of determination <span class="math inline"><em>R</em><sub><em>R</em><em>V</em></sub><sup>2</sup></span> (Renaud &amp; Victoria-Feser, 2010).</p>
+<p><code>fn_R2RV</code>: Calculates a robust version of the coefficient of determination <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>R</mi><mrow><mi>R</mi><mi>V</mi></mrow><mn>2</mn></msubsup><annotation encoding="application/x-tex">R^{2}_{RV}</annotation></semantics></math> (Renaud &amp; Victoria-Feser, 2010).</p>
 <p><code>fn_summary</code>: Customizes and stores the summary of each fitted regression.</p>
 <p><code>fn_xseq</code>: Generates a data frame with a sequence for independent variables (including minimum and maximum values) and selects it according to the model.</p>
 </div>
-
+<div class="section level2">
+<h2 id="more-details">More details<a class="anchor" aria-label="anchor" href="#more-details"></a>
+</h2>
+<p>For more information, please refer to the respective vignettes, which offer detailed descriptions of each function, its operations, and examples.</p>
+</div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>To demonstrate how the package works, please follow the step-by-step process outlined in the “Morefi_steps” vignette, which reconstructs the results presented in the article by Aguirre-Villaseñor et al. (FISH13711).</p>
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<p>Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711).Biometric relationships as a fisheries management tool: A case study of the bullseye puffer (<em>Sphoeroides annulatus</em>. Tetraodontidae). Fisheries Research.</p>
+<p>Chen, Y., Jackson, D. A., Harvey, H. H. 1992. A comparison of von Bertalanffy and polynomial functions in modelling fish growth data. Canadian Journal of Fisheries and Aquatic Sciences 49(6): 1228–1235. <a href="https://doi.org/10.1139/f92-13" class="external-link uri">https://doi.org/10.1139/f92-13</a></p>
+<p>Maechler M, Rousseeuw P, Croux C, Todorov V, Ruckstuhl A, Salibian-Barrera M, Verbeke T, Koller M, Conceicao EL, Anna di Palma M (2024). robustbase: Basic Robust Statistics. R package version 0.99-4-1, <a href="http://robustbase.r-forge.r-project.org/" class="external-link uri">http://robustbase.r-forge.r-project.org/</a>.</p>
+<p>Renaud, O., Victoria-Feser, M. P. (2010). A robust coefficient of determination for regression. Journal of Statistical Planning and Inference. 140(7), 1852-1862. doi: 10.1016/j.jspi.2010.01.008.</p>
+<p>SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA. Comisión Nacional de Pesca y Acuacultura. <a href="https://sipesca.conapesca.gob.mx" class="external-link uri">https://sipesca.conapesca.gob.mx</a> (accessed 7 February 2024).</p>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
@@ -118,7 +166,7 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Hugo Aguirre-Villaseñor <br><small class="roles"> Maintainer </small>  </li>
+<li>Hugo Aguirre-Villaseñor <br><small class="roles"> Maintainer </small>   </li>
 </ul>
 </div>
 
@@ -133,15 +181,15 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

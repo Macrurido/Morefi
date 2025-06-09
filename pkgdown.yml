@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   fn_ARSS: fn_ARSS.html
@@ -11,8 +11,7 @@ articles:
   fn_R2RV: fn_R2RV.html
   fn_summary: fn_summary.html
   fn_xseq: fn_xseq.html
-last_built: 2024-05-20T16:03Z
+last_built: 2025-06-09T20:30Z
 urls:
   reference: https://macrurido.github.io/Morefi/reference
   article: https://macrurido.github.io/Morefi/articles
-
