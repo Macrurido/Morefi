@@ -8,9 +8,7 @@ output: rmarkdown::github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 Morefi <a href="https://macrurido.github.io/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
-
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
