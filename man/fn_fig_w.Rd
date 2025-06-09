@@ -41,6 +41,7 @@ residuals were utilized due to the varying dimensions of the variables.
                order= X_names)
 }
 
+#' @export
 }
 \seealso{
 ggplot2::as_labeller()
