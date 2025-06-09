@@ -1,0 +1,64 @@
+#' fn_dfa
+#'
+#' The `fn_dfa()` function uses the `augment()` function from the `broom` package
+#' to extract the observed values of the independent variable (x) and dependent
+#' variable (y), along with the weights (wi), fitted values (fitt), and residuals
+#' (ei) from the summary of the fitted model. It then turns these components
+#' into tidy tibbles.
+#'
+#' The function `augment()` does not provide the weights column for the `lmrob()`
+#' function. The function `fn_dfa()` contains a conditional statement that
+#' includes this variable in the output data frame of the linear adjustments.
+#'
+#' In order to homogenizes the results, the columns names were renamed as "y",
+#' "wi","x","fitt",and "ei".
+#'
+#' An additional column has been included that codes errors using a scale based
+#' on weighted values: unweighted (u), weighted (w), and outliers (o)
+#' `dfa$scale <- ifelse(df$wi < 0.25, "o", ifelse(df$wi<1, "w", "u"))`.
+#'
+#' For more information, please refer to the help documentation for `broom::augment()`.
+#'
+#' @param eq Summary of the equation fitted.
+#'
+#' @returns A tibble data frame provides the original data along with information about the model.
+#'
+#' @seealso broom::augment
+#'
+#' @import broom
+#'
+#' @examples
+#' ## Example 1: robust linear regression
+#'  \dontrun{
+#' df <- df
+#' eq <- robustbase::lmrob(y1 ~ x1, data= df,setting = "KS2014")
+#'
+#' dfa <- augment(eq)
+#' }
+#'
+#' ## Example 2: robust nonlinear regression
+#' \dontrun{
+#' df <- df
+#' eq <- nlrob(y1 ~ a*x1^b, data= datos,
+#' start = list(a= a, b= b),
+#' trace = FALSE)
+#'
+#' dfa <- augment(eq)
+#'}
+#'
+#' @export
+fn_dfa <- function(eq){
+  dfa <- augment(eq)
+  # When summarizing from the adjustment using the lmrob() function, it is essential to include the rweights column in the data frame.
+  if(ncol(dfa)==4){
+    dfa$wi <- eq[["rweights"]]
+  }else{
+    names(dfa)[2] <- "wi"   # Rename column by position
+  }
+  # Rename columns dfa
+  colnames(dfa)[colnames(dfa) == "y1"] <- "y"
+  colnames(dfa)[colnames(dfa) == "x1"] <- "x"
+  colnames(dfa)[colnames(dfa) == ".fitted"] <- "fitt"
+  colnames(dfa)[colnames(dfa) == ".resid"] <- "ei"
+  return(dfa)
+}

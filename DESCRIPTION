@@ -1,0 +1,43 @@
+Package: Morefi
+Type: Package
+Title: Morphological Relationships Fitted by Robust Regression 
+Version: 0.1.0
+Author: Hugo Aguirre-Villaseñor
+Maintainer: Hugo Aguirre-Villaseñor <hugo.aguirre@inapesca.gob.mx>
+Description: This is a methodological package developed in R to analyze the 
+              submitted article by Aguirre-Villaseñor et al. (FISH13711). Many
+              species are marketed through artisanal fishing in various commercial
+              forms. However, there are currently no biometric relationships that
+              allow for predicting live weight (the total weight of the fish)
+              from the different categories of landed weight, such as fillet
+              weight, gutted weight, or frozen weight.
+              The functions included in the Morefi package enable the evaluation
+              of length-length, weight-weight and length-weight biometric 
+              relationships using data that exhibit high variability and do not 
+              meet the assumptions necessary for adjustment via least squares.
+              Given this variability, a robust regression method is employed for
+              analysis. The "robustbase" package (version 0.99-2) was utilized to
+              fit robust regression models, using the functions lmrob() for linear
+              and nlrob() for non-linear regression.
+Depends: R (>= 4.4.0)    
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+LazyDataCompression:xz
+Suggests: 
+    testthat (>= 3.2.3),
+    knitr (>= 1.50),
+    rmarkdown (>= 2.29),
+    htmltools (>= 0.5.8)
+Config/testthat/edition: 3
+RoxygenNote: 7.3.2
+Imports:
+    broom (>= 1.0.8),
+    dplyr (>= 1.1.4),
+    forcats (>= 1.0.0),
+    ggplot2 (>= 3.5.2),
+    investr (>= 1.4.2),
+    robustbase (>= 0.99.4),
+    stats (>= 4.4.0)
+VignetteBuilder: knitr
+URL: https://macrurido.github.io/Morefi/, https://macrurido.github.io/Morefi/

@@ -1,0 +1,154 @@
+---
+title: "fn_ARSS {Morefi}"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fn_ARSS {Morefi}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Coincident Curves Test
+
+## Description
+
+The function `fn_ARSS` perform the Coincident Curves Test, to determine if there
+are significant differences between the fitted curves for each database. It is 
+based on the Analysis of the Residual Sum of Squares (ARSS) (Chen et al. 1992).
+
+
+$$F=\frac{\frac{RSS_{p}-RSS_{s}}{3\bullet \left( K-1 \right)}}{\frac{RSS_{s}}{N-3\bullet K}}$$
+
+$RSS_{p}$= RSS of each regression fitted by pooled data, $RSS_{s}$= sum of the 
+RSS of each regression fitted for each individual sample, **N**= total sample 
+size, and **K** = number of samples in the comparison.
+
+
+The residual sum of squares (RSS) and the degrees of freedom (DF) for each 
+fitted regression are previously stored in the `List_TCCT` list. For each 
+regression, the calculations are stored in a data frame `T1`, which is stored
+iteratively using a loop for in a list `T`.
+
+
+Inside the function, the RSS and DF for the joined sample are calculated to 
+perform the F test for two tails $\alpha/2$. The decision criteria is performed:
+"*" if $p-value\le \alpha$ or "NS" if the $p-val\gt \alpha$.
+
+
+The function requires defining:
+
+ * **List_TCCT**: A list with fitted regression results.  
+ * **i**:  An integer value indicating the ith regression analyzed.
+ * **alfa**: A numerical value that defines the significance level. The default number is 0.05.
+
+
+Seealso: `FDist` from the package stats (version 3.6.2)
+
+
+## fn_ARSS
+
+The function is included in the `Morefi` package **Morphological Relationships 
+Fitted by Robust Regression**.
+
+
+```{r setup}
+library(Morefi)
+```
+
+
+The function is detailed below.
+
+```{r, warning=FALSE, message=FALSE}
+fn_ARSS <- function(List_TCCT, i,  alfa= 0.05){
+  T  <- list()
+  for (i in 1:length(List_TCCT)){
+  
+  T1 <- List_TCCT[[i]]
+  lvar <- names(List_TCCT[i])
+
+  T1[1,1] <- paste0(substr(lvar,1,2)," vs. ",
+                    substr(lvar,3,nchar(lvar)))
+  # RSSs sum of the RSS of each regression fitted
+  T1[4,3] <- round(sum(as.numeric(T1[1,3]),
+                       as.numeric(T1[2,3])),2)
+
+  # DF Sum GL1 + GL2
+  T1[4,4] <- sum(as.numeric(T1[1,4]),as.numeric(T1[2,4]))
+
+  # F calculated (Fc)
+  T1[1,5] <- round(abs((as.numeric(T1[3,3])-as.numeric(T1[4,3]))/
+                         as.numeric(T1[4,3])),4)
+
+  # F table (critical value)
+  T1[1,6] <- round(qf(alfa, as.numeric(T1[3,4]),
+                      as.numeric(T1[4,4]),
+                      lower.tail= FALSE),4)
+
+  # p-value for two tails
+  P_value <- pf(as.numeric(T1[1,6]),
+                as.numeric(T1[4,4]),
+                as.numeric(T1[3,4]),
+                lower.tail=FALSE)
+
+  T1[1,7] <- if(P_value>1-alfa){
+    "p>0.95"
+  } else {
+    format(P_value, format= "e", digits = 4)
+  } # End if
+
+  # Decision criteria
+  T1[1,8] <-  if(P_value>alfa){
+    "NS"
+  } else {
+    "*"
+  } # End if
+  T[[i]] <- as.data.frame(T1)
+  } # End for
+  return(T)
+}  # End function
+```
+
+
+## Examples
+
+The length-weight was estimated for the Pacific Sierra *Scomberomorus sierra*
+by sex and the total sample (Unpublish data). The sex of 362 organisms was 
+determined: 95 were females and 118 males. The adjusted models show the following
+data: Females SSR= 1557970.877 and DF= 93; Males SSR= 1188689.721 and DF= 116; and 
+the total sample SSR= 2045176.876 and DF= 211. Values are stored in the table 
+`Table_CC`, this is stored in a list, and the name of each item is built with 
+the acronyms of the model variables (e.g. LTWT).
+
+```{r, warning=FALSE, message=FALSE, results='asis'}
+Table_CC <- data.frame(matrix(NA,nrow=4,ncol=8))
+Table_CC[1,1] <- "Lt-WT" 
+Table_CC[,2] <- c("Females","Males","Total","Joined")
+colnames(Table_CC) <- c("Model","Category","RSS","DF","ARSS","F-table","p-value","Criteria")
+
+Table_CC[1,3] <- 1557970.877
+Table_CC[1,4] <-  93 
+Table_CC[2,3] <- 1188689.721
+Table_CC[2,4] <-  116 
+Table_CC[3,3] <- 2045176.876
+Table_CC[3,4] <-  211 
+
+
+List_ARSS <- list(LTWT=Table_CC)
+
+i <- 1
+
+ARSS <- fn_ARSS(List_ARSS, i,  alfa= 0.05)
+ARSS
+```
+
+
+## References
+
+Chen Y., Jackson, D. A., & Harvey, H. H. 1992. A comparison of von Bertalanffy and polynomial functions in modelling fish growth data. Can. J. Fish. Aquat. Sci. 49(6): 1228–1235. https://doi.org/10.1139/f92-13

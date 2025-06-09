@@ -1,0 +1,181 @@
+Morefi: Morphological Relationships Fitted by Robust Regression
+================
+22 mayo 2025
+
+Morefi
+<a href="https://macrurido.github.io/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+Shield: [![CC BY
+4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
+
+Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a [Creative
+Commons Attribution 4.0 International
+License](http://creativecommons.org/licenses/by/4.0/).
+
+[![CC BY
+4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
+
+## Morefi
+
+The *Morefi* package: *Morphological Relationships Fitted by Robust
+Regression*. It is a methodological package developed in R to analyze
+the submitted article:
+
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata
+(FISH13711).Biometric relationships as a fisheries management tool: A
+case study of the bullseye puffer (*Sphoeroides annulatus*.
+Tetraodontidae). Fisheries Research.
+
+In fisheries monitoring, body length is the most commonly measured
+parameter because it is quick and easy to obtain. In contrast, measuring
+weight requires a level and stable scale, which can be difficult to
+secure in field sampling. Biometric relationships are crucial in
+fisheries biology. When accurately calculated, these relationships can
+be very useful for management purposes, especially for estimating an
+organism’s total length or weight based on other body measurements.
+
+Many species are marketed through artisanal fishing in various
+commercial forms. However, there are currently no biometric
+relationships that allow for predicting live weight (the total weight of
+the fish) from the different categories of landed weight, such as fillet
+weight, gutted weight, or frozen weight.
+
+The objective of this package is to provide quantitative models for
+various morphological relationships that help predict: a) the expected
+live weight of different landed weight categories, b) the expected
+fillet yield from various commercial presentations, and c) testing the
+suitability of fillet yield as a reference point in managing the target
+species.
+
+For this purpose, some functions and a vignette were created to explain
+the process step by step. Its implementation streamlines the methodology
+and enhances the clarity and impact of both the results and graphical
+presentations (tables and figures are personalized).
+
+The functions included in the Morefi package enable the evaluation of
+length-length, weight-weight and length-weight biometric relationships
+using data that exhibit high variability and do not meet the assumptions
+necessary for adjustment via least squares. Given this variability, a
+robust regression method is employed for analysis. The “robustbase”
+package (version 0.99-2) was utilized to fit robust regression models,
+using the functions lmrob() for linear and nlrob() for non-linear
+regression (Maechler et al., 2024).
+
+## Installation
+
+You can install the development version of Morefi from
+[GitHub](https://github.com/Macrurido/Morefi.git) using one of the
+following options:
+
+Using the **pak** package
+
+``` r
+# install.packages("pak")
+pak::pak("Macrurido/Morefi")
+```
+
+or using the **devtools** package
+
+``` r
+library(devtools)
+install_github("Macrurido/Morefi")
+```
+
+## Data available in the package
+
+### Bullseye puffer measures: botete_measures.rda
+
+To demonstrate how the package functions, we utilize the dataset
+`botete_measures.rda`, containing 1,405 fish across 7 variables: the
+total length(LT), standard length (SL), body trunk length (LB), total
+weight (WT), body trunk weight (WB), and fillet weight (Wfi) of the
+bullseye puffer (*Sphoeroides annulatus*), collected from the Eastern
+Central Pacific. In this dataset, the landing category is included in
+the “Fleet” variable, which is categorized as follows: 1 indicates
+Fresh, while 2 denotes Frozen-thawed.
+
+### Bullseye puffer fish landings: botete_land.rda
+
+A second dataset `botete_land.rda`, provided the Mexican fishing records
+of bullseye puffer landed on the Pacific coast in 2023 and their live
+weight corresponding live weight for each weight category (kg): total
+(WT), body trunk (WB) or fillet (Wfi), either Fresh or Frozen-thawed
+(SIPESCA, 2024).
+
+## Morefi functions
+
+The Morefi package consists of nine functions designed to facilitate
+data analysis and ensure that results can be reproduced.
+
+`fn_ARSS`: Perform the Coincident Curves Test, to determine if there are
+significant differences between the fitted curves for each database. It
+is based on the Analysis of the Residual Sum of Squares (ARSS) (Chen et
+al., 1992).
+
+`fn_figs`: Creates a customized scatter plot with the observed values
+(points), fitted regression (solid line), and its confidence interval
+(shaded area).
+
+`fn_freq`: The function calculates a frequency distribution of data.
+
+`fn_freqw` This is a methodological function to calculate the percentage
+frequencies of weights by model adjusted using the robust regression
+approach.
+
+`fn_fyield`: Calculates the fillet yield by dividing a defined weight
+reference point **bm** by the mean, lower, and upper confidence interval
+of 95% (IC95%) of the estimated fillet weight, respectively.
+
+`fn_intervals`: Calculates a non-parametric confidence and predicted
+intervals using the function predFit() from the package investr (version
+1.4.2).
+
+`fn_R2RV`: Calculates a robust version of the coefficient of
+determination $R^{2}_{RV}$ (Renaud & Victoria-Feser, 2010).
+
+`fn_summary`: Customizes and stores the summary of each fitted
+regression.
+
+`fn_xseq`: Generates a data frame with a sequence for independent
+variables (including minimum and maximum values) and selects it
+according to the model.
+
+## More details
+
+For more information, please refer to the respective vignettes, which
+offer detailed descriptions of each function, its operations, and
+examples.
+
+## Example
+
+To demonstrate how the package works, please follow the step-by-step
+process outlined in the “Morefi_steps” vignette, which reconstructs the
+results presented in the article by Aguirre-Villaseñor et
+al. (FISH13711).
+
+## References
+
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata
+(FISH13711).Biometric relationships as a fisheries management tool: A
+case study of the bullseye puffer (*Sphoeroides annulatus*.
+Tetraodontidae). Fisheries Research.
+
+Chen, Y., Jackson, D. A., Harvey, H. H. 1992. A comparison of von
+Bertalanffy and polynomial functions in modelling fish growth data.
+Canadian Journal of Fisheries and Aquatic Sciences 49(6): 1228–1235.
+<https://doi.org/10.1139/f92-13>
+
+Maechler M, Rousseeuw P, Croux C, Todorov V, Ruckstuhl A,
+Salibian-Barrera M, Verbeke T, Koller M, Conceicao EL, Anna di Palma M
+(2024). robustbase: Basic Robust Statistics. R package version 0.99-4-1,
+<http://robustbase.r-forge.r-project.org/>.
+
+Renaud, O., Victoria-Feser, M. P. (2010). A robust coefficient of
+determination for regression. Journal of Statistical Planning and
+Inference. 140(7), 1852-1862. doi: 10.1016/j.jspi.2010.01.008.
+
+SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA.
+Comisión Nacional de Pesca y Acuacultura.
+<https://sipesca.conapesca.gob.mx> (accessed 7 February 2024).
