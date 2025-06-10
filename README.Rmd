@@ -55,9 +55,11 @@ step by step. Its implementation streamlines the methodology and enhances the
 clarity and impact of both the results and graphical presentations (tables and 
 figures are personalized).
 
-The functions included in the Morefi package enable the evaluation of length-length,
-weight-weight and length-weight biometric relationships using data that exhibit
-high variability and do not meet the assumptions necessary for adjustment via 
+The functions included in the Morefi package enable the
+evaluation of length-length, weight-weight and length-weight
+biometric relationships using data that exhibit high
+variability and do not meet the assumptions necessary for
+adjustment via 
 least squares. Given this variability, a robust regression method is employed 
 for analysis. The "robustbase" package (version 0.99-2) was utilized to fit 
 robust regression models, using the functions lmrob() for linear and nlrob()

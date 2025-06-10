@@ -1,9 +1,9 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
 ================
-22 mayo 2025
+09 junio 2025
 
 Morefi
-<a href="https://macrurido.github.io/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
+<a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -96,14 +96,26 @@ Central Pacific. In this dataset, the landing category is included in
 the “Fleet” variable, which is categorized as follows: 1 indicates
 Fresh, while 2 denotes Frozen-thawed.
 
+To access the data file, the data frame is stored in an object, such as
+‘catch’.
+
+``` r
+catch <- Morefi::Botete_land
+```
 
 ### Bullseye puffer fish landings: botete_land.rda
 
-A second dataset `botete_land.rda`, provided the Mexican fishing records
+A second dataset `Botete_land.rda`, provided the Mexican fishing records
 of bullseye puffer landed on the Pacific coast in 2023 and their live
 weight corresponding live weight for each weight category (kg): total
 (WT), body trunk (WB) or fillet (Wfi), either Fresh or Frozen-thawed
 (SIPESCA, 2024).
+
+To access the data file, the data frame is stored in `mydata`.
+
+``` r
+mydata <- Morefi::Botete
+```
 
 ## Morefi functions
 
@@ -114,6 +126,31 @@ data analysis and ensure that results can be reproduced.
 significant differences between the fitted curves for each database. It
 is based on the Analysis of the Residual Sum of Squares (ARSS) (Chen et
 al., 1992).
+
+`fn_dfa`: This function uses the `broom::augment()` function to extract
+observed values, predictions, residuals, and weighted values from the
+fitted regression summary. An additional column has been added to code
+errors on a scale. It then transforms these components into tidy
+tibbles.
+
+`fn_fig_cs`: This function creates an individual plot displaying the
+fitted model alongside the observed values, which are colored according
+to a weighted color scale.
+
+`fn_fig_e`: The function creates a graph that displays residuals on the
+vertical axis and either the independent variable or predicted values on
+the horizontal axis, as determined by the researcher. The residuals are
+color-coded using a weighted scale.
+
+`fn_fig_fw`: The fitted values of the models for a landed presentation
+category were displayed as a multi-panel plot. The observed data points
+for each fitted relationship were categorized according to a weighted
+color scale.
+
+`fn_fig_w`: The residual structure was analyzed by graphing standardized
+residuals against weighted values. A custom multi-panel plot illustrates
+the structure of each fitted relationship, categorized by a
+color-weighted scale of values.
 
 `fn_figs`: Creates a customized scatter plot with the observed values
 (points), fitted regression (solid line), and its confidence interval
@@ -138,6 +175,12 @@ determination $R^{2}_{RV}$ (Renaud & Victoria-Feser, 2010).
 
 `fn_summary`: Customizes and stores the summary of each fitted
 regression.
+
+`fn_Wlive`: The live weight, which is the total weight of an organism,
+is estimated based on the weights of different landing categories, such
+as eviscerated weight and fillet weight. These estimates are derived
+using regression parameters that relate total weight to the weight of
+each landing category.
 
 `fn_xseq`: Generates a data frame with a sequence for independent
 variables (including minimum and maximum values) and selects it
