@@ -33,7 +33,7 @@
 #' @examples
 #'  \dontrun{
 #'
-#'  p <- fn_fig_w(df, opacity,tint, my_labeller
+#'  p <- fn_fig_w(df, opacity,tint, my_labeller,
 #'                order= X_names)
 #'}
 #'
