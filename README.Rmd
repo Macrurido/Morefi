@@ -83,15 +83,18 @@ install_github("Macrurido/Morefi")
 
 ### Bullseye puffer measures: botete_measures.rda
 
-To demonstrate how the package functions, we utilize the dataset `botete_measures.rda`,
-containing 1,405 fish across 7 variables: the total length(LT), standard length 
-(SL), body trunk length (LB), total weight (WT), body trunk weight (WB), and 
-fillet weight (Wfi) of the bullseye puffer (*Sphoeroides annulatus*), collected 
-from the Eastern Central Pacific. In this dataset, the landing category is 
-included in the "Fleet" variable, which is categorized as follows: 1 indicates
-Fresh, while 2 denotes Frozen-thawed. 
+To demonstrate how the package functions, we utilize the
+dataset `botete_measures.rda`, containing 1,405 fish across
+7 variables: the total length(LT), standard length (SL),
+body trunk length (LB), total weight (WT), body trunk weight
+(WB), and fillet weight (Wfi) of the bullseye puffer
+(*Sphoeroides annulatus*), collected from the Eastern Central
+Pacific. In this dataset, the landing category is included in
+the "Fleet" variable, which is categorized as follows: 1
+indicates Fresh, while 2 denotes Frozen-thawed. 
 
-To access the data file, the data frame is stored in an object, such as 'catch'.
+To access the data file, the data frame is stored in an object,
+such as 'catch'.
 
 ``` r
 catch <- Morefi::Botete_land

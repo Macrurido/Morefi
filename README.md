@@ -96,6 +96,7 @@ Central Pacific. In this dataset, the landing category is included in
 the “Fleet” variable, which is categorized as follows: 1 indicates
 Fresh, while 2 denotes Frozen-thawed.
 
+
 ### Bullseye puffer fish landings: botete_land.rda
 
 A second dataset `botete_land.rda`, provided the Mexican fishing records

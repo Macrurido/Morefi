@@ -93,9 +93,11 @@ values were calculated using the Standard Error of the Estimate **SE**.
 <!-- correr el ejemplo y explicar que los intervalos los saque utilizando el programa -->
 <!-- tal y jalar todo de tablas o listas según se requiera </mark> -->
 
+Do not execute, it's just a syntax example.
+<!-- Falta describir el ejemplo y que corra.... -->
 
+```{r, warning=FALSE, message=FALSE, eval = FALSE}
 
-```{r, warning=FALSE, }
 set.seed(123)
 rvar <- sample(-20:20, 100, replace=TRUE)
 x <- sample(15:60,100,replace=T)
@@ -108,7 +110,6 @@ datos <- data.frame(x1=x,y1=y,yc=yc,Fleet=Fleet)
 
 # CI & PI
 
-#SE <- sqrt(sum((y-yc)^2)/(100-2))
 MSE <- sum((y-yc)^2)/(100-2)
 
 xseq <- seq(15,60, by=2.5)
@@ -124,7 +125,7 @@ IPu <- yseq +(1.96*(sqrt(MSE*(1+CP))))
 
 df <- as.data.frame(cbind(xseq, yseq, ICl,ICu, IPl, IPu))
                     colnames(df) <- c("x1", "fit","IC_L","IC_U", "IP_L","IP_U")
-                    df 
+
 CIPI <- df
 
 i <- 1
@@ -143,7 +144,7 @@ etiquetas <- list(lLT,lWT)
 modelos <- list (LTvs.WT  =  c(1,2))
 
 library(ggplot2)
-#theme_papers <- readRDS("theme_papers.rds")
+
 FY <- fn_figs(datos, CIPI, i, etiquetas, modelos)
 
 ```

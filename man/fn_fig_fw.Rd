@@ -41,7 +41,7 @@ Since the parameters contain subscripts, the labels were customized using the
  tint <- c("#000000","#009E73", "#56B4E9")
  X_names <- c(LT_LS, WT_WS, LT_WT)
  wi_scale <- c(0, 0.249, 0.99, 1)
- my_labeller <- my:labeler
+ my_labeller <- my_labeller
 
  p <- fn_fig_fw(df, opacity, tint, scale= wi_scale,
                order=X_names, my_labeller)
