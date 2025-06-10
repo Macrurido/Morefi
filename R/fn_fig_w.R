@@ -37,7 +37,7 @@
 #'                order= X_names)
 #'}
 #'
-#'#' @export
+#'@export
 fn_fig_w <- function(df, opacity, tint, my_labeller, order){
   p <- ggplot(df, aes(x = ei/sd(ei),
                       y = wi, color= scale))+
