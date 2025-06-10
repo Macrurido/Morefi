@@ -24,7 +24,7 @@ Regression*. It is a methodological package developed in R to analyze
 the submitted article:
 
 Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata
-(FISH13711).Biometric relationships as a fisheries management tool: A
+(FISH13711). Biometric relationships as a fisheries management tool: A
 case study of the bullseye puffer (*Sphoeroides annulatus*.
 Tetraodontidae). Fisheries Research.
 
@@ -202,7 +202,7 @@ al. (FISH13711).
 ## References
 
 Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata
-(FISH13711).Biometric relationships as a fisheries management tool: A
+(FISH13711). Biometric relationships as a fisheries management tool: A
 case study of the bullseye puffer (*Sphoeroides annulatus*.
 Tetraodontidae). Fisheries Research.
 

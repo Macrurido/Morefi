@@ -28,7 +28,7 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a
 The *Morefi* package: *Morphological Relationships Fitted by Robust Regression*.
 It is a methodological package developed in R to analyze the submitted article:
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711).Biometric
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
 relationships as a fisheries management tool: A case study of the bullseye puffer
 (*Sphoeroides annulatus*. Tetraodontidae). Fisheries Research.
 
@@ -185,7 +185,7 @@ in the article by Aguirre-Villaseñor et al. (FISH13711).
 
 ## References
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711).Biometric
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
 relationships as a fisheries management tool: A case study of the bullseye puffer
 (*Sphoeroides annulatus*. Tetraodontidae). Fisheries Research.
 
