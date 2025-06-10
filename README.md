@@ -223,3 +223,4 @@ Inference. 140(7), 1852-1862. doi: 10.1016/j.jspi.2010.01.008.
 SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA.
 Comisión Nacional de Pesca y Acuacultura.
 <https://sipesca.conapesca.gob.mx> (accessed 7 February 2024).
+
