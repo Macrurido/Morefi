@@ -40,4 +40,4 @@ Imports:
     robustbase (>= 0.99.4),
     stats (>= 4.4.0)
 VignetteBuilder: knitr
-URL: https://macrurido.github.io/Morefi/, https://macrurido.github.io/Morefi/
+URL: https://github.com/Macrurido/Morefi.git
