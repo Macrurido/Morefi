@@ -54,7 +54,7 @@ fn_figs
 The function is included in the `Morefi` package **Morphological Relationships Fitted by Robust Regression**.
 
 
-```{r setup}
+```{r setup, echo=FALSE, include=FALSE, warning=FALSE, eval=FALSE}
 library(Morefi)
 ```
 
@@ -95,7 +95,7 @@ values were calculated using the Standard Error of the Estimate **SE**.
 
 
 
-```{r}
+```{r, warning=FALSE, }
 set.seed(123)
 rvar <- sample(-20:20, 100, replace=TRUE)
 x <- sample(15:60,100,replace=T)
