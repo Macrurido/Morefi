@@ -116,8 +116,7 @@ mydata <- Morefi::Botete_land
 ```
 ## Morefi functions
 
-The Morefi package consists of fifteen functions designed to facilitate data analysis
-and ensure that results can be reproduced.
+The Morefi package includes functions that facilitate data analysis and ensure reproducibility of results.
 
 `fn_ARSS`:	Perform the Coincident Curves Test, to determine if there are significant
 differences between the fitted curves for each database. It is based on the 
