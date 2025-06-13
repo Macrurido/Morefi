@@ -1,6 +1,6 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
 ================
-09 junio 2025
+12 junio 2025
 
 Morefi
 <a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
@@ -85,28 +85,28 @@ install_github("Macrurido/Morefi")
 
 ## Data available in the package
 
-### Bullseye puffer measures: botete_measures.rda
+### Bullseye puffer measures
 
 To demonstrate how the package functions, we utilize the dataset
-`botete_measures.rda`, containing 1,405 fish across 7 variables: the
-total length(LT), standard length (SL), body trunk length (LB), total
-weight (WT), body trunk weight (WB), and fillet weight (Wfi) of the
-bullseye puffer (*Sphoeroides annulatus*), collected from the Eastern
-Central Pacific. In this dataset, the landing category is included in
-the “Fleet” variable, which is categorized as follows: 1 indicates
-Fresh, while 2 denotes Frozen-thawed.
+`botete`, containing 1,405 fish across 7 variables: the total
+length(LT), standard length (SL), body trunk length (LB), total weight
+(WT), body trunk weight (WB), and fillet weight (Wfi) of the bullseye
+puffer (*Sphoeroides annulatus*), collected from the Eastern Central
+Pacific. In this dataset, the landing category is included in the
+“Fleet” variable, which is categorized as follows: 1 indicates Fresh,
+while 2 denotes Frozen-thawed.
 
 To access the data file, the data frame is stored in an object, such as
 ‘catch’.
 
 ``` r
-catch <- Morefi::Botete_land
+catch <- Morefi::Botete
 ```
 
-### Bullseye puffer fish landings: botete_land.rda
+### Bullseye puffer fish landings
 
-A second dataset `Botete_land.rda`, provided the Mexican fishing records
-of bullseye puffer landed on the Pacific coast in 2023 and their live
+A second dataset `Botete_land`, provided the Mexican fishing records of
+bullseye puffer landed on the Pacific coast in 2023 and their live
 weight corresponding live weight for each weight category (kg): total
 (WT), body trunk (WB) or fillet (Wfi), either Fresh or Frozen-thawed
 (SIPESCA, 2024).
@@ -114,12 +114,12 @@ weight corresponding live weight for each weight category (kg): total
 To access the data file, the data frame is stored in `mydata`.
 
 ``` r
-mydata <- Morefi::Botete
+mydata <- Morefi::Botete_land
 ```
 
 ## Morefi functions
 
-The Morefi package consists of nine functions designed to facilitate
+The Morefi package consists of fifteen functions designed to facilitate
 data analysis and ensure that results can be reproduced.
 
 `fn_ARSS`: Perform the Coincident Curves Test, to determine if there are
