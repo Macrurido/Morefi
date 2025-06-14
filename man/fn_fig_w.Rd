@@ -24,12 +24,13 @@ A customized multi-panel plot that uses a color scale for the residual points.
 Plot of residual structures classified by a Weighted Scale.
 }
 \details{
-The residual structure was analyzed by graphing standardized residuals against
+The residual structure was analyzed by graphing residuals against
 weighted values. A custom multi-panel plot illustrates the structure of each
 fitted relationship, categorized by a color-weighted scale of values.
 
-To unify the x-axis units among the different fitted models, standardized
-residuals were utilized due to the varying dimensions of the variables.
+To standardize the x-axis units across different fitted models, a standardized
+residual distance, such as studentized residuals, can be used due to the
+varying dimensions of the variables.
 
  Since the parameters contain subscripts, the labels were customized using the
 `ggplot2::as_labeller()` function and are stored in `my_labeller`.

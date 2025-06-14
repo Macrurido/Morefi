@@ -139,9 +139,10 @@ a weighted scale.
 displayed as a multi-panel plot. The observed data points for each fitted 
 relationship were categorized according to a weighted color scale.
 
-`fn_fig_w`: The residual structure was analyzed by graphing standardized 
-residuals against weighted values. A custom multi-panel plot illustrates the
-structure of each fitted relationship, categorized by a color-weighted scale of values.
+`fn_fig_w`: The residual structure was analyzed by graphing  
+residuals against weighted values. A custom multi-panel plot
+illustrates the structure of each fitted relationship,
+categorized by a color-weighted scale of values.
 
 `fn_figs`:	Creates a customized scatter plot with the observed values (points),
 fitted regression (solid line), and its confidence interval (shaded area).

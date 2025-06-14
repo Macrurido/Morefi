@@ -147,7 +147,7 @@ category were displayed as a multi-panel plot. The observed data points
 for each fitted relationship were categorized according to a weighted
 color scale.
 
-`fn_fig_w`: The residual structure was analyzed by graphing standardized
+`fn_fig_w`: The residual structure was analyzed by graphing  
 residuals against weighted values. A custom multi-panel plot illustrates
 the structure of each fitted relationship, categorized by a
 color-weighted scale of values.

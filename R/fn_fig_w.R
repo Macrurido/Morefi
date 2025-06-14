@@ -2,12 +2,13 @@
 #'
 #' Plot of residual structures classified by a Weighted Scale.
 #'
-#' The residual structure was analyzed by graphing standardized residuals against
+#' The residual structure was analyzed by graphing residuals against
 #' weighted values. A custom multi-panel plot illustrates the structure of each
 #' fitted relationship, categorized by a color-weighted scale of values.
 #'
-#' To unify the x-axis units among the different fitted models, standardized
-#' residuals were utilized due to the varying dimensions of the variables.
+#' To standardize the x-axis units across different fitted models, a standardized
+#' residual distance, such as studentized residuals, can be used due to the
+#' varying dimensions of the variables.
 #'
 #'  Since the parameters contain subscripts, the labels were customized using the
 #' `ggplot2::as_labeller()` function and are stored in `my_labeller`.
@@ -27,9 +28,6 @@
 #' @import ggplot2
 #' @import forcats
 #'
-#' @importFrom stats sd
-#'
-#'
 #' @examples
 #'  \dontrun{
 #'
@@ -39,7 +37,7 @@
 #'
 #'@export
 fn_fig_w <- function(df, opacity, tint, my_labeller, order){
-  p <- ggplot(df, aes(x = ei/sd(ei),
+  p <- ggplot(df, aes(x = ei,
                       y = wi, color= scale))+
     geom_point(shape = 19,
                size = 1,
