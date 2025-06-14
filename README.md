@@ -1,6 +1,6 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
 ================
-12 junio 2025
+13 junio 2025
 
 Morefi
 <a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
@@ -97,10 +97,10 @@ Pacific. In this dataset, the landing category is included in the
 while 2 denotes Frozen-thawed.
 
 To access the data file, the data frame is stored in an object, such as
-‘catch’.
+‘mydata’.
 
 ``` r
-catch <- Morefi::Botete
+mydata <- Morefi::Botete
 ```
 
 ### Bullseye puffer fish landings
@@ -111,10 +111,10 @@ weight corresponding live weight for each weight category (kg): total
 (WT), body trunk (WB) or fillet (Wfi), either Fresh or Frozen-thawed
 (SIPESCA, 2024).
 
-To access the data file, the data frame is stored in `mydata`.
+To access the data file, the data frame is stored in `catch`.
 
 ``` r
-mydata <- Morefi::Botete_land
+catch <- Morefi::Botete_land
 ```
 
 ## Morefi functions
