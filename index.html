@@ -69,7 +69,7 @@
 <img src="logo.png" class="logo" alt=""><h1 id="morefi-morphological-relationships-fitted-by-robust-regression">Morefi: Morphological Relationships Fitted by Robust Regression<a class="anchor" aria-label="anchor" href="#morefi-morphological-relationships-fitted-by-robust-regression"></a>
 </h1>
 </div>
-<p>12 junio 2025</p>
+<p>13 junio 2025</p>
 <p>Morefi <a href="https://github.com/Macrurido/Morefi/" class="external-link"><img src="reference/figures/logo.png" align="right" height="139" alt="Morefi website"></a></p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <p>Shield: <a href="http://creativecommons.org/licenses/by/4.0/" class="external-link"><img src="https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg" alt="CC BY 4.0"></a></p>
@@ -106,17 +106,17 @@
 <h3 id="bullseye-puffer-measures">Bullseye puffer measures<a class="anchor" aria-label="anchor" href="#bullseye-puffer-measures"></a>
 </h3>
 <p>To demonstrate how the package functions, we utilize the dataset <code>botete</code>, containing 1,405 fish across 7 variables: the total length(LT), standard length (SL), body trunk length (LB), total weight (WT), body trunk weight (WB), and fillet weight (Wfi) of the bullseye puffer (<em>Sphoeroides annulatus</em>), collected from the Eastern Central Pacific. In this dataset, the landing category is included in the “Fleet” variable, which is categorized as follows: 1 indicates Fresh, while 2 denotes Frozen-thawed.</p>
-<p>To access the data file, the data frame is stored in an object, such as ‘catch’.</p>
+<p>To access the data file, the data frame is stored in an object, such as ‘mydata’.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">catch</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="va"><a href="reference/Botete.html">Botete</a></span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="va"><a href="reference/Botete.html">Botete</a></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="bullseye-puffer-fish-landings">Bullseye puffer fish landings<a class="anchor" aria-label="anchor" href="#bullseye-puffer-fish-landings"></a>
 </h3>
 <p>A second dataset <code>Botete_land</code>, provided the Mexican fishing records of bullseye puffer landed on the Pacific coast in 2023 and their live weight corresponding live weight for each weight category (kg): total (WT), body trunk (WB) or fillet (Wfi), either Fresh or Frozen-thawed (SIPESCA, 2024).</p>
-<p>To access the data file, the data frame is stored in <code>mydata</code>.</p>
+<p>To access the data file, the data frame is stored in <code>catch</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="va"><a href="reference/Botete_land.html">Botete_land</a></span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">catch</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="va"><a href="reference/Botete_land.html">Botete_land</a></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
