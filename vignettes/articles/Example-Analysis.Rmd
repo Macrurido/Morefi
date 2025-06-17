@@ -1,0 +1,141 @@
+---
+title: "Example-Analysis"
+subtitle: "Biometrics as a fishery management tool"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+author: "Hugo Aguirre-Villaseñor"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fn_ARSS {Morefi}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Morphological relationships of bullseye puffer *Sphoeroides annulatus* and their potential use in fishery management
+
+![Bullseye puffer *Sphoeroides annulatus* (Jenyns 1842).](https://github.com/Macrurido/Morefi/blob/master/vignettes/images/S_annulatus.png){width=125%, height=125%}
+
+## Introduction
+
+The *Morefi* package: *Morphological Relationships Fitted by Robust Regression*.
+It is a methodological package developed in R to analyze the submitted article:
+
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
+relationships as a fisheries management tool: A case study of the bullseye puffer
+(*Sphoeroides annulatus*. Tetraodontidae). Fisheries Research.
+
+The objective of this study is to provide quantitative data on some morphological
+relationships to predict:
+
+ (a) the biomass of different weight categories,
+ (b) the fillet yield from body measurements and
+ (c) the suitability of the fillet yield to be used as a management reference point for the bullseye puffer *Sphoeroides annulatus*.
+    
+For this, two exercises are proposed using 250 g of fillet (benchmark) as a 
+reference: (i) how many organisms are required to obtain the benchmark by changing
+the average length? (ii) taking into account that five is the maximum number of
+organisms of a species allowed for recreational fishing per person per day, what
+is the average size to reach the benchmark? 
+
+## Tutorial objective
+
+The goal of this tutorial is to replicate the analysis performed in the submitted
+article Aguirre et al. (FISH13711) step by step, while explaining the functionality
+of the [*Morefi* package *Morphological Relationships Fitted by Robust Regression*](https://github.com/Macrurido/Morefi),
+developed in R. This package streamlines the methodology and improves the clarity
+and impact of the results, as well as the graphical presentations, including 
+personalized tables and figures.
+
+![](https://github.com/Macrurido/Morefi/blob/master/vignettes/images/Morefi.png){width=30%, height=30%}
+
+## Instaling Morefi
+
+The Morefi package includes functions that facilitate data analysis and ensure
+reproducibility of results.For more information about the functions, please visit the [Morefi](https://macrurido.github.io/Morefi/) GitHub page.
+
+To install this package from GitHub do the following from the R console:
+
+```{r Morefi, warning=FALSE, message=FALSE, results="hide"}
+if (!require("Morefi")){
+        library(devtools)
+        install_github("Macrurido/Morefi")
+library(Morefi)        
+} 
+```
+
+When Morefi is installed, it either updates the necessary package or installs it
+if it is not already present.
+
+<!-- En teoría si quito los que estan referenciados en Morefi debe de jalar,
+Debo quitar todo lo referente a embellecer tablas, revisar que paquetes quedan y cuales no
+-->
+
+To make sure that all the necessary packages for this example are up to date,
+they are defined in the packages vector. If a package is already installed,
+it will be loaded; if not, it will be installed and then loaded.
+
+```{r packages, warning=FALSE, message=FALSE, results="hide" }
+packages <- c("broom", "dplyr","ggplot2", "ggtext", "glue",
+              "investr", "kableExtra", "latex2exp", "Morefi",
+              "patchwork", "purrr", "reshape2", "robustbase")
+
+for (i in packages) {
+  if (!require(i, character.only = TRUE)){
+    install.packages(i, dependencies = TRUE)
+    library(i, character.only = TRUE)
+  }  # End if
+} # End for
+```
+
+## theme_papers()
+
+The `theme_papers` is created to standardize the graphic format, used as base 
+`theme_bw`. The `theme_set()` function is used to apply the theme to all charts
+automatically. It's not necessary to add `+ theme_papers()` after each ggplot snippet.
+
+To call the `theme_papers()` function and automatically apply it to
+all figures in this document, use the following statement:  
+
+
+```{r theme_set, warning=FALSE, message=FALSE, results="hide"}
+theme_papers <- Morefi::theme_papers()
+theme_set(theme_papers)
+```
+
+### Data
+
+In the file `Botete.rda` there is the biometric data of the bullseye 
+puffer *S. annulatus*, with the following variables, three lengths
+(cm): total (LT), standard (LS) and body trunk (LB); and three weights
+(g): total (WT); body trunk (WB) and fillet (Wfi). Additionally, there
+is a categorical variable called 'Fleet' that distinguishes between
+artisanal (fresh) and trawling (frozen-thawed), represented by the
+values 1 and 2, respectively.
+
+To access the data file, the data frame is stored in `mydata`.
+
+```{r Botete, warning=FALSE, message=FALSE, echo=FALSE}
+mydata <- Morefi::Botete
+tmp <- mydata
+str(tmp)
+```
+
+A second dataset, `Botete_land.rda`, contains records of pufferfish catches landed along the Mexican Pacific coast in 2023, measured in kilograms (kg). It includes information about the landed weight categorized as **landed**, as well as its conversion to live weight, referred to as **biomass**, for each landing presentation. The dataset outlines total weight (WT), body trunk weight (WB), and fillet weight (Wfi). Additionally, it specifies whether the catch was fresh or frozen-thawed. The dataset also includes the value of the landed catch in Mexican pesos (**Pesos $**) and the value per kilogram of landed weight (**Pesos_kg**) (SIPESCA, 2024).
+
+To access the data file, the data frame is stored in `catch`.
+
+```{r catch, warning=FALSE, message=FALSE, echo=FALSE}
+catch <- Morefi::Botete_land
+catch
+```
+
+
+
+

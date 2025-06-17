@@ -23,7 +23,7 @@ Depends: R (>= 4.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-LazyDataCompression:xz
+LazyDataCompression: xz
 Suggests: 
     testthat (>= 3.2.3),
     knitr (>= 1.50),
@@ -41,3 +41,4 @@ Imports:
     stats (>= 4.4.0)
 VignetteBuilder: knitr
 URL: https://macrurido.github.io/Morefi/, https://macrurido.github.io/Morefi/
+Config/Needs/website: rmarkdown
