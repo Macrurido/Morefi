@@ -26,8 +26,8 @@ LazyData: true
 LazyDataCompression: xz
 Suggests: 
     testthat (>= 3.2.3),
-    knitr (>= 1.50),
-    rmarkdown (>= 2.29),
+    knitr,
+    rmarkdown,
     htmltools (>= 0.5.8)
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2

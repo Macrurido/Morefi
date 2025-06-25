@@ -28,10 +28,37 @@
 #'
 #' @examples
 #' \dontrun{
-#' i <- 1
-#' List_TCCT <- vector("list", i)
 #'
-#' ARSS <- fn_ARSS(List_TCCT, i, alfa = 0.05)
+#' # The Total length (LT) - Total weight (WT) was estimated for the bullseye puffer
+#' # *Sphoeroides annulatus* for landed categories: Fresh, Frozen-thawed (Frozen), Total
+#' # (All sample) and Joined (sum of values of Fresh and Frozen). The Residual Sum of
+#' # Squares (RSS) and the degrees of freedom (DF) are provided for each data source.
+#' # In the table the first row displays the Analysis of Residual Sum of Squares (ARSS),
+#' # the p-value (p), and the decision criteria for the ARSS test (Criteria).
+#'
+#' # The adjusted models show the following data: Fresh SSR=   and DF= 742; Frozen
+#' # SSR= 1280131.81 and DF= 651; and the total sample SSR= 6115874.53 and DF= 1395.
+#' # Values are stored in the table `Table_CC`, this is stored in a list, and the name
+#' # of each item is built with the acronyms of the model variables (e.g. LTWT).
+#'
+#' Table_CC <- data.frame(matrix(NA,nrow=4,ncol=8))
+#' Table_CC[1,1] <- "Lt-WT"
+#' Table_CC[,2] <- c("Fresh","Frozen","Total","Joined")
+#' colnames(Table_CC) <- c("Model","Category","RSS","DF","ARSS","F-table","p-value","Criteria")
+#'
+#' Table_CC[1,3] <- 4424418.33
+#' Table_CC[1,4] <-  742
+#' Table_CC[2,3] <- 1280131.81
+#' Table_CC[2,4] <-  651
+#' Table_CC[3,3] <- 6115874.53
+#' Table_CC[3,4] <-  1395
+#'
+#' List_ARSS <- list(LTWT=Table_CC)
+#'
+#' i <- 1
+#'
+#' ARSS <- fn_ARSS(List_ARSS, i,  alfa= 0.05)
+#' ARSS[[i]]
 #'}
 #'
 #' @export

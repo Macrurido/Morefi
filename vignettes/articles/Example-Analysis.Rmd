@@ -94,7 +94,7 @@ for (i in packages) {
 } # End for
 ```
 
-## theme_papers()
+### theme_papers()
 
 The `theme_papers` is created to standardize the graphic format, used as base 
 `theme_bw`. The `theme_set()` function is used to apply the theme to all charts
@@ -111,7 +111,9 @@ theme_set(theme_papers)
 
 ### Data
 
-In the file `Botete.rda` there is the biometric data of the bullseye 
+In Morefi, the data utilized in Aguirre-Villaseñor et al. (Submitted) is incorporated.
+
+In the file `Botete` there is the biometric data of the bullseye 
 puffer *S. annulatus*, with the following variables, three lengths
 (cm): total (LT), standard (LS) and body trunk (LB); and three weights
 (g): total (WT); body trunk (WB) and fillet (Wfi). Additionally, there
@@ -127,7 +129,15 @@ tmp <- mydata
 str(tmp)
 ```
 
-A second dataset, `Botete_land.rda`, contains records of pufferfish catches landed along the Mexican Pacific coast in 2023, measured in kilograms (kg). It includes information about the landed weight categorized as **landed**, as well as its conversion to live weight, referred to as **biomass**, for each landing presentation. The dataset outlines total weight (WT), body trunk weight (WB), and fillet weight (Wfi). Additionally, it specifies whether the catch was fresh or frozen-thawed. The dataset also includes the value of the landed catch in Mexican pesos (**Pesos $**) and the value per kilogram of landed weight (**Pesos_kg**) (SIPESCA, 2024).
+A second dataset, `Botete_land`, contains records of pufferfish catches landed 
+along the Mexican Pacific coast in 2023, measured in kilograms (kg). It includes
+information about the landed weight categorized as **landed**, as well as its 
+conversion to live weight, referred to as **biomass**, for each landing 
+presentation. The dataset outlines total weight (WT), body trunk weight (WB),
+and fillet weight (Wfi). Additionally, it specifies whether the catch was fresh
+or frozen-thawed. The dataset also includes the value of the landed catch in 
+Mexican pesos (**Pesos $**) and the value per kilogram of landed weight
+(**Pesos_kg**) (SIPESCA, 2024).
 
 To access the data file, the data frame is stored in `catch`.
 
@@ -136,6 +146,209 @@ catch <- Morefi::Botete_land
 catch
 ```
 
+## Metodology
+
+### Defining the models
+
+Eight relationships are fitted, six to a simple linear model: LT vs LS, LT vs LB,
+LS vs LB, WT vs WB, WT vs Wfi, WB vs Wfi; and three to a potential model:
+LT vs WT, LT vs WB, LT vs Wfi.
+
+To perform each regression, a list named `modelos` is created to specify the 
+variables that will be included. These variables are then stored in a vector.
+
+```{r modelos, warning=FALSE, message=FALSE, results="hide"}
+modelos <- list (LTvs.LS  =  c(1,2),
+                 LTvs.LB  =  c(1,3),
+                 LSvs.LB  =  c(2,3),
+                 WTvs.WB  =  c(4,5),
+                 WTvs.Wfi =  c(4,6),
+                 WBvs.Wfi =  c(5,6),
+                 LTvs.WT  =  c(1,4),
+                 LTvs.WB  =  c(1,5),
+                 LTvs.Wfi =  c(1,6))
+```
+
+### Labellers
+
+The labelers designated for use in this script are outlined below.
+
+#### Model labelers
+
+For the model labelers, the parameters include subscripts, and the customized
+labels for the plots are stored in the variable `my_labeller`.
+
+```{r my_labeller, warning=FALSE, message=FALSE, results="hide"}
+
+my_labeller <- as_labeller(c(LT_LS=  "L[T]-L[S]",
+                             LT_LB=  "L[T]-L[B]",
+                             LS_LB=  "L[S]-L[B]",
+                             WT_WB=  "W[T]-W[B]",
+                             WT_Wfi= "W[T]-W[fi]",
+                             WB_Wfi= "W[B]-W[fi]",
+                             LT_WT=  "L[T]-W[T]",
+                             LT_WB=  "L[T]-W[B]",
+                             LT_Wfi= "L[T]-W[fi]"),
+                           default = label_parsed)
+```
+
+#### Variable labelers for the plots.
+
+For the variable labelers, the variables include subscripts, and the customized
+labels for the plots are stored in the variable `my_labeller`.
+
+```{r}
+my_labeller2 <- as_labeller(c(LT=  "L[T]",
+                             LS=  "L[S]",
+                             LB=  "L[B]",
+                             WT=  "W[T]x",
+                             WB=  "W[B]",
+                             Wfi= "W[fi]"),
+                             default = label_parsed)
+```
+
+#### Variable labelers for the tables.
+
+The 'row_name' holds labels for the models used in the tables, which will 
+replace the current values in the 'Models' column of the data frame for the table
+design. Defining model labels using subscript characters for the tables.
+
+```{r row_name}
+# Defining model labels using subscript characters for the tables.
+row_name <- c("$L_T$ vs. $L_S$", "$L_T$ vs. $L_B$",
+              "$L_S$ vs. $L_B$", "$W_T$ vs. $W_B$",
+              "$W_T$ vs. $W_fi$", "$W_B$ vs. $W_fi$",
+              "$L_T$ vs. $W_T$", "$L_T$ vs. $W_B$",
+              "$L_T$ vs. $W_T$")
+```
 
 
+<!-- Hay que depurar y ver si todo se queda o ya se mejoro con los últimos cambios -->
 
+### Regression results.
+
+**Empty tables and lists to fill, throughout the cycles.**
+
+To organize and present the results of the regression analysis, several tables
+were created based on `List_base`.
+
+To store the results for each model from every data source, nested lists were 
+developed. This structure allows for a hierarchical or multi-level organization
+of the data. At the first level, the datasets are categorized into three groups:
+Fresh, Frozen-thawed (Frozen), and Total sample (Total). At the second level,
+sub-lists provide the results from various fitted models `model_list`.
+
+The number of items in a list and their names depend on the fitted model of
+*x against y*.
+
+
+```{r List_base, }
+# Create empty model list  
+model_list <- setNames(lapply(names(modelos), function(x) NULL), names(modelos))
+
+List_base <- list("Fresh"= model_list,
+                  "Frozen"= model_list,
+                  "Total" = model_list)
+```
+
+Using `List_base`
+
+#### Summary Regression Table.
+
+To store the summary regression, a customised table `T1` is generated. The type
+of function model (**Linear** or **Potential**), and its variables, are
+indicated in the first two columns. The third column indicates the data source
+used (**Fresh**, **Fresh-Thawed**, or **Total**). By row it is stored: the
+**Intercept**, its confidence interval **(CI95%)**; the **Slope**;  its
+**(CI95%)**; the adjusted robust coefficient of determination **R2,adj,w,a** 
+and the degrees of freedom **DF**.
+
+```{r T1, warning=FALSE, message=FALSE}
+    # An empty table to save summary regression results   
+ 
+T1 <- data.frame(matrix(NA, nrow = 3, ncol = 9))
+names(T1) <- c("Function", "Model","Categories",
+               "Intercept", "CI95%","Slope",
+               "CI95%", "R2","DF")
+T1
+```       
+
+To store the results of each fitted model, a list called `List_Tables` was created.
+Each item in the list contains the customized table `T1`, which is initially 
+filled with `NA` values.
+
+```{r List_Tables, warning=FALSE, message=FALSE}
+
+# Create model list including empty T1 table
+T1_model_list <- setNames(lapply(1:length(modelos), function(x)
+T1),names(modelos))
+
+#List_Tables <- list("Fresh"= T1_model_list,
+#                    "Frozen"= T1_model_list,
+#                    "Total" = T1_model_list)
+List_Tables <- T1_model_list
+
+```
+
+#### Coincident Curves Test Table. 
+
+List_TCCT store the values and calculus for the Coincident Curves Test
+
+To store the results of each model regressions, an empty matrix of 4 rows and 8 
+columns are created. The table `CCT` stores the values and calculus for the 
+Coincident Curves Test between weight categories: **Fresh**, **Frozen**, 
+**Total** and **Joined** (sum of values of **Fresh**, **Frozen**): the residual
+sum of squares **RSS**, degree of freedom **DF**, Analysis of the Residual Sum 
+of Squares **ARSS**,  **F-table**, **p-value** and decision criteria for 
+$\alpha$= 0.05 **Criteria**. 
+
+To store the results of each fitted model, a list called `List_TCCT` was created.
+Each item in the list contains the customized table `CCT`, which is initially 
+filled with `NA` values.
+
+```{r List_TCCT, warning=FALSE, message=FALSE, results="hide"}
+nrow <- length(catego)+1
+            
+CCT <- (matrix(NA,nrow=nrow,ncol=8))
+CCT[,2] <-  c(catego,"Joined")
+colnames(CCT) <- c("Model","Data","RSS","DF","ARSS","F-table",
+                   "p-value","Criteria")
+
+# Create model list including empty T1 table
+List_TCCT <- setNames(lapply(1:length(modelos), function(x)
+CCT),names(modelos))
+
+CCT
+```
+####
+
+### Regression results 
+
+The figure list `List_Figures` is stored in a list for each category: 1) fresh;
+2) frozen-thawed and 3) total. 
+
+For each category list, the elements are named using the vectors values of 
+`X_names`: L~T~ *vs.* L~S~, L~T~ *vs.* L~B~, L~S~ *vs.* L~B~, W~T~ *vs.* W~B~,
+W~T~ *vs.* W~fi~, W~B~ *vs.* W~fi~, L~T~ *vs.* W~T~, L~T~ *vs.* W~B~, L~T~ *vs.* W~fi~)
+
+The `List_wi` store the the weighted values $w_i$ from each model.
+
+### List_dfa_long
+
+For each landed category, the data frames in `List_fit` were transformed into long-form data frames and stored in List_fit_long.
+
+```{r X_names, warning=FALSE, message=FALSE, results="hide"}
+          
+X_list <- vector(mode='list', length=length(modelos))
+         
+X_names <- c("LT_LS",
+             "LT_LB",
+             "LS_LB",
+             "WT_WB",
+             "WT_Wfi",
+             "WB_Wfi",
+             "LT_WT",
+             "LT_WB",
+             "LT_Wfi")
+names(X_list) <- X_names 
+```

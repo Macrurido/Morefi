@@ -39,17 +39,19 @@ For more information, please refer to the help documentation for `broom::augment
 df <- df
 eq <- robustbase::lmrob(y1 ~ x1, data= df,setting = "KS2014")
 
-dfa <- augment(eq)
+dfa <- fn_dfa(eq)
 }
 
 ## Example 2: robust nonlinear regression
 \dontrun{
 df <- df
+a <- 0.01
+b <- 3
 eq <- nlrob(y1 ~ a*x1^b, data= datos,
 start = list(a= a, b= b),
 trace = FALSE)
 
-dfa <- augment(eq)
+dfa <- fn_dfa(eq)
 }
 
 }
