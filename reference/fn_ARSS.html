@@ -19,18 +19,11 @@ based on the Analysis of the Residual Sum of Squares (ARSS) (Chen et al. 1992)."
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/Morefi.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/fn_ARSS.html">fn_ARSS {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_figs.html">fn_figs {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_freq.html">fn_freq {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_freqw.html">fn_freqw {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_fyield.html">fn_fyield {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_intervals.html">fn_intervals {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_R2RV.html">fn_R2RV {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_summary.html">fn_summary {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_xseq.html">fn_xseq  {Morefi}</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Example-Analysis.html">Example-Analysis</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -96,10 +89,37 @@ greater than alpha.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></span>
-<span class="r-in"><span><span class="va">List_TCCT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">"list"</span>, <span class="va">i</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">ARSS</span> <span class="op">&lt;-</span> <span class="fu">fn_ARSS</span><span class="op">(</span><span class="va">List_TCCT</span>, <span class="va">i</span>, alfa <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># The Total length (LT) - Total weight (WT) was estimated for the bullseye puffer</span></span></span>
+<span class="r-in"><span><span class="co"># *Sphoeroides annulatus* for landed categories: Fresh, Frozen-thawed (Frozen), Total</span></span></span>
+<span class="r-in"><span><span class="co"># (All sample) and Joined (sum of values of Fresh and Frozen). The Residual Sum of</span></span></span>
+<span class="r-in"><span><span class="co"># Squares (RSS) and the degrees of freedom (DF) are provided for each data source.</span></span></span>
+<span class="r-in"><span><span class="co"># In the table the first row displays the Analysis of Residual Sum of Squares (ARSS),</span></span></span>
+<span class="r-in"><span><span class="co"># the p-value (p), and the decision criteria for the ARSS test (Criteria).</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The adjusted models show the following data: Fresh SSR=   and DF= 742; Frozen</span></span></span>
+<span class="r-in"><span><span class="co"># SSR= 1280131.81 and DF= 651; and the total sample SSR= 6115874.53 and DF= 1395.</span></span></span>
+<span class="r-in"><span><span class="co"># Values are stored in the table `Table_CC`, this is stored in a list, and the name</span></span></span>
+<span class="r-in"><span><span class="co"># of each item is built with the acronyms of the model variables (e.g. LTWT).</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Lt-WT"</span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fresh"</span>,<span class="st">"Frozen"</span>,<span class="st">"Total"</span>,<span class="st">"Joined"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">Table_CC</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Model"</span>,<span class="st">"Category"</span>,<span class="st">"RSS"</span>,<span class="st">"DF"</span>,<span class="st">"ARSS"</span>,<span class="st">"F-table"</span>,<span class="st">"p-value"</span>,<span class="st">"Criteria"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">4424418.33</span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">4</span><span class="op">]</span> <span class="op">&lt;-</span>  <span class="fl">742</span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1280131.81</span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">4</span><span class="op">]</span> <span class="op">&lt;-</span>  <span class="fl">651</span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">6115874.53</span></span></span>
+<span class="r-in"><span><span class="va">Table_CC</span><span class="op">[</span><span class="fl">3</span>,<span class="fl">4</span><span class="op">]</span> <span class="op">&lt;-</span>  <span class="fl">1395</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">List_ARSS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>LTWT<span class="op">=</span><span class="va">Table_CC</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ARSS</span> <span class="op">&lt;-</span> <span class="fu">fn_ARSS</span><span class="op">(</span><span class="va">List_ARSS</span>, <span class="va">i</span>,  alfa<span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ARSS</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

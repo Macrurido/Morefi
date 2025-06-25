@@ -23,18 +23,11 @@ into tidy tibbles."><meta property="og:image" content="https://macrurido.github.
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/Morefi.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/fn_ARSS.html">fn_ARSS {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_figs.html">fn_figs {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_freq.html">fn_freq {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_freqw.html">fn_freqw {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_fyield.html">fn_fyield {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_intervals.html">fn_intervals {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_R2RV.html">fn_R2RV {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_summary.html">fn_summary {Morefi}</a></li>
-    <li><a class="dropdown-item" href="../articles/fn_xseq.html">fn_xseq  {Morefi}</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Example-Analysis.html">Example-Analysis</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -99,17 +92,19 @@ on weighted values: unweighted (u), weighted (w), and outliers (o)
 <span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span></span></span>
 <span class="r-in"><span><span class="va">eq</span> <span class="op">&lt;-</span> <span class="fu">robustbase</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/robustbase/man/lmrob.html" class="external-link">lmrob</a></span><span class="op">(</span><span class="va">y1</span> <span class="op">~</span> <span class="va">x1</span>, data<span class="op">=</span> <span class="va">df</span>,setting <span class="op">=</span> <span class="st">"KS2014"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dfa</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">eq</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dfa</span> <span class="op">&lt;-</span> <span class="fu">fn_dfa</span><span class="op">(</span><span class="va">eq</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Example 2: robust nonlinear regression</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span></span></span>
+<span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">0.01</span></span></span>
+<span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">3</span></span></span>
 <span class="r-in"><span><span class="va">eq</span> <span class="op">&lt;-</span> <span class="fu">nlrob</span><span class="op">(</span><span class="va">y1</span> <span class="op">~</span> <span class="va">a</span><span class="op">*</span><span class="va">x1</span><span class="op">^</span><span class="va">b</span>, data<span class="op">=</span> <span class="va">datos</span>,</span></span>
 <span class="r-in"><span>start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a<span class="op">=</span> <span class="va">a</span>, b<span class="op">=</span> <span class="va">b</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>trace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">dfa</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">eq</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dfa</span> <span class="op">&lt;-</span> <span class="fu">fn_dfa</span><span class="op">(</span><span class="va">eq</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
