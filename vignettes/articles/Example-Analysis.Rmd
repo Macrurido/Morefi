@@ -307,6 +307,8 @@ Each item in the list contains the customized table `CCT`, which is initially
 filled with `NA` values.
 
 ```{r List_TCCT, warning=FALSE, message=FALSE, results="hide"}
+catego <- c("Fresh","Frozen","Total")
+
 nrow <- length(catego)+1
             
 CCT <- (matrix(NA,nrow=nrow,ncol=8))

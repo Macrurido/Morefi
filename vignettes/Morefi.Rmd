@@ -239,7 +239,7 @@ eq <- robustbase::nlrob(y1 ~ a*x1^b, data= df,
 dfa <- fn_dfa(eq)
 ```
 
-```{r}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 kable(dfa[1:6,], format = "html", caption = "The initial six rows of the table are displayed.")
 ```
 
