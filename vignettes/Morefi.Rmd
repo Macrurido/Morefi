@@ -1,7 +1,9 @@
 ---
 title: "Morefi"
+subtitle: "Morphological Relationships Fitted by Robust Regression"
 date: "`r format(Sys.time(), '%d %B %Y')`"
-output: rmarkdown::html_vignette
+output: rmdformats::readthedown 
+#output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Morefi}
   %\VignetteEngine{knitr::rmarkdown}
@@ -19,7 +21,8 @@ knitr::opts_chunk$set(
 library(Morefi)
 ```
 
-Morefi <a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
+Morefi
+<a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
 
@@ -32,10 +35,9 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
-## Morefi
+# Morefi: Morphological Relationships Fitted by Robust Regression
 
-The *Morefi* package: *Morphological Relationships Fitted by Robust Regression*.
-It is a methodological package developed in R to analyze the submitted article:
+This is a methodological package developed in R for analyzing the submitted article:
 
 Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
 relationships as a fisheries management tool: A case study of the bullseye puffer
@@ -74,7 +76,7 @@ for analysis. The "robustbase" package (version 0.99-2) was utilized to fit
 robust regression models, using the functions lmrob() for linear and nlrob()
 for non-linear regression (Maechler et al., 2024).
 
-## Installation
+# Installation
 
 You can install the development version of Morefi from [GitHub](https://github.com/Macrurido/Morefi.git) 
 using one of the following options:
@@ -90,9 +92,8 @@ or using the **devtools** package
 library(devtools)
 install_github("Macrurido/Morefi")
 ```
-## Data available in the package
-
-### Bullseye puffer measures
+# Data available in the package{.tabset}
+## Bullseye puffer measures
 
 To demonstrate how the package functions, we utilize the dataset `botete`,
 containing 1,397 fish across 7 variables: the total length(LT), standard length
@@ -104,11 +105,12 @@ Fresh, while 2 denotes Frozen-thawed.
 
 To access the data file, the data frame is stored in an object, such as 'mydata'.
 
-```{r}
+```{r mydata, warning=FALSE, message=FALSE}
 mydata <- Morefi::Botete
+str(mydata)
 ```
 
-### Bullseye puffer fish landings
+## Bullseye puffer fish landings
 
 A second dataset `Botete_land`, provided the Mexican fishing records of bullseye
 puffer landed on the Pacific coast in 2023 and their live weight corresponding
@@ -117,16 +119,251 @@ live weight for each weight category (kg): total (WT), body trunk (WB) or fillet
 
 To access the data file, the data frame is stored in `catch`.
 
-```{r}
+```{r catch, warning=FALSE, message=FALSE}
 catch <- Morefi::Botete_land
+catch
 ```
 
-## Morefi functions
+# Lists and tables to organize and store results.
+
+## Defining the models
+
+Eight relationships are fitted, six to a simple linear model: LT vs LS, LT vs LB,
+LS vs LB, WT vs WB, WT vs Wfi, WB vs Wfi; and three to a potential model:
+LT vs WT, LT vs WB, LT vs Wfi.
+
+To perform each regression, a list named `modelos` is created to specify the 
+variables that will be included. These variables are then stored in a vector.
+
+```{r modelos, warning=FALSE, message=FALSE, results="hide"}
+modelos <- list (LTvs.LS  =  c(1,2),
+                 LTvs.LB  =  c(1,3),
+                 LSvs.LB  =  c(2,3),
+                 WTvs.WB  =  c(4,5),
+                 WTvs.Wfi =  c(4,6),
+                 WBvs.Wfi =  c(5,6),
+                 LTvs.WT  =  c(1,4),
+                 LTvs.WB  =  c(1,5),
+                 LTvs.Wfi =  c(1,6))
+```
+
+## List to store regression results
+
+To store the regression results, a nested list is created. This structure enables
+a hierarchical or multi-level organization of data. At the first level, the data
+sets are categorized as Fresh, Frozen-thawed (Frozen), and Total sample (Total).
+At the second level, which consists of sub-lists, the results from the various
+fitted models are presented.
+
+```{r Results_lists, warning=FALSE, message=FALSE, results="hide"}
+# A list that includes every model
+X_list <- vector(mode='list', length=length(modelos))
+
+# First hierarchical level
+          Fresh <- X_list
+          Frozen <- X_list
+          Total <- X_list
+          
+# Second hierarchical level          
+          List_master <- list(Fresh,Frozen,Total) # Master list
+          List_fit <- List_master # To store fitting results
+          List_ICmodels <- List_master # To store the confidence interval model 
+```
+
+## List_Tables store regression results
+
+To store the results of each fitted model, a list called `List_Tables` was created.
+Each item in the list contains the customized table `T1`, which is initially 
+filled with `NA` values.
+
+```{r List_Tables, warning=FALSE, message=FALSE}
+# Create model list including empty T1 table
+List_Tables <- setNames(lapply(1:length(modelos), function(x)
+T1),names(modelos))
+```
+
+## Coincident Curves Test Table. 
+
+List_TCCT store the values and calculus for the Coincident Curves Test
+
+To store the results of each model regressions, an empty matrix of 4 rows and 8 
+columns are created. The table `CCT` stores the values and calculus for the 
+Coincident Curves Test between weight categories: **Fresh**, **Frozen**, 
+**Total** and **Joined** (sum of values of **Fresh**, **Frozen**): the residual
+sum of squares **RSS**, degree of freedom **DF**, Analysis of the Residual Sum 
+of Squares **ARSS**,  **F-table**, **p-value** and decision criteria for 
+$\alpha$= 0.05 **Criteria**. 
+
+To store the results of each fitted model, a list called `List_TCCT` was created.
+Each item in the list contains the customized table `CCT`, which is initially 
+filled with `NA` values.
+
+```{r List_TCCT, warning=FALSE, message=FALSE, results="hide"}
+             
+CCT <- (matrix(NA,nrow=4,ncol=8))
+CCT[,2] <-  c("Fresh","Frozen","Total","Joined")
+colnames(CCT) <- c("Model","Data","RSS","DF","ARSS","F-table",
+                   "p-value","Criteria")
+
+# Create model list including empty T1 table
+List_TCCT <- setNames(lapply(1:length(modelos), function(x)
+CCT),names(modelos))
+
+CCT
+```
+
+## Confidence intervals
+
+To save the confidence intervals of the predicted values for each landing category,
+a list is created containing the sequences of these categories. The list, called
+`List_x_seq`, is designed to define a vector for the independent variable (x), which
+includes the full range of total length (**LT**), total weight (**WT**), and trunk
+weight (**WB**), respectively.
+
+```{r}
+# Create a list to store each xseq sequence
+          List_x_seq <- list(LT= seq(5,45,by=1),LS= seq(5,40,by=1),
+                             WT= seq(50,2250,by=10), WB= seq(0,1000,by=10))
+```
+
+## Weighted frequencies
+
+To store the Weighted frequencies an empty data frame is created. The class range
+is indicated as the title of each column. The right-hand column, titled **1**,
+indicates the number of weights equal to 1. The frequencies are stored by row for 
+each model. In the first column, the models are indicated.
+
+```{r, warning=FALSE, message=FALSE, results="hide"}
+
+wbks <- rep(c("Outliers",	"Weighted",	"Unweighted"),3)
+
+wfrec <- data.frame(matrix(NA,nrow= length(modelos),
+                           ncol =length(wbks) ))
+wfrec <- cbind(X_names,wfrec)
+colnames(wfrec)<- c("Models",wbks)
+
+wfrec
+```
+
+# Fitting models
+
+
+
+
+
+```{r , warning=FALSE, message=FALSE}
+
+```
+
+
+
+
+
+
+# Establishing values for the examples provided.
+
+Below is a unified set of objects that will be used in the function
+examples to prevent the need for defining them in
+each example.
+
+# Graphing Functions Attributes{.tabset}
+
+Moresi's graphing functions accept the same arguments. The data frame is created
+based on the results from the previously defined fitting model. Below, you will
+find the definitions for the color palette, opacity (transparency), regression name,
+order for the multi-panel plot, the labels, and categorizing residual values.
+
+## Data for the plots
+
+## DF PARA las fn graficas 
+Definimg values in common for the fn1, fn2 and fn3
+
+<!-- df, opacity,tint, scale= wi_scale, order= X_names, my_labeller -->
+
+```{r, warning=FALSE, message=FALSE, out.width="100%"}
+# No esta hecho tengo que hacer el ajuste arriba para obtener valores de ahi, si no lo tndría que hacer en cada caso, Otra es hacer un archivo
+#df <- List_dfa_long[[j]]
+#df$id <- as.factor(df$id)
+#df$scale <- as.factor(df$scale)
+
+#df <- #######FALTA
+```  
+
+
+## Color palette
+
+For figures representing morphometric relationships with residual color on a weighted
+scale, the color palette was defined as `tint`. The transparency level (alpha) was
+determined within the `opacity` object.
+
+```{r tint, warning=FALSE, message=FALSE}
+tint <- c("#000000", "#009E73", "#56B4E9")
+opacity <- 0.7
+```
+
+## Regression name and order
+
+The object `X_names` is created to define the names of the regression analyses 
+and the order of composite graphs.
+
+```{r X_names, warning=FALSE, message=FALSE}
+X_names <- c("LT_LS", "LT_LB", "LS_LB",
+             "WT_WB", "WT_Wfi", "WB_Wfi",
+             "LT_WT", "LT_WB", "LT_Wfi")
+```
+
+## Model Labelers
+
+The Morefi graphic functions support subscript letters in axis labels. Customized 
+plot labels are stored in the variable `my_labeller`, utilizing the
+`ggplot2::label_parsed()` function.
+
+```{r my_labeller, warning=FALSE, message=FALSE}
+library(ggplot2)
+
+my_labeller <- as_labeller(c(LT_LS=  "L[T]-L[S]",
+                             LT_LB=  "L[T]-L[B]",
+                             LS_LB=  "L[S]-L[B]",
+                             WT_WB=  "W[T]-W[B]",
+                             WT_Wfi= "W[T]-W[fi]",
+                             WB_Wfi= "W[B]-W[fi]",
+                             LT_WT=  "L[T]-W[T]",
+                             LT_WB=  "L[T]-W[B]",
+                             LT_Wfi= "L[T]-W[fi]"),
+                           default = label_parsed)
+```
+
+## Varible labelers
+
+For the variable labelers, the variables include subscripts, and the customized
+labels for the plots are stored in the variable `my_labeller`.
+
+```{r}
+library(ggplot2)
+
+my_labeller2 <- as_labeller(c(LT=  "L[T]",
+                             LS=  "L[S]",
+                             LB=  "L[B]",
+                             WT=  "W[T]x",
+                             WB=  "W[B]",
+                             Wfi= "W[fi]"),
+                             default = label_parsed)
+```
+
+## Categorizing residual values
+
+The object `wi_scale` was defined to categorize the residual values of each regression based on the weighted value scale. It was used for plotting and analysis.
+
+```{r wi_scale, warning=FALSE, message=FALSE}
+wi_scale <- c(0.000, 0.249, 0.990, 1.000)
+```
+
+# Morefi functions
 
 The Morefi package includes functions that facilitate data analysis and ensure 
 reproducibility of results.
 
-### fn_ARSS
+## fn_ARSS
 
 The function `fn_ARSS` perform the Coincident Curves Test, to determine if there
 are significant differences between the fitted curves for each database. It is 
@@ -154,7 +391,10 @@ The function requires defining:
  * `i`:  An integer value indicating the ith regression analyzed.
  * `alfa`: A numerical value that defines the significance level. The default number is 0.05.
 
-#### Examples
+The function return a data frame containing the results of the 
+Coincident Curves Test stored in a list.
+
+### Examples
 
 The Total length (LT) - Total weight (WT) was estimated for the bullseye puffer
 *Sphoeroides annulatus* for landed categories: Fresh, Frozen-thawed (Frozen), Total
@@ -188,14 +428,13 @@ i <- 1
 ARSS <- fn_ARSS(List_ARSS, i,  alfa= 0.05)
 
 ```
+
 ```{r, warning=FALSE, message=FALSE, echo=FALSE}
 library(knitr)
 kable(ARSS[[i]], format = "html", caption = "Table of the Coincident Curve Test.")
 ```
 
-
-
-### fn_dfa
+## fn_dfa
 
 This function uses the `augment()` function from the `broom` package
 to extract the observed values of the independent variable (x) and dependent
@@ -217,15 +456,15 @@ on weighted values: unweighted (u), weighted (w), and outliers (o)
 The function requires defining:
 
  * `eq`: Summary of the equation fitted.  
-
-#### Examples
+ 
+### Examples
 
 For the bullseye puffer *Sphoeroides annulatus*, the length-weight relationship
 is modeled using the `robustbase::nlm` function, with an ordinate input value of
 a = 0.1 and a slope of b = 3. The data frame `mydata` is sourced from the
 Morefi::botete package.
 
-```{r r fn_dfa, warning=FALSE, message=FALSE, results='asis'}
+```{r fn_dfa, warning=FALSE, message=FALSE, results='asis'}
 df <- mydata[,c(1,4)]
 colnames(df) <- c("x1", "y1")
 
@@ -244,67 +483,173 @@ kable(dfa[1:6,], format = "html", caption = "The initial six rows of the table a
 ```
 
 
+<!-- ### fn_fig_cs -->
 
+<!-- This function creates an individual plot displaying the fitted model -->
+<!-- alongside the observed values, which are colored according to a weighted color scale. -->
 
-`fn_dfa`: 
+<!-- The function requires defining: -->
 
-`fn_fig_cs`: This function creates an individual plot displaying the fitted model
-alongside the observed values, which are colored according to a weighted color scale.
+<!--  * `df` A data frame contains the following variables: independent (x) and dependent (y) variables, the fitted variable (fitt), a weighted variable (wi), and additional details including the weights (wi), fitted values (fitt), residuals (ei), and the scale.  -->
+<!--  * `opacity` A numeric value for the alpha aesthetic used to control the transparency of elements in a plot. -->
+<!--  * `tint` A vector that specifies the palette colors used to color the points. -->
+<!--  * `scale` A numeric vector that defines the thresholds for coloring the points. -->
+<!--  * `etiquetas` A list indicating the labels of the axes and their unit of measurement. -->
+<!--  * `modelos` A list of variables that are used for the regression model. -->
+<!--  * `i` An integer value indicating the regression analyzed. -->
 
-`fn_fig_e`: The function creates a graph that displays residuals on the vertical axis
-and either the independent variable or predicted values on the horizontal
-axis, as determined by the researcher. The residuals are color-coded using
-a weighted scale.
+<!-- The function return an individual plots for fitted models with a point color scale. -->
+
+## fn_fig_e
+
+The function creates a graph that displays residuals on the vertical axis and 
+either the independent variable or predicted values on the horizontal axis, as
+determined by the researcher. The residuals are color-coded using a weighted scale.
+
+The function returns a customized multi-panel residual plot that uses a color scale for the residual points.
+
+Since the parameters contain subscripts, the labels were customized 
+using the `ggplot2::as_labeller()` function and are stored in
+`my_labeller`.
+
+The function requires defining:
+
+ * `df` A data frame contains the following variables: independent (x) and dependent (y) variables, the fitted variable (fitt), a weighted variable (wi), and additional details including the weights (wi), fitted values (fitt), residuals (ei), and the scale.
+ * `opacity` A numeric value for the alpha aesthetic used to control the transparency of elements in a plot.
+ * `tint` A vector that specifies the palette colors used to color the points.
+ * `scale` A numeric vector that defines the thresholds for coloring the points.
+ * `order` A vector determines the sequence of the plots.
+ * `my_labeller` Transforms objects to labeller functions. Used internally by labeller().
+
+### Example
+
+A residual analysis of the model fitting has been conducted using
+combined data sets for the pufferfish *Sphoeroides annulatus*. The
+label in the grey box indicates the variables used for each model; the
+first variable listed is the independent variable, and the second is
+the dependent variable. The x-axis represents the values of the
+independent variable, while the y-axis displays the raw residuals (ei).
+
+The observed data points were coloured based on a weighted scale
+$(w_{i})$: blue for unweighted $(w_{i}=1)$, green for weighted
+(1>𝑤𝑖≥0.25), and black for outliers (𝑤𝑖<0.25). Lengths in cm and
+weights in g.
+
+The attributes associated with this function: `df`, `opacity`, `tint`, `wi_scale`, `X_names`, and `my_labeller` were previously defined in the section titled **Establishing Values for the Examples Provided.**
+
+```{r, warning=FALSE, message=FALSE, out.width="100%"}
+#df <- List_fit[[j]]
+#df$id <- as.factor(df$id)
+#df$scale <- as.factor(df$scale)
+
+#df <- df
+
+#p <- fn_fig_e(df, opacity, tint, scale= wi_scale,
+# order= X_names, my_labeller)
+
+```
+
+## fn_fig_fw
+<!-- Ok si la uso en el papiro, los argumentos son los mismos para la funcion anterior -->
 
 `fn_fig_fw`: The fitted values of the models for a landed presentation category were
 displayed as a multi-panel plot. The observed data points for each fitted 
 relationship were categorized according to a weighted color scale.
+
+
+The attributes associated with this function: `df`, `opacity`, `tint`, `wi_scale`, `X_names`, and `my_labeller` were previously defined in the section titled **Establishing Values for the Examples Provided.**
+
+```{r}
+# Paso la lista a un data frame de formato
+#df <- list_rbind(List_fit[[3]], names_to = "id")
+
+#p <- fn_fig_fw(df, opacity, tint, scale= wi_scale, order= X_names, my_labeller)
+```
+
+
+## fn_fig_w
+
+<!-- Ok si la uso en el papiro, los argumentos son los mismos para la funcion anterior -->
 
 `fn_fig_w`: The residual structure was analyzed by graphing  
 residuals against weighted values. A custom multi-panel plot
 illustrates the structure of each fitted relationship,
 categorized by a color-weighted scale of values.
 
-`fn_figs`:	Creates a customized scatter plot with the observed values (points),
-fitted regression (solid line), and its confidence interval (shaded area).
+### Example
 
-`fn_freq`:	The function calculates a frequency distribution of data.
+A residual analysis of the model fitting has been conducted using
+combined data sets for the pufferfish *Sphoeroides annulatus*. The
+label in the grey box indicates the variables used for each model; the raw residuals are shown on the x-axis, and the weighted residuals (wi) are displayed on the y-axis.
+
+The observed data points were coloured based on a weighted scale
+$(w_{i})$: blue for unweighted $(w_{i}=1)$, green for weighted
+(1>𝑤𝑖≥0.25), and black for outliers (𝑤𝑖<0.25). Lengths in cm and
+weights in g.
+
+The attributes associated with this function: `df`, `opacity`, `tint`, `wi_scale`, `X_names`, and `my_labeller` were previously defined in the section titled **Establishing Values for the Examples Provided.**
+
+```{r}
+#j <-  3 # A numeric value specifies the data set that will be used.
+#df <- List_fit[[j]]
+#df$id <- as.factor(df$id)
+#df$scale <- as.factor(df$scale)
+
+# Plot of Residual Structures Classified by a Weighted Scale.
+#p <- fn_fig_w(df, opacity,tint, my_labeller,order= X_names) 
+```
+
+
+
+
+<!-- `fn_figs`:	Creates a customized scatter plot with the observed values (points), -->
+<!-- fitted regression (solid line), and its confidence interval (shaded area). -->
+
+<!-- `fn_freq`:	The function calculates a frequency distribution of data. -->
+
+## fn_freqw
 
 `fn_freqw`	This is a methodological function to calculate the percentage 
 frequencies of weights by model adjusted using the robust regression approach.
+
+## fn_fyield
 
 `fn_fyield`:	Calculates the fillet yield by dividing a defined weight reference
 point **bm** by the mean, lower, and upper confidence interval of 95% (IC95%) of
 the estimated fillet weight, respectively.
 
+## fn_intervals
+
 `fn_intervals`:	Calculates a non-parametric confidence and predicted intervals 
 using the function predFit() from the package investr (version 1.4.2).
+
+## fn_R2RV
 
 `fn_R2RV`:	Calculates a robust version of the coefficient of determination
 $R^{2}_{RV}$ (Renaud & Victoria-Feser, 2010).
 
+## fn_summary
 `fn_summary`:	Customizes and stores the summary of each fitted regression.
 
+## fn_Wlive
 `fn_Wlive`: The live weight, which is the total weight of an organism, is estimated based
 on the weights of different landing categories, such as eviscerated weight and
 fillet weight. These estimates are derived using regression parameters that
 relate total weight to the weight of each landing category.
 
+
+## fn_xseq 
+ 
 `fn_xseq`:	Generates a data frame with a sequence for independent variables 
 (including minimum and maximum values) and selects it according to the model.
 
-## More details
-
-For more information, please refer to the respective vignettes, which offer 
-detailed descriptions of each function, its operations, and examples.
-
-## Example
+# Example
 
 To demonstrate how the package works, please follow the step-by-step process
-outlined in the "Morefi_steps" vignette, which reconstructs the results presented
+outlined in the `Example-Analysis` vignette, which reconstructs the results presented
 in the article by Aguirre-Villaseñor et al. (FISH13711).
 
-## References
+# References
 
 Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
 relationships as a fisheries management tool: A case study of the bullseye puffer

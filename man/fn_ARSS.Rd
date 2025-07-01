@@ -14,7 +14,7 @@ fn_ARSS(List_TCCT, i, alfa = 0.05)
 \item{alfa}{A numerical value that defines the significance level. If this is not set, the default number is 0.05.}
 }
 \value{
-List_TCCT calculations for ARSS are stored here
+Return a data frame containing the results of the Coincident Curves Test stored in a list.
 }
 \description{
 The function fn_ARSS perform the Coincident Curves Test, to determine if there

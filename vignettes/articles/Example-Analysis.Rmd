@@ -5,7 +5,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 author: "Hugo Aguirre-Villaseñor"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{fn_ARSS {Morefi}}
+  %\VignetteIndexEntry{Example-Analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 # Morphological relationships of bullseye puffer *Sphoeroides annulatus* and their potential use in fishery management
 
-![Bullseye puffer *Sphoeroides annulatus* (Jenyns 1842).](https://github.com/Macrurido/Morefi/blob/master/vignettes/images/S_annulatus.png){width=125%, height=125%}
+![Bullseye puffer *Sphoeroides annulatus* (Jenyns 1842).](https://github.com/Macrurido/Morefi/blob/master/images/S_annulatus.png){width=125%, height=125%}
 
 ## Introduction
 

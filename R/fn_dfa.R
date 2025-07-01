@@ -13,7 +13,7 @@
 #' In order to homogenizes the results, the columns names were renamed as "y",
 #' "wi","x","fitt",and "ei".
 #'
-#' An additional column has been included that codes errors using a scale based
+#' An additional column `scale` has been included that codes errors using a scale based
 #' on weighted values: unweighted (u), weighted (w), and outliers (o)
 #' `dfa$scale <- ifelse(df$wi < 0.25, "o", ifelse(df$wi<1, "w", "u"))`.
 #'
@@ -62,6 +62,10 @@ fn_dfa <- function(eq){
   colnames(dfa)[colnames(dfa) == "x1"] <- "x"
   colnames(dfa)[colnames(dfa) == ".fitted"] <- "fitt"
   colnames(dfa)[colnames(dfa) == ".resid"] <- "ei"
+
+  # Adding a scale column that reflects scale-weighted values.
+  dfa$scale <- ifelse(dfa$wi < 0.25, "o", ifelse(dfa$wi<1, "w", "u"))
+
   return(dfa)
 }
 
