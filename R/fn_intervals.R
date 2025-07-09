@@ -27,7 +27,7 @@ fn_intervals <- function(eq,xseq){
                                     interval = "prediction",level=0.95)
 
                     df <- as.data.frame(cbind(xseq,CI95,PI95[,-1]))
-                    colnames(df) <- c("x1", "fit","IC_L","IC_U", "IP_L","IP_U")
+                    colnames(df) <- c("x1", "fit","CI_L","CI_U", "PI_L","PI_U")
                     df
                     }
 

@@ -109,39 +109,6 @@ theme_papers <- Morefi::theme_papers()
 
 <!-- Revisar si solo se usa en un ejemplo, se pasa al ejemplo, si se usa en más de uno, o se deja aquí, o se define en el primer ejemplo que lo requiera -->
 
-## List: xseq
-
-For the examples developed in this article, a list called `x_seq` is created to store the sequences of independent variables used in various models, specifically Total Length (TL) and Total Weight (WT). For each variable, the minimum and maximum values are established, as well as the bin range per sequence `by`.
-    
-```{r}
-# To round a number to the nearest 5
-# Total length (LT)
-    by <- 5
-    LTmin <- floor(min(mydata$LT)/by)*by  
-    LTmax <- round(max(mydata$LT)/by)*by
-
-# Standard length (LS)    
-    LSmin <- floor(min(mydata$LS)/by)*by  
-    LSmax <- round(max(mydata$LS)/by)*by
-    
-# To round a number to the nearest 5    
-# Total weight (WT)
-    by <- 10
-    WTmin <- floor(min(mydata$WT)/by)*by  
-    WTmax <- round(max(mydata$WT)/by)*by
-
-# Body trunk weight (WB)    
-    WBmin <- floor(min(mydata$WB)/by)*by  
-    WBmax <- round(max(mydata$WB)/by)*by
-    
-# List_x_seq    
-List_x_seq <- list(LT= seq(LTmin,LTmax,by=1),
-                   LS= seq(LSmin,LSmax,by=1),
-                   WT= seq(WTmin,WTmax,by=10),
-                   WB= seq(WBmin,WBmax,by=10))
-
-```
-
 ## List: modelos
 
 A list that defines the variables that will be taken into account for the model.
@@ -262,7 +229,11 @@ dfa2 <- fn_dfa(eq= eq2)
 
 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
-kable(dfa1[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus LS relationship results.")
+# Load necessary libraries
+library(knitr)
+library(kableExtra)
+
+kable(dfa1[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus LS relationship results.") 
 
 kable(dfa2[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.")
 ```
@@ -323,27 +294,41 @@ kable(freqw, format = "html", caption = "Percentage frequencies of weights (wi) 
 
 ### fn_xseq() 
  
-The function generates a data frame with a sequence for independent variable (including minimum and maximum values) and selects it according to the model.
+The function creates a data frame containing a sequence for the selected independent variable based on the model. The lower end of the range is determined by rounding down the minimum value to the nearest multiple of the specified "bin" step size, while the upper end is determined by rounding up the maximum value.
 
 The data frame should have the same column name as the dependent variable used in the fitted model.
 
-Inside the function, the appropriate sequence is selected in function of model the mean **Ymean**, lower **Ymin**, and upper **Ymax** CI95% are stored in a table **Table_Y** 
+The function requires defining:
+
+ * `df` A data frame includes the morphological variables.
+ * `modelos` A list defining the numerical column variables for the model.
+ * `bin` A vector contains the step size for each independent variable in every model.
+ * `i` An integer value indicating the regression to be analyzed.
  
-The function generates a data frame with a sequence for independent variables (including minimum and maximum values) and selects it according to the model.
+The function returns a one-column data frame with the sequence selected.
 
 #### Example
 
-The objects `modelos` and `List_x_seq` were defined earlier in the section titled **Values to Define for the Examples**.
+Using biometric data from `Morefi::botete`, the sequence of independent variables for the relationships between Total Length and Standard Length (LT_LS) and between Total Length and Total Weight (LT_WT) was computed using the function `fn_xseq`.
+
+The object `modelos` was defined earlier in the section titled **Values to Define for the Examples**.
 
 ```{r fn_xseq, echo=FALSE, message=FALSE, warning=FALSE, results='asis' }
-#for (i in 1:length(List_x_seq)){
-#xseq <- fn_xseq(modelos,List_x_seq, i)
-#}
+df <- mydata
+bin <- c(2)
+i=1
+xseq1 <- fn_xseq(df, modelos, bin, i)
+
+bin <- c(5)
+i=2
+xseq2 <- fn_xseq(df, modelos, bin, i)
 ```
 
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+xseq <- cbind(head(xseq1, 6), head(xseq2, 6))
 
-
-
+kable(xseq[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the sequence of independent variables for the relationships between Total Length and Standard Length (LT_LS), and between Total Length and Total Weight (LT_WT).")
+```
 
 ### fn_intervals()
 
@@ -361,15 +346,14 @@ The function return a data frame `df` with the xseq (x1), the fitted values for 
 
 ```{r fn_intervals, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
 
-#xseq
-
-#IC <- fn_intervals(eq,xseq)
-
+eq <- eq1
+xseq <- xseq1
+CI <- fn_intervals(eq,xseq)
 ```
 
-
-
-
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+kable(CI[1:6,], format = "html", caption = "The first six rows of the table display the results of the LT versus LS relationship. In this context, x1 represents the independent variable, while fit refers to the fitted values. Additionally, CI_L indicates the lower confidence interval, and CI_U indicates the upper confidence interval. Similarly, PI_L represents the lower predicted interval, and PI_U denotes the upper predicted interval.")
+```
 
 ### fn_fyield()
 
@@ -441,7 +425,6 @@ The function requires defining:
 The function returns the a vector with the robust version of the coefficient of determination $R^{2}_{w,a}$ and its adjusted value $R^{2}_{adj,w,a}$.
 
 #### Example
-<!-- ojo me sale 1 debe ser mas bajo, revisar mis datos -->
 
 The object`eq2` originates from the example `fn_dfa()`.
  
@@ -482,8 +465,6 @@ w <- eq$rweights   # w a vector of weights values
   R2was <- c(R2wa,R2wa_adj)
   print(R2was)
 ```
-
-
 
 
 

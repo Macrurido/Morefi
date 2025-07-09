@@ -32,7 +32,7 @@
 #' \dontrun{
 #' z <- sample(100:1000, 30, replace = TRUE)
 #' df <- cbind(x,y,z)
-#' modelos <- list (x_y = c(1,2), x_z = c(1,3))
+#' modelos <- list (x_y = c(1,2), y_z = c(2,3))
 #' bin <- c(2, 100)
 #' i <- 1
 #' xseq1 <- fn_xseq(df, modelos, bin, i)
