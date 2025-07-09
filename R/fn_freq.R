@@ -8,8 +8,7 @@
 #' The non-cumulative absolute frequency is calculated for each user-defined
 #' class interval within the `breaks` object.
 #'
-#' The `breaks` object must be defined outside the function by the user. For
-#' example a sequence of breakpoints of equal distance could be used.
+#' The `breaks` object must be defined outside the function by the user.
 #'
 #' @param df A vector of data values.
 #' @param breaks A vector with class intervals.

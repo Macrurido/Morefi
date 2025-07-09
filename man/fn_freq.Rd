@@ -25,8 +25,7 @@ Inside the function:
 The non-cumulative absolute frequency is calculated for each user-defined
 class interval within the `breaks` object.
 
-The `breaks` object must be defined outside the function by the user. For
-example a sequence of breakpoints of equal distance could be used.
+The `breaks` object must be defined outside the function by the user.
 }
 \examples{
 # In the df object, 30 random values between 0.1 and 0.9 are generated.

@@ -1,4 +1,4 @@
-#' theme_papers()
+#' theme_papers
 #'
 #' To standardize the graphics, the theme_papers() is created, used as
 #' base theme_bw(), modifies:

@@ -2,3 +2,40 @@ url: https://macrurido.github.io/Morefi/
 template:
   bootstrap: 5
 
+reference:
+- title: Package Data
+  desc: >
+    To showcase the functionality of the Morefi package, the two data sets from
+    Aguirre-Villaseñor *et al*. (Submitted) are included.
+- subtitle: Datasets
+  contents:
+  - Botete
+  - Botete_land
+- title: ggplot theme
+  desc: >
+    It is created to standardize the graphic format.
+  contents:
+  - theme_papers
+- title: Morefi functions
+  desc: >
+    To facilitate data analysis and ensure reproducibility of results.
+- subtitle: Plotting functions
+  contents:
+  - fn_fig_cs
+  - fn_fig_e
+  - fn_fig_fw
+  - fn_fig_w
+  - fn_figs
+- subtitle: Analysis functions
+  contents:
+  - fn_ARSS
+  - fn_dfa
+  - fn_freq
+  - fn_freqw
+  - fn_fyield
+  - fn_intervals
+  - fn_R2RV
+  - fn_summary
+  - fn_Wlive
+  - fn_xseq
+

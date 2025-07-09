@@ -28,7 +28,8 @@ Suggests:
     testthat (>= 3.2.3),
     knitr,
     rmarkdown,
-    htmltools (>= 0.5.8)
+    htmltools (>= 0.5.8),
+    rmdformats (>= 1.0.4)
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 Imports:
@@ -38,7 +39,8 @@ Imports:
     ggplot2 (>= 3.5.2),
     investr (>= 1.4.2),
     robustbase (>= 0.99.4),
-    stats (>= 4.4.0)
+    stats (>= 4.4.0),
+    tibble (>= 3.3.0)
 VignetteBuilder: knitr
 URL: https://macrurido.github.io/Morefi/, https://macrurido.github.io/Morefi/
 Config/Needs/website: rmarkdown

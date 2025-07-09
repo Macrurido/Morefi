@@ -4,7 +4,8 @@
 #' to extract the observed values of the independent variable (x) and dependent
 #' variable (y), along with the weights (wi), fitted values (fitt), and residuals
 #' (ei) from the summary of the fitted model. It then turns these components
-#' into tidy tibbles.
+#' into tidy tibbles. For optimal functionality of `fn_dfa()`, the data frames
+#' used for fitting relationships must be formatted as tibbles.
 #'
 #' The function `augment()` does not provide the weights column for the `lmrob()`
 #' function. The function `fn_dfa()` contains a conditional statement that
@@ -26,6 +27,7 @@
 #' @seealso broom::augment
 #'
 #' @import broom
+#' @import tibble
 #'
 #' @examples
 #' ## Example 1: robust linear regression
@@ -68,4 +70,3 @@ fn_dfa <- function(eq){
 
   return(dfa)
 }
-

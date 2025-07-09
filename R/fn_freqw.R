@@ -27,7 +27,7 @@
 #'
 #' \dontrun{
 #' df <- c(runif(n=30, min=0, max=1),rep(1,5))
-#' breaks  <-  c(0, 0.249, 0.99, 1)
+#' breaks  <-  c(0,0.25,1,Inf)
 #'
 #' freq <- fn_freqw(df, breaks, right=FALSE)
 #'}
@@ -38,4 +38,5 @@ fn_freqw <- function(df, breaks, right=FALSE){
                     nw <- length(which(df ==1))
                     freq <- c(freq, nw)
                     freq <-  100*freq/length(df)
+                    freq <- freq[-length(freq)]
                     }

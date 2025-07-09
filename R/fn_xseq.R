@@ -1,40 +1,52 @@
 #' fn_xseq
 #'
-#' The function generates a data frame with a sequence for independent variable
-#' (including minimum and maximum values) and selects it according to the model.
+#' The function creates a data frame containing a sequence for the selected
+#' independent variable based on the model. The lower end of the range is
+#' determined by rounding down the minimum value to the nearest multiple of the
+#' specified "bin" step size, while the upper end is determined by rounding up
+#' the maximum value.
 #'
 #' The data frame should have the same column name as the dependent variable
 #' used in the fitted model.
 #'
-#' Inside the function, the appropriate sequence is selected in function of model
-#'  the mean (Ymean), lower (Ymin), and upper (Ymax) CI95% are stored in a table (Table_Y).
-#'
-#' @param modelos A list that defines the variables that will be taken into account for the model.
-#' @param List_x_seq A list to store the sequence of the independent variable considered for the ith fitted model.
+#' @param df A data frame includes the morphological variables.
+#' @param modelos A list defining the numerical column variables for the model.
+#' @param bin A vector contains the step size for each independent variable in every model.
 #' @param i An integer value indicating the regression to be analyzed.
 #'
 #' @return xseq A one-column data frame with the sequence selected.
 #'
-#'
 #' @examples
+#' # One model: x_y
+#'
 #' \dontrun{
-#' xseq <- fn_xseq(modelos,List_x_seq, i)
-#'}
+#' x <- sample(8:44, 30, replace = TRUE)
+#' y <- sample(20:100, 30, replace = TRUE)
+#' df <- as.data.frame(cbind(x,y))
+#' modelos <- list (x_y = c(1,2))
+#' i <- 1
+#' bin <- c(5)
+#' xseq <- fn_xseq(df, modelos, bin, i)
+#' }
+#' # Two models: x_y and x_z
+#' \dontrun{
+#' z <- sample(100:1000, 30, replace = TRUE)
+#' df <- cbind(x,y,z)
+#' modelos <- list (x_y = c(1,2), x_z = c(1,3))
+#' bin <- c(2, 100)
+#' i <- 1
+#' xseq1 <- fn_xseq(df, modelos, bin, i)
+#' i <- 2
+#' xseq2 <- fn_xseq(df, modelos, bin, i)
+#' }
 #'
 #' @export
-fn_xseq <- function(modelos,List_x_seq, i) {
-  if (modelos[[i]][1]== 1) {
-    xseq <- List_x_seq[[1]]
-  } else {
-    if (modelos[[i]][1]== 2) {
-      xseq <- List_x_seq[[2]]
-    } else {
-      if (modelos[[i]][1]== 4) {
-        xseq <- List_x_seq[[3]]
-      } else {
-        xseq <- List_x_seq[[4]]
-      }  # End if
-    }  # End if
-  }  # End if
-  xseq <- data.frame(x1=xseq)
+fn_xseq <- function(df, modelos, bin, i) {
+  x <- modelos[[i]][1]
+  tmp <- as.vector(df[, x])
+  bin <- bin[x]
+  Min <- floor(min(tmp)/bin)*bin
+  Max <- round(max(tmp)/bin)*bin
+  x1 <- seq(Min, Max, bin)
+  return(as.data.frame(x1))
 } # End fn

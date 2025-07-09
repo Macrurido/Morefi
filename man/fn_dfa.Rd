@@ -17,7 +17,8 @@ The `fn_dfa()` function uses the `augment()` function from the `broom` package
 to extract the observed values of the independent variable (x) and dependent
 variable (y), along with the weights (wi), fitted values (fitt), and residuals
 (ei) from the summary of the fitted model. It then turns these components
-into tidy tibbles.
+into tidy tibbles. For optimal functionality of `fn_dfa()`, the data frames
+used for fitting relationships must be formatted as tibbles.
 }
 \details{
 The function `augment()` does not provide the weights column for the `lmrob()`

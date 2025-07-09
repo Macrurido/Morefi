@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_papers.R
 \name{theme_papers}
 \alias{theme_papers}
-\title{theme_papers()}
+\title{theme_papers}
 \usage{
 theme_papers(...)
 }

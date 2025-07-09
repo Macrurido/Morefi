@@ -4,12 +4,14 @@
 \alias{fn_xseq}
 \title{fn_xseq}
 \usage{
-fn_xseq(modelos, List_x_seq, i)
+fn_xseq(df, modelos, bin, i)
 }
 \arguments{
-\item{modelos}{A list that defines the variables that will be taken into account for the model.}
+\item{df}{A data frame includes the morphological variables.}
 
-\item{List_x_seq}{A list to store the sequence of the independent variable considered for the ith fitted model.}
+\item{modelos}{A list defining the numerical column variables for the model.}
+
+\item{bin}{A vector contains the step size for each independent variable in every model.}
 
 \item{i}{An integer value indicating the regression to be analyzed.}
 }
@@ -17,19 +19,38 @@ fn_xseq(modelos, List_x_seq, i)
 xseq A one-column data frame with the sequence selected.
 }
 \description{
-The function generates a data frame with a sequence for independent variable
-(including minimum and maximum values) and selects it according to the model.
+The function creates a data frame containing a sequence for the selected
+independent variable based on the model. The lower end of the range is
+determined by rounding down the minimum value to the nearest multiple of the
+specified "bin" step size, while the upper end is determined by rounding up
+the maximum value.
 }
 \details{
 The data frame should have the same column name as the dependent variable
 used in the fitted model.
-
-Inside the function, the appropriate sequence is selected in function of model
- the mean (Ymean), lower (Ymin), and upper (Ymax) CI95% are stored in a table (Table_Y).
 }
 \examples{
+# One model: x_y
+
 \dontrun{
-xseq <- fn_xseq(modelos,List_x_seq, i)
+x <- sample(8:44, 30, replace = TRUE)
+y <- sample(20:100, 30, replace = TRUE)
+df <- as.data.frame(cbind(x,y))
+modelos <- list (x_y = c(1,2))
+i <- 1
+bin <- c(5)
+xseq <- fn_xseq(df, modelos, bin, i)
+}
+# Two models: x_y and x_z
+\dontrun{
+z <- sample(100:1000, 30, replace = TRUE)
+df <- cbind(x,y,z)
+modelos <- list (x_y = c(1,2), x_z = c(1,3))
+bin <- c(2, 100)
+i <- 1
+xseq1 <- fn_xseq(df, modelos, bin, i)
+i <- 2
+xseq2 <- fn_xseq(df, modelos, bin, i)
 }
 
 }

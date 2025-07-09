@@ -43,12 +43,12 @@ fn_R2RV <- function(eq){
   w <- eq$rweights   # w a vector of weights values
   yc <- eq$fitted.values # yc a vector of predicted values
   ywea <-  (1/sum(w)) * sum(w*yc) # a value of the Weighted Estimate Average
-  y1 <- eq$model[,1]
+  df <- summary(eq)$df[2]
   SSEw <- sum(w*(yc-ywea)^2)
-  SSRw <- sum(w*(y1-yc)^2)
+  SSRw <- (eq[["Scale"]]^2)*df
   a <- environment(eq[["psi"]])[["cc"]]
   R2wa <- SSEw/(SSEw+a*SSRw)
-  R2wa_adj <- 1-(1-R2wa)*((length(y1)-1)/summary(eq)$df[2])
+  R2wa_adj <- 1-(1-R2wa)*((length(yc)-1)/df)
   R2was <- c(R2wa,R2wa_adj)
   print(R2was)
 }
