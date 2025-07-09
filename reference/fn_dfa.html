@@ -3,11 +3,13 @@
 to extract the observed values of the independent variable (x) and dependent
 variable (y), along with the weights (wi), fitted values (fitt), and residuals
 (ei) from the summary of the fitted model. It then turns these components
-into tidy tibbles."><meta property="og:description" content="The `fn_dfa()` function uses the `augment()` function from the `broom` package
+into tidy tibbles. For optimal functionality of `fn_dfa()`, the data frames
+used for fitting relationships must be formatted as tibbles."><meta property="og:description" content="The `fn_dfa()` function uses the `augment()` function from the `broom` package
 to extract the observed values of the independent variable (x) and dependent
 variable (y), along with the weights (wi), fitted values (fitt), and residuals
 (ei) from the summary of the fitted model. It then turns these components
-into tidy tibbles."><meta property="og:image" content="https://macrurido.github.io/Morefi/logo.png"></head><body>
+into tidy tibbles. For optimal functionality of `fn_dfa()`, the data frames
+used for fitting relationships must be formatted as tibbles."><meta property="og:image" content="https://macrurido.github.io/Morefi/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -48,7 +50,8 @@ into tidy tibbles."><meta property="og:image" content="https://macrurido.github.
 to extract the observed values of the independent variable (x) and dependent
 variable (y), along with the weights (wi), fitted values (fitt), and residuals
 (ei) from the summary of the fitted model. It then turns these components
-into tidy tibbles.</p>
+into tidy tibbles. For optimal functionality of `fn_dfa()`, the data frames
+used for fitting relationships must be formatted as tibbles.</p>
     </div>
 
     <div class="section level2">
@@ -75,7 +78,7 @@ function. The function `fn_dfa()` contains a conditional statement that
 includes this variable in the output data frame of the linear adjustments.</p>
 <p>In order to homogenizes the results, the columns names were renamed as "y",
 "wi","x","fitt",and "ei".</p>
-<p>An additional column has been included that codes errors using a scale based
+<p>An additional column `scale` has been included that codes errors using a scale based
 on weighted values: unweighted (u), weighted (w), and outliers (o)
 `dfa$scale &lt;- ifelse(df$wi &lt; 0.25, "o", ifelse(df$wi&lt;1, "w", "u"))`.</p>
 <p>For more information, please refer to the help documentation for `broom::augment()`.</p>

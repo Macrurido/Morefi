@@ -60,8 +60,10 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Morefi</h1>
+            <h3 data-toc-skip class="subtitle">Morphological
+Relationships Fitted by Robust Regression</h3>
             
-            <h4 data-toc-skip class="date">25 June 2025</h4>
+            <h4 data-toc-skip class="date">09 July 2025</h4>
       
 
       <div class="d-none name"><code>Morefi.Rmd</code></div>
@@ -72,17 +74,13 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://macrurido.github.io/Morefi/">Morefi</a></span><span class="op">)</span></span></code></pre></div>
 <p>Morefi
-<a href="https://github.com/Macrurido/Morefi/" class="external-link"><img src="reference/figures/logo.png" align="right" height="139" alt="Morefi website"></a></p>
+<a href="https://github.com/Macrurido/Morefi/blob/%22" class="external-link"><img src="master/images/MOREFI_2025v2.png" align="right" height="139" alt="Morefi website"></a></p>
 <p>Shield: <a href="http://creativecommons.org/licenses/by/4.0/" class="external-link"><img src="https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg" alt="CC BY 4.0"></a></p>
 <p>Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" class="external-link">Creative Commons
 Attribution 4.0 International License</a>.</p>
 <p><a href="http://creativecommons.org/licenses/by/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="CC BY 4.0"></a></p>
-<div class="section level2">
-<h2 id="morefi">Morefi<a class="anchor" aria-label="anchor" href="#morefi"></a>
-</h2>
-<p>The <em>Morefi</em> package: <em>Morphological Relationships Fitted
-by Robust Regression</em>. It is a methodological package developed in R
-to analyze the submitted article:</p>
+<p>This is a methodological package developed in R for analyzing the
+submitted article:</p>
 <p>Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata
 (FISH13711). Biometric relationships as a fisheries management tool: A
 case study of the bullseye puffer (<em>Sphoeroides annulatus</em>.
@@ -99,7 +97,7 @@ commercial forms. However, there are currently no biometric
 relationships that allow for predicting live weight (the total weight of
 the fish) from the different categories of landed weight, such as fillet
 weight, gutted weight, or frozen weight.</p>
-<p>The objective of this package is to provide quantitative models for
+<p>The objective of this package is to provide quantitative analysis for
 various morphological relationships that help predict: a) the expected
 live weight of different landed weight categories, b) the expected
 fillet yield from various commercial presentations, and c) testing the
@@ -116,8 +114,7 @@ necessary for adjustment via least squares. Given this variability, a
 robust regression method is employed for analysis. The “robustbase”
 package (version 0.99-2) was utilized to fit robust regression models,
 using the functions lmrob() for linear and nlrob() for non-linear
-regression (Maechler et al., 2024).</p>
-</div>
+regression (Maechler <em>et al</em>., 2024).</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -133,8 +130,11 @@ the following options:</p>
 <span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Macrurido/Morefi"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="data-available-in-the-package">Data available in the package<a class="anchor" aria-label="anchor" href="#data-available-in-the-package"></a>
+<h2 class="tabset" id="data-available-in-the-package">Data available in the package<a class="anchor" aria-label="anchor" href="#data-available-in-the-package"></a>
 </h2>
+<p>To showcase the functionality of the Morefi package, the two data
+sets from Aguirre-Villaseñor <em>et al</em>. (Submitted) are
+included.</p>
 <div class="section level3">
 <h3 id="bullseye-puffer-measures">Bullseye puffer measures<a class="anchor" aria-label="anchor" href="#bullseye-puffer-measures"></a>
 </h3>
@@ -149,7 +149,16 @@ Fresh, while 2 denotes Frozen-thawed.</p>
 <p>To access the data file, the data frame is stored in an object, such
 as ‘mydata’.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="va"><a href="../reference/Botete.html">Botete</a></span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="va"><a href="../reference/Botete.html">Botete</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">mydata</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    1397 obs. of  7 variables:</span></span>
+<span><span class="co">#&gt;  $ LT   : num  21 22 12 21 12 28.4 29.3 34.8 31.7 31.5 ...</span></span>
+<span><span class="co">#&gt;  $ LS   : num  17.3 17.6 10 17.3 10 23 24.2 27.5 25.5 26 ...</span></span>
+<span><span class="co">#&gt;  $ LB   : num  17 15 10 15 8.5 20 20.5 27 23 24 ...</span></span>
+<span><span class="co">#&gt;  $ WT   : num  189.1 213.4 33.4 236.7 36 ...</span></span>
+<span><span class="co">#&gt;  $ WB   : num  115.6 86.7 15.4 100.4 18.9 ...</span></span>
+<span><span class="co">#&gt;  $ Wfi  : num  50.7 55.5 6.9 65 9.1 ...</span></span>
+<span><span class="co">#&gt;  $ Fleet: Factor w/ 2 levels "1","2": 2 2 2 1 2 1 2 1 1 1 ...</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="bullseye-puffer-fish-landings">Bullseye puffer fish landings<a class="anchor" aria-label="anchor" href="#bullseye-puffer-fish-landings"></a>
@@ -162,8 +171,206 @@ Frozen-thawed (SIPESCA, 2024).</p>
 <p>To access the data file, the data frame is stored in
 <code>catch</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">catch</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="va"><a href="../reference/Botete_land.html">Botete_land</a></span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">catch</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="va"><a href="../reference/Botete_land.html">Botete_land</a></span></span>
+<span><span class="va">catch</span></span>
+<span><span class="co">#&gt;          Category  Landed   Biomass    Pesos  Pesos_kg</span></span>
+<span><span class="co">#&gt; 1        WT_Fresh  509354  509354.0  33079.5  41.49873</span></span>
+<span><span class="co">#&gt; 2        WB_Fresh  449646  494610.6  58048.0  52.05232</span></span>
+<span><span class="co">#&gt; 3 WB_Fresh_Thawed  361404  451755.0  37997.0  54.77369</span></span>
+<span><span class="co">#&gt; 4       Wfi_Fresh   47990   95980.0  16485.0 112.83715</span></span>
+<span><span class="co">#&gt; 5           Total 1368394 1551699.6 145609.5  50.97446</span></span></code></pre></div>
 </div>
+</div>
+<div class="section level2">
+<h2 id="theme_papers">theme_papers()<a class="anchor" aria-label="anchor" href="#theme_papers"></a>
+</h2>
+<p>The <code><a href="../reference/theme_papers.html">theme_papers()</a></code> is created to standardize the graphic
+format, used as base <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw()</a></code>. To showcase their design,
+this manual presents graphics in both their original format and the
+format created using the <code><a href="../reference/theme_papers.html">theme_papers()</a></code>.</p>
+<p>To call the <code><a href="../reference/theme_papers.html">theme_papers()</a></code> function use the following
+statement:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">theme_papers</span> <span class="op">&lt;-</span> <span class="fu">Morefi</span><span class="fu">::</span><span class="fu"><a href="../reference/theme_papers.html">theme_papers</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="lists-and-tables-to-organize-and-store-results">Lists and tables to organize and store results<a class="anchor" aria-label="anchor" href="#lists-and-tables-to-organize-and-store-results"></a>
+</h2>
+<div class="section level3">
+<h3 id="lists-to-store-summaries">Lists to store summaries<a class="anchor" aria-label="anchor" href="#lists-to-store-summaries"></a>
+</h3>
+<p>Lists must be created to store the relevant summaries. To organize
+the regression results, a nested list structure is used. This design
+allows for a hierarchical or multi-level data organization. At the first
+level, models are categorized, while the second level categorizes the
+datasets into Fresh, Frozen-thawed (Frozen), and Total sample (Total).
+Finally, at the third level, sub-lists contain the results from the
+various fitted models.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># First hierarchical level: Models</span></span>
+<span>    <span class="va">X_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span>mode<span class="op">=</span><span class="st">'list'</span>, length<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span>    <span class="va">X_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"LT_LS"</span>, <span class="st">"LT_WT"</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">X_list</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">X_names</span> </span>
+<span><span class="co"># Second hierarchical level: Category</span></span>
+<span>    <span class="va">Fresh</span> <span class="op">&lt;-</span> <span class="va">X_list</span></span>
+<span>    <span class="va">Frozen</span> <span class="op">&lt;-</span> <span class="va">X_list</span></span>
+<span>    <span class="va">Total</span> <span class="op">&lt;-</span> <span class="va">X_list</span></span>
+<span><span class="co"># Third hierarchical level: </span></span>
+<span>    <span class="va">List_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">Fresh</span>,<span class="va">Frozen</span>,<span class="va">Total</span><span class="op">)</span> <span class="co"># Fitting results</span></span>
+<span>    <span class="va">List_ICmodels</span> <span class="op">&lt;-</span> <span class="va">List_fit</span> <span class="co"># Confidence interval of the models. </span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="list-to-store-coincident-curves-test-tables-">List to store Coincident Curves Test Tables.<a class="anchor" aria-label="anchor" href="#list-to-store-coincident-curves-test-tables-"></a>
+</h3>
+<p>To store the results of each model regressions, an empty matrix of 4
+rows and 8 columns are created. The table <code>CCT</code> stores the
+values and calculus for the Coincident Curves Test between weight
+categories: <strong>Fresh</strong>, <strong>Frozen</strong>,
+<strong>Total</strong> and <strong>Joined</strong> (sum of values of
+<strong>Fresh</strong>, <strong>Frozen</strong>): the residual sum of
+squares <strong>RSS</strong>, degree of freedom <strong>DF</strong>,
+Analysis of the Residual Sum of Squares <strong>ARSS</strong>,
+<strong>F-table</strong>, <strong>p-value</strong> and decision criteria
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>=
+0.05 <strong>Criteria</strong>.</p>
+<p>To store the results of each fitted model, a list called
+<code>List_TCCT</code> was created. Each item in the list contains the
+customized table <code>CCT</code>, which is initially filled with
+<code>NA</code> values.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>             </span>
+<span><span class="co">#CCT &lt;- (matrix(NA,nrow=4,ncol=8))</span></span>
+<span><span class="co">#CCT[,2] &lt;-  c("Fresh","Frozen","Total","Joined")</span></span>
+<span><span class="co">#colnames(CCT) &lt;- c("Model","Data","RSS","DF","ARSS","F-table",</span></span>
+<span> <span class="co">#                  "p-value","Criteria")</span></span>
+<span></span>
+<span><span class="co"># Create model list including empty T1 table</span></span>
+<span><span class="co">#List_TCCT &lt;- setNames(lapply(1:length(modelos), function(x)</span></span>
+<span><span class="co">#CCT),names(modelos))</span></span>
+<span></span>
+<span><span class="co">#CCT</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="list-to-store-summary-regression-tables-">List to store summary regression tables.<a class="anchor" aria-label="anchor" href="#list-to-store-summary-regression-tables-"></a>
+</h3>
+<p>To store the summary regression, a customised table <code>T1</code>
+is generated. The type of function model (<strong>Linear</strong> or
+<strong>Potential</strong>), and its variables, are indicated in the
+first two columns. The third column indicates the data source used
+(<strong>Fresh</strong>, <strong>Fresh-Thawed</strong>, or
+<strong>Total</strong>). By row it is stored: the
+<strong>Intercept</strong>, its confidence interval
+<strong>(CI95%)</strong>; the <strong>Slope</strong>; its
+<strong>(CI95%)</strong>; the adjusted robust coefficient of
+determination <strong>R2,adj,w,a</strong> and the degrees of freedom
+<strong>DF</strong>.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>    <span class="co"># An empty table to store the summary regression results   </span></span>
+<span> </span>
+<span><span class="va">T1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">T1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Function"</span>, <span class="st">"Model"</span>,<span class="st">"Categories"</span>,</span>
+<span>               <span class="st">"Intercept"</span>, <span class="st">"CI95%"</span>,<span class="st">"Slope"</span>,</span>
+<span>               <span class="st">"CI95%"</span>, <span class="st">"R2"</span>,<span class="st">"DF"</span><span class="op">)</span></span>
+<span><span class="co"># Create model list including empty T1 table</span></span>
+<span><span class="co">#List_Tables &lt;- setNames(lapply(1:length(modelos), function(x)</span></span>
+<span><span class="co">#T1),names(modelos))</span></span>
+<span></span>
+<span><span class="co">#T1</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="xseq">xseq<a class="anchor" aria-label="anchor" href="#xseq"></a>
+</h3>
+<p>A list called “x_seq” was created to store the sequences of
+independent variables used in various models, including Total Length,
+Standard Length, Total Weight, and Body Trunk Weight. For each model,
+the minimum and maximum values, as well as the bin range for each
+sequence, have been established.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">List_x_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>LT<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">45</span>,by<span class="op">=</span><span class="fl">1</span><span class="op">)</span>,LS<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">40</span>,by<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, WT<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">50</span>,<span class="fl">2250</span>,by<span class="op">=</span><span class="fl">10</span><span class="op">)</span>, WB<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1000</span>,by<span class="op">=</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="fitting-modeles">Fitting modeles<a class="anchor" aria-label="anchor" href="#fitting-modeles"></a>
+</h2>
+<p>Using the biometric data from <code>Morefi::botete</code>, a linear
+relationship between Total Length and Standard Length (LT_LS) was
+established using the <code><a href="https://rdrr.io/pkg/robustbase/man/lmrob.html" class="external-link">robustbase::lmrob</a></code> function.
+Additionally, the relationship between Total Length and Total Weight
+(LT_WT) was fitted using the <code>robustbase::nlm</code> function, with
+an input value of a = 0.1 and a slope of b = 3.</p>
+<p>Both relationships are fitted for the landed categories: Fresh,
+Frozen-thawed (Frozen), Total (All samples).</p>
+<p>In the for loop, the jth landed categories is selected: 1 for Fresh,
+2 for Frozen-thawed, 3 for the total sample.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#for (j in 1:3) {</span></span>
+<span><span class="co">#      if (j &lt;3)  {</span></span>
+<span><span class="co">#            tmp &lt;- mydata[mydata$Fleet == j,]</span></span>
+<span><span class="co">#            df &lt;- dplyr::tibble(x1 = tmp[,1],y1 = tmp[,2])</span></span>
+<span>            <span class="co"># Fitting model</span></span>
+<span><span class="co">#            eq &lt;- robustbase::lmrob(y1 ~ x1, data= df,</span></span>
+<span> <span class="co">#                                    setting = "KS2014",</span></span>
+<span><span class="co">#                                     doCov = TRUE)</span></span>
+<span>            <span class="co"># Storing values</span></span>
+<span>            <span class="co"># Estimate confidence interval function</span></span>
+<span>    <span class="co">#      List_ICmodels[[j]][[1]] &lt;- Morefi::fn_intervals(eq,xseq)</span></span>
+<span>     <span class="co">#     List_fit [[j]][[1]] &lt;- fn_dfa(eq= eq) </span></span>
+<span>            </span>
+<span>            </span>
+<span>                </span>
+<span>                </span>
+<span>                </span>
+<span>                </span>
+<span> <span class="co">#       }else{</span></span>
+<span>  <span class="co">#              tmp &lt;- mydata</span></span>
+<span>   <span class="co">#   } # End if</span></span>
+<span>  </span>
+<span>    <span class="co">#  df &lt;- dplyr::tibble(x1 = tmp[,1],</span></span>
+<span>     <span class="co">#           y1 = tmp[,2])</span></span>
+<span></span>
+<span><span class="co">#eq1 &lt;- robustbase::lmrob(y1 ~ x1, data= df,</span></span>
+<span><span class="co">#                                  setting = "KS2014",</span></span>
+<span><span class="co">#                                              doCov = TRUE)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="co">#  Power Model</span></span>
+<span><span class="co">#df &lt;- dplyr::tibble(x1 = tmp[,1],</span></span>
+<span> <span class="co">#               y1 = tmp[,4])</span></span>
+<span></span>
+<span><span class="co">#a=0.01</span></span>
+<span><span class="co">#b=3</span></span>
+<span></span>
+<span><span class="co">#eq2 &lt;- robustbase::nlrob(y1 ~ a*x1^b, data= df,</span></span>
+<span><span class="co">#                        start = list(a= a, b= b),</span></span>
+<span> <span class="co">#                       trace = FALSE)</span></span>
+<span></span>
+<span>  </span>
+<span>  </span>
+<span>  </span>
+<span>  </span>
+<span>        <span class="co"># In the for loop, the ith model is selected.</span></span>
+<span></span>
+<span>    </span>
+<span>   <span class="co"># Linnear equation</span></span>
+<span><span class="co">#          eq &lt;- robustbase::lmrob(y1 ~ x1, data= datos,</span></span>
+<span><span class="co">#                                  setting = "KS2014",</span></span>
+<span><span class="co">#                                              doCov = TRUE)</span></span>
+<span>    <span class="co"># R squared</span></span>
+<span> <span class="co">#         R2 &lt;- summary(eq)$r.squared    </span></span>
+<span>          <span class="co">#Non parametric IC 95 for parameters</span></span>
+<span>  <span class="co">#        betas_IC95 &lt;- confint(eq, level = 0.95)</span></span>
+<span></span>
+<span>  <span class="co">#    }</span></span>
+<span>          </span></code></pre></div>
+<p>The Total length (LT) - Total weight (WT) was estimated for the
+bullseye puffer <em>Sphoeroides annulatus</em> for landed categories:
+Fresh, Frozen-thawed (Frozen), Total (All sample) and Joined (sum of
+values of Fresh and Frozen). The Residual Sum of Squares (RSS) and the
+degrees of freedom (DF) are provided for each data source.</p>
 </div>
 <div class="section level2">
 <h2 id="morefi-functions">Morefi functions<a class="anchor" aria-label="anchor" href="#morefi-functions"></a>
@@ -171,12 +378,12 @@ Frozen-thawed (SIPESCA, 2024).</p>
 <p>The Morefi package includes functions that facilitate data analysis
 and ensure reproducibility of results.</p>
 <div class="section level3">
-<h3 id="fn_arss">fn_ARSS<a class="anchor" aria-label="anchor" href="#fn_arss"></a>
+<h3 id="fn_arss">fn_ARSS()<a class="anchor" aria-label="anchor" href="#fn_arss"></a>
 </h3>
-<p>The function <code>fn_ARSS</code> perform the Coincident Curves Test,
-to determine if there are significant differences between the fitted
-curves for each database. It is based on the Analysis of the Residual
-Sum of Squares (ARSS) (Chen et al. 1992).</p>
+<p>The function <code><a href="../reference/fn_ARSS.html">fn_ARSS()</a></code> perform the Coincident Curves
+Test, to determine if there are significant differences between the
+fitted curves for each database. It is based on the Analysis of the
+Residual Sum of Squares (ARSS) (Chen et al. 1992).</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mfrac><mfrac><mrow><mi>R</mi><mi>S</mi><msub><mi>S</mi><mi>p</mi></msub><mo>−</mo><mi>R</mi><mi>S</mi><msub><mi>S</mi><mi>s</mi></msub></mrow><mrow><mn>3</mn><mo>•</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>K</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mfrac><mrow><mi>R</mi><mi>S</mi><msub><mi>S</mi><mi>s</mi></msub></mrow><mrow><mi>N</mi><mo>−</mo><mn>3</mn><mo>•</mo><mi>K</mi></mrow></mfrac></mfrac></mrow><annotation encoding="application/x-tex">F=\frac{\frac{RSS_{p}-RSS_{s}}{3\bullet \left( K-1 \right)}}{\frac{RSS_{s}}{N-3\bullet K}}</annotation></semantics></math></p>
 <p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>S</mi><msub><mi>S</mi><mi>p</mi></msub><mo>=</mo><mi>R</mi><mi>S</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">RSS_{p}= RSS</annotation></semantics></math>
 of each regression fitted by pooled data,
@@ -215,8 +422,10 @@ analyzed.</li>
 <code>alfa</code>: A numerical value that defines the significance
 level. The default number is 0.05.</li>
 </ul>
+<p>The function return a data frame containing the results of the
+Coincident Curves Test stored in a list.</p>
 <div class="section level4">
-<h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h4>
 <p>The Total length (LT) - Total weight (WT) was estimated for the
 bullseye puffer <em>Sphoeroides annulatus</em> for landed categories:
@@ -226,12 +435,15 @@ degrees of freedom (DF) are provided for each data source. In the table
 the first row displays the Analysis of Residual Sum of Squares (ARSS),
 the p-value (p), and the decision criteria for the ARSS test
 (Criteria).</p>
+<p>In the table the first row displays the Analysis of Residual Sum of
+Squares (ARSS), the p-value (p), and the decision criteria for the ARSS
+test (Criteria).</p>
 <p>The adjusted models show the following data: Fresh SSR= and DF= 742;
 Frozen SSR= 1280131.81 and DF= 651; and the total sample SSR= 6115874.53
 and DF= 1395. Values are stored in the table <code>Table_CC</code>, this
 is stored in a list, and the name of each item is built with the
 acronyms of the model variables (e.g. LTWT).</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Table_CC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>,nrow<span class="op">=</span><span class="fl">4</span>,ncol<span class="op">=</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">Table_CC</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Lt-WT"</span> </span>
 <span><span class="va">Table_CC</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fresh"</span>,<span class="st">"Frozen"</span>,<span class="st">"Total"</span>,<span class="st">"Joined"</span><span class="op">)</span></span>
@@ -389,7 +601,7 @@ NA
 </div>
 </div>
 <div class="section level3">
-<h3 id="fn_dfa">fn_dfa<a class="anchor" aria-label="anchor" href="#fn_dfa"></a>
+<h3 id="fn_dfa">fn_dfa()<a class="anchor" aria-label="anchor" href="#fn_dfa"></a>
 </h3>
 <p>This function uses the <code>augment()</code> function from the
 <code>broom</code> package to extract the observed values of the
@@ -413,28 +625,192 @@ outliers (o)
 <code>eq</code>: Summary of the equation fitted.</li>
 </ul>
 <div class="section level4">
-<h4 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a>
+<h4 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a>
 </h4>
-<p>For the bullseye puffer <em>Sphoeroides annulatus</em>, the
-length-weight relationship is modeled using the
-<code>robustbase::nlm</code> function, with an ordinate input value of a
-= 0.1 and a slope of b = 3. The data frame <code>mydata</code> is
-sourced from the Morefi::botete package.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">mydata</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x1"</span>, <span class="st">"y1"</span><span class="op">)</span></span>
+<p>Using the biometric data from <code>Morefi::botete</code>, a linear
+relationship between Total Length and Standard Length (LT_LS) was
+established using the <code><a href="https://rdrr.io/pkg/robustbase/man/lmrob.html" class="external-link">robustbase::lmrob</a></code> function.
+Additionally, the relationship between Total Length and Total Weight
+(LT_WT) was fitted using the <code>robustbase::nlm</code> function, with
+an input y-value of a = 0.1 and a slope of b = 3.</p>
+<p>For optimal functionality of <code><a href="../reference/fn_dfa.html">fn_dfa()</a></code>, the data frames
+used for fitting relationships must be formatted as tibble.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="va">mydata</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,</span>
+<span>                y1 <span class="op">=</span> <span class="va">mydata</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">eq1</span> <span class="op">&lt;-</span> <span class="fu">robustbase</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/robustbase/man/lmrob.html" class="external-link">lmrob</a></span><span class="op">(</span><span class="va">y1</span> <span class="op">~</span> <span class="va">x1</span>, data<span class="op">=</span> <span class="va">df</span>,</span>
+<span>                                  setting <span class="op">=</span> <span class="st">"KS2014"</span>,</span>
+<span>                                              doCov <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">dfa1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_dfa.html">fn_dfa</a></span><span class="op">(</span>eq<span class="op">=</span> <span class="va">eq1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#  Power Model</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="va">mydata</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,</span>
+<span>                y1 <span class="op">=</span> <span class="va">mydata</span><span class="op">[</span>,<span class="fl">4</span><span class="op">]</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">a</span><span class="op">=</span><span class="fl">0.01</span></span>
 <span><span class="va">b</span><span class="op">=</span><span class="fl">3</span></span>
 <span></span>
-<span><span class="va">eq</span> <span class="op">&lt;-</span> <span class="fu">robustbase</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/robustbase/man/nlrob.html" class="external-link">nlrob</a></span><span class="op">(</span><span class="va">y1</span> <span class="op">~</span> <span class="va">a</span><span class="op">*</span><span class="va">x1</span><span class="op">^</span><span class="va">b</span>, data<span class="op">=</span> <span class="va">df</span>,</span>
+<span><span class="va">eq2</span> <span class="op">&lt;-</span> <span class="fu">robustbase</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/robustbase/man/nlrob.html" class="external-link">nlrob</a></span><span class="op">(</span><span class="va">y1</span> <span class="op">~</span> <span class="va">a</span><span class="op">*</span><span class="va">x1</span><span class="op">^</span><span class="va">b</span>, data<span class="op">=</span> <span class="va">df</span>,</span>
 <span>                        start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a<span class="op">=</span> <span class="va">a</span>, b<span class="op">=</span> <span class="va">b</span><span class="op">)</span>,</span>
 <span>                        trace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">dfa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_dfa.html">fn_dfa</a></span><span class="op">(</span><span class="va">eq</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">dfa2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_dfa.html">fn_dfa</a></span><span class="op">(</span>eq<span class="op">=</span> <span class="va">eq2</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <caption>
-The initial six rows of the table are displayed.
+The first six rows of the table are displayed, based on the LT versus LS
+relationship results.
+</caption>
+<thead><tr>
+<th style="text-align:right;">
+y
+</th>
+<th style="text-align:right;">
+x
+</th>
+<th style="text-align:right;">
+fitt
+</th>
+<th style="text-align:right;">
+ei
+</th>
+<th style="text-align:right;">
+wi
+</th>
+<th style="text-align:left;">
+scale
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+17.3
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+17.174230
+</td>
+<td style="text-align:right;">
+0.1257696
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:left;">
+u
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+22.0
+</td>
+<td style="text-align:right;">
+17.999109
+</td>
+<td style="text-align:right;">
+-0.3991088
+</td>
+<td style="text-align:right;">
+0.9914912
+</td>
+<td style="text-align:left;">
+w
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+9.750324
+</td>
+<td style="text-align:right;">
+0.2496758
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:left;">
+u
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17.3
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+17.174230
+</td>
+<td style="text-align:right;">
+0.1257696
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:left;">
+u
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+9.750324
+</td>
+<td style="text-align:right;">
+0.2496758
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:left;">
+u
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23.0
+</td>
+<td style="text-align:right;">
+28.4
+</td>
+<td style="text-align:right;">
+23.278331
+</td>
+<td style="text-align:right;">
+-0.2783310
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:left;">
+u
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<caption>
+The first six rows of the table are displayed, based on the LT versus WT
+relationship results.
 </caption>
 <thead><tr>
 <th style="text-align:right;">
@@ -451,6 +827,9 @@ fitt
 </th>
 <th style="text-align:right;">
 ei
+</th>
+<th style="text-align:left;">
+scale
 </th>
 </tr></thead>
 <tbody>
@@ -470,6 +849,9 @@ ei
 <td style="text-align:right;">
 -20.715491
 </td>
+<td style="text-align:left;">
+u
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -486,6 +868,9 @@ ei
 </td>
 <td style="text-align:right;">
 -28.798897
+</td>
+<td style="text-align:left;">
+u
 </td>
 </tr>
 <tr>
@@ -504,6 +889,9 @@ ei
 <td style="text-align:right;">
 -3.923211
 </td>
+<td style="text-align:left;">
+u
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -520,6 +908,9 @@ ei
 </td>
 <td style="text-align:right;">
 26.884508
+</td>
+<td style="text-align:left;">
+u
 </td>
 </tr>
 <tr>
@@ -538,6 +929,9 @@ ei
 <td style="text-align:right;">
 -1.323211
 </td>
+<td style="text-align:left;">
+u
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -555,72 +949,489 @@ ei
 <td style="text-align:right;">
 -75.506104
 </td>
+<td style="text-align:left;">
+w
+</td>
 </tr>
 </tbody>
 </table>
-<p><code>fn_dfa</code>:</p>
-<p><code>fn_fig_cs</code>: This function creates an individual plot
-displaying the fitted model alongside the observed values, which are
-colored according to a weighted color scale.</p>
-<p><code>fn_fig_e</code>: The function creates a graph that displays
-residuals on the vertical axis and either the independent variable or
-predicted values on the horizontal axis, as determined by the
-researcher. The residuals are color-coded using a weighted scale.</p>
-<p><code>fn_fig_fw</code>: The fitted values of the models for a landed
-presentation category were displayed as a multi-panel plot. The observed
-data points for each fitted relationship were categorized according to a
-weighted color scale.</p>
-<p><code>fn_fig_w</code>: The residual structure was analyzed by
+<!-- ### fn_fig_cs() --><!-- This function creates an individual plot displaying the fitted model --><!-- alongside the observed values, which are colored according to a weighted color scale. --><!-- The function requires defining: --><!--  * `df` A data frame contains the following variables: independent (x) and dependent (y) variables, the fitted variable (fitt), a weighted variable (wi), and additional details including the weights (wi), fitted values (fitt), residuals (ei), and the scale.  --><!--  * `opacity` A numeric value for the alpha aesthetic used to control the transparency of elements in a plot. --><!--  * `tint` A vector that specifies the palette colors used to color the points. --><!--  * `scale` A numeric vector that defines the thresholds for coloring the points. --><!--  * `etiquetas` A list indicating the labels of the axes and their unit of measurement. --><!--  * `modelos` A list of variables that are used for the regression model. --><!--  * `i` An integer value indicating the regression analyzed. --><!-- The function return an individual plots for fitted models with a point color scale. -->
+</div>
+</div>
+<div class="section level3">
+<h3 id="fn_fig_e">fn_fig_e()<a class="anchor" aria-label="anchor" href="#fn_fig_e"></a>
+</h3>
+<p>The function creates a graph that displays residuals on the vertical
+axis and either the independent variable or predicted values on the
+horizontal axis, as determined by the researcher. The residuals are
+color-coded using a weighted scale.</p>
+<p>The function returns a customized multi-panel residual plot that uses
+a color scale for the residual points.</p>
+<p>Since the parameters contain subscripts, the labels were customized
+using the <code><a href="https://ggplot2.tidyverse.org/reference/as_labeller.html" class="external-link">ggplot2::as_labeller()</a></code> function and are stored in
+<code>my_labeller</code>.</p>
+<p>The function requires defining:</p>
+<ul>
+<li>
+<code>df</code> A data frame contains the following variables:
+independent (x) and dependent (y) variables, the fitted variable (fitt),
+a weighted variable (wi), and additional details including the weights
+(wi), fitted values (fitt), residuals (ei), and the scale.</li>
+<li>
+<code>opacity</code> A numeric value for the alpha aesthetic used to
+control the transparency of elements in a plot.</li>
+<li>
+<code>tint</code> A vector that specifies the palette colors used to
+color the points.</li>
+<li>
+<code>scale</code> A numeric vector that defines the thresholds for
+coloring the points.</li>
+<li>
+<code>order</code> A vector determines the sequence of the
+plots.</li>
+<li>
+<code>my_labeller</code> Transforms objects to labeller functions.
+Used internally by labeller().</li>
+</ul>
+<div class="section level4">
+<h4 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
+</h4>
+<p>A residual analysis of the model fitting has been conducted using
+combined data sets for the pufferfish <em>Sphoeroides annulatus</em>.
+The label in the grey box indicates the variables used for each model;
+the first variable listed is the independent variable, and the second is
+the dependent variable. The x-axis represents the values of the
+independent variable, while the y-axis displays the raw residuals
+(ei).</p>
+<p>The observed data points were coloured based on a weighted scale
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i})</annotation></semantics></math>:
+blue for unweighted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}=1)</annotation></semantics></math>,
+green for weighted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>&gt;</mo><msub><mi>w</mi><mi>i</mi></msub><mo>≥</mo><mn>0.25</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1&gt;w_{i}≥0.25)</annotation></semantics></math>,
+and black for outliers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>&lt;</mo><mn>0.25</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}&lt;0.25)</annotation></semantics></math>.
+Lengths in cm and weights in g.</p>
+<p>The attributes associated with this function: <code>df</code>,
+<code>opacity</code>, <code>tint</code>, <code>wi_scale</code>,
+<code>X_names</code>, and <code>my_labeller</code> were defined in the
+section titled <strong>Establishing Values for the Examples
+Provided.</strong></p>
+<p>The objects <code>dfa1</code>, and <code>dfa2</code> were derived
+from the <code><a href="../reference/fn_dfa.html">fn_dfa()</a></code> example.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Preparing the dataset.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">tmp1</span> <span class="op">&lt;-</span> <span class="va">dfa1</span>              <span class="co"># Data frame 1</span></span>
+<span><span class="va">tmp1</span><span class="op">[</span><span class="st">'id'</span><span class="op">]</span> <span class="op">=</span> <span class="st">"LT_LS"</span>      <span class="co"># to add an ID column to a Data frame</span></span>
+<span></span>
+<span><span class="va">tmp2</span> <span class="op">&lt;-</span> <span class="va">dfa2</span>              <span class="co"># Data frame 2</span></span>
+<span><span class="va">tmp2</span><span class="op">[</span><span class="st">'id'</span><span class="op">]</span> <span class="op">=</span> <span class="st">"LT_WT"</span>      <span class="co"># to add an ID column to a Data Frame</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">tmp1</span>, <span class="va">tmp2</span><span class="op">)</span>   <span class="co"># Joining data sets</span></span>
+<span></span>
+<span><span class="co"># Establishing values for the examples provided</span></span>
+<span><span class="va">tint</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#000000"</span>, <span class="st">"#009E73"</span>, <span class="st">"#56B4E9"</span><span class="op">)</span></span>
+<span><span class="va">opacity</span> <span class="op">&lt;-</span> <span class="fl">0.7</span></span>
+<span></span>
+<span><span class="co"># weighted value scale</span></span>
+<span><span class="va">wi_scale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.000</span>, <span class="fl">0.249</span>, <span class="fl">0.990</span>, <span class="fl">1.000</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># To order facet wrap plots in ggplot2</span></span>
+<span><span class="va">X_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"LT_LS"</span>, <span class="st">"LT_WT"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The labels in the ggplot composite chart are customized to include subscripts.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">my_labeller</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/as_labeller.html" class="external-link">as_labeller</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LT_LS<span class="op">=</span>  <span class="st">"L[T]-L[S]"</span>,</span>
+<span>                             LT_WT<span class="op">=</span>  <span class="st">"L[T]-W[T]"</span><span class="op">)</span>,</span>
+<span>                           default <span class="op">=</span> <span class="va">label_parsed</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The plot</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_fig_e.html">fn_fig_e</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">opacity</span>, <span class="va">tint</span>, scale<span class="op">=</span> <span class="va">wi_scale</span>,</span>
+<span>              order<span class="op">=</span> <span class="va">X_names</span>, <span class="va">my_labeller</span><span class="op">)</span></span></code></pre></div>
+<p><img src="Morefi_files/figure-html/unnamed-chunk-5-1.png" width="100%"></p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="va">theme_papers</span></span></code></pre></div>
+<p><img src="Morefi_files/figure-html/unnamed-chunk-5-2.png" width="100%"></p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="fn_fig_fw">fn_fig_fw()<a class="anchor" aria-label="anchor" href="#fn_fig_fw"></a>
+</h3>
+<p><code><a href="../reference/fn_fig_fw.html">fn_fig_fw()</a></code>: The fitted values of the models for a
+landed presentation category were displayed as a multi-panel plot. The
+observed data points for each fitted relationship were categorized
+according to a weighted color scale.</p>
+<p>The function returns a customized multi-panel fitted values plot that
+uses a color scale for the residual points.</p>
+<p>Since the parameters contain subscripts, the labels were customized
+using the <code><a href="https://ggplot2.tidyverse.org/reference/as_labeller.html" class="external-link">ggplot2::as_labeller()</a></code> function and are stored in
+<code>my_labeller</code>.</p>
+<p>The function requires defining:</p>
+<ul>
+<li>
+<code>df</code> A data frame contains the following variables:
+independent (x) and dependent (y) variables, the fitted variable (fitt),
+a weighted variable (wi), and additional details including the weights
+(wi), fitted values (fitt), residuals (ei), and the scale.</li>
+<li>
+<code>opacity</code> A numeric value for the alpha aesthetic used to
+control the transparency of elements in a plot.</li>
+<li>
+<code>tint</code> A vector that specifies the palette colors used to
+color the points.</li>
+<li>
+<code>scale</code> A numeric vector that defines the thresholds for
+coloring the points.</li>
+<li>
+<code>order</code> A vector determines the sequence of the
+plots.</li>
+<li>
+<code>my_labeller</code> Transforms objects to labeller functions.
+Used internally by labeller().</li>
+</ul>
+<div class="section level4">
+<h4 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
+</h4>
+<p>Using the biometric data from <code>Morefi::botete</code>, a linear
+relationship between Total Length and Standard Length (LT_LS) was
+established using the <code><a href="https://rdrr.io/pkg/robustbase/man/lmrob.html" class="external-link">robustbase::lmrob</a></code> function.
+Additionally, the relationship between Total Length and Total Weight
+(LT_WT) was fitted using the <code>robustbase::nlm</code> function, with
+an input y-value of a = 0.1 and a slope of b = 3.</p>
+<p>The label in the grey box indicates the variables used for each
+model; the first variable listed is the independent variable, and the
+second is the dependent variable. The x-axis represents the values of
+the independent variable, while the y-axis displays the raw residuals
+(ei).</p>
+<p>The observed data points were coloured based on a weighted scale
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i})</annotation></semantics></math>:
+blue for unweighted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}=1)</annotation></semantics></math>,
+green for weighted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>&gt;</mo><msub><mi>w</mi><mi>i</mi></msub><mo>≥</mo><mn>0.25</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1&gt;w_{i}≥0.25)</annotation></semantics></math>,
+and black for outliers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>&lt;</mo><mn>0.25</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}&lt;0.25)</annotation></semantics></math>.
+Lengths in cm and weights in g.</p>
+<p>The attributes associated with this function: <code>df</code>,
+<code>opacity</code>, <code>tint</code>, <code>wi_scale</code>,
+<code>X_names</code>, and <code>my_labeller</code> were defined in the
+section titled <strong>Establishing Values for the Examples
+Provided.</strong></p>
+<p>The objects <code>dfa1</code>, and <code>dfa2</code> were derived
+from the <code><a href="../reference/fn_dfa.html">fn_dfa()</a></code> example.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Preparing the dataset.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co"># The data</span></span>
+<span><span class="va">tmp1</span> <span class="op">&lt;-</span> <span class="va">dfa1</span>              <span class="co"># Data frame 1</span></span>
+<span><span class="va">tmp1</span><span class="op">[</span><span class="st">'id'</span><span class="op">]</span> <span class="op">=</span> <span class="st">"LT_LS"</span>      <span class="co"># to add an ID column to a Data frame</span></span>
+<span></span>
+<span><span class="va">tmp2</span> <span class="op">&lt;-</span> <span class="va">dfa2</span>              <span class="co"># Data frame 2</span></span>
+<span><span class="va">tmp2</span><span class="op">[</span><span class="st">'id'</span><span class="op">]</span> <span class="op">=</span> <span class="st">"LT_WT"</span>      <span class="co"># to add an ID column to a Data Frame</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">tmp1</span>, <span class="va">tmp2</span><span class="op">)</span>   <span class="co"># Joining data sets</span></span>
+<span></span>
+<span><span class="co"># Establishing values for the examples provided</span></span>
+<span><span class="va">tint</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#000000"</span>, <span class="st">"#009E73"</span>, <span class="st">"#56B4E9"</span><span class="op">)</span></span>
+<span><span class="va">opacity</span> <span class="op">&lt;-</span> <span class="fl">0.7</span></span>
+<span></span>
+<span><span class="co"># weighted value scale</span></span>
+<span><span class="va">wi_scale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.000</span>, <span class="fl">0.249</span>, <span class="fl">0.990</span>, <span class="fl">1.000</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># To order facet wrap plots in ggplot2</span></span>
+<span><span class="va">X_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"LT_LS"</span>, <span class="st">"LT_WT"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The labels in the ggplot composite chart are customized to include subscripts.</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">my_labeller</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/as_labeller.html" class="external-link">as_labeller</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LT_LS<span class="op">=</span>  <span class="st">"L[T]-L[S]"</span>,</span>
+<span>                             LT_WT<span class="op">=</span>  <span class="st">"L[T]-W[T]"</span><span class="op">)</span>,</span>
+<span>                           default <span class="op">=</span> <span class="va">label_parsed</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The plot</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_fig_fw.html">fn_fig_fw</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">opacity</span>, <span class="va">tint</span>, scale<span class="op">=</span> <span class="va">wi_scale</span>, order<span class="op">=</span> <span class="va">X_names</span>, <span class="va">my_labeller</span><span class="op">)</span></span></code></pre></div>
+<p><img src="Morefi_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">p</span> <span class="op">+</span> <span class="va">theme_papers</span></span></code></pre></div>
+<p><img src="Morefi_files/figure-html/unnamed-chunk-6-2.png" width="700"></p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="fn_fig_w">fn_fig_w()<a class="anchor" aria-label="anchor" href="#fn_fig_w"></a>
+</h3>
+<p><code><a href="../reference/fn_fig_w.html">fn_fig_w()</a></code>: The residual structure was analyzed by
 graphing<br>
 residuals against weighted values. A custom multi-panel plot illustrates
 the structure of each fitted relationship, categorized by a
 color-weighted scale of values.</p>
-<p><code>fn_figs</code>: Creates a customized scatter plot with the
-observed values (points), fitted regression (solid line), and its
-confidence interval (shaded area).</p>
-<p><code>fn_freq</code>: The function calculates a frequency
-distribution of data.</p>
-<p><code>fn_freqw</code> This is a methodological function to calculate
-the percentage frequencies of weights by model adjusted using the robust
-regression approach.</p>
-<p><code>fn_fyield</code>: Calculates the fillet yield by dividing a
+<p>Since the parameters contain subscripts, the labels were customized
+using the <code><a href="https://ggplot2.tidyverse.org/reference/as_labeller.html" class="external-link">ggplot2::as_labeller()</a></code> function and are stored in
+<code>my_labeller</code>.</p>
+<p>The function requires defining:</p>
+<ul>
+<li>
+<code>df</code> A data frame contains the following variables:
+independent (x) and dependent (y) variables, the fitted variable (fitt),
+a weighted variable (wi), and additional details including the weights
+(wi), fitted values (fitt), residuals (ei), and the scale.</li>
+<li>
+<code>opacity</code> A numeric value for the alpha aesthetic used to
+control the transparency of elements in a plot.</li>
+<li>
+<code>tint</code> A vector that specifies the palette colors used to
+color the points.</li>
+<li>
+<code>scale</code> A numeric vector that defines the thresholds for
+coloring the points.</li>
+<li>
+<code>order</code> A vector determines the sequence of the
+plots.</li>
+<li>
+<code>my_labeller</code> Transforms objects to labeller functions.
+Used internally by labeller().</li>
+</ul>
+<div class="section level4">
+<h4 id="example-4">Example<a class="anchor" aria-label="anchor" href="#example-4"></a>
+</h4>
+<p>The Residual Structures classified by a Weighted Scale was analyzed
+using combined data sets for the pufferfish <em>Sphoeroides
+annulatus</em>. The label in the grey box indicates the variables used
+for each model; the raw residuals are shown on the x-axis, and the
+weighted residuals (wi) are displayed on the y-axis.</p>
+<p>The observed data points were coloured based on a weighted scale
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i})</annotation></semantics></math>:
+blue for unweighted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}=1)</annotation></semantics></math>,
+green for weighted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>&gt;</mo><msub><mi>w</mi><mi>i</mi></msub><mo>≥</mo><mn>0.25</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1&gt;w_{i}≥0.25)</annotation></semantics></math>,
+and black for outliers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>&lt;</mo><mn>0.25</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}&lt;0.25)</annotation></semantics></math>.
+Lengths in cm and weights in g.</p>
+<p>The attributes associated with this function: <code>df</code>,
+<code>opacity</code>, <code>tint</code>, <code>wi_scale</code>,
+<code>X_names</code>, and <code>my_labeller</code> were previously
+defined in the section titled <strong>Establishing Values for the
+Examples Provided.</strong></p>
+<p>The objects <code>dfa1</code>, and <code>dfa2</code> were derived
+from the <code><a href="../reference/fn_dfa.html">fn_dfa()</a></code> example.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Preparing the dataset.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co"># The data</span></span>
+<span><span class="va">tmp1</span> <span class="op">&lt;-</span> <span class="va">dfa1</span>              <span class="co"># Data frame 1</span></span>
+<span><span class="va">tmp1</span><span class="op">[</span><span class="st">'id'</span><span class="op">]</span> <span class="op">=</span> <span class="st">"LT_LS"</span>      <span class="co"># to add an ID column to a Data frame</span></span>
+<span></span>
+<span><span class="va">tmp2</span> <span class="op">&lt;-</span> <span class="va">dfa2</span>              <span class="co"># Data frame 2</span></span>
+<span><span class="va">tmp2</span><span class="op">[</span><span class="st">'id'</span><span class="op">]</span> <span class="op">=</span> <span class="st">"LT_WT"</span>      <span class="co"># to add an ID column to a Data Frame</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">tmp1</span>, <span class="va">tmp2</span><span class="op">)</span>   <span class="co"># Joining data sets</span></span>
+<span></span>
+<span><span class="co"># Establishing values for the examples provided</span></span>
+<span><span class="va">tint</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#000000"</span>, <span class="st">"#009E73"</span>, <span class="st">"#56B4E9"</span><span class="op">)</span></span>
+<span><span class="va">opacity</span> <span class="op">&lt;-</span> <span class="fl">0.7</span></span>
+<span></span>
+<span><span class="co"># weighted value scale</span></span>
+<span><span class="va">wi_scale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.000</span>, <span class="fl">0.249</span>, <span class="fl">0.990</span>, <span class="fl">1.000</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># To order facet wrap plots in ggplot2</span></span>
+<span><span class="va">X_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"LT_LS"</span>, <span class="st">"LT_WT"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The labels in the ggplot composite chart are customized to include subscripts.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">my_labeller</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/as_labeller.html" class="external-link">as_labeller</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>LT_LS<span class="op">=</span>  <span class="st">"L[T]-L[S]"</span>,</span>
+<span>                             LT_WT<span class="op">=</span>  <span class="st">"L[T]-W[T]"</span><span class="op">)</span>,</span>
+<span>                           default <span class="op">=</span> <span class="va">label_parsed</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The plot</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_fig_w.html">fn_fig_w</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">opacity</span>,<span class="va">tint</span>, <span class="va">my_labeller</span>,order<span class="op">=</span> <span class="va">X_names</span><span class="op">)</span> </span></code></pre></div>
+<p><img src="Morefi_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">p</span> <span class="op">+</span> <span class="va">theme_papers</span></span></code></pre></div>
+<p><img src="Morefi_files/figure-html/unnamed-chunk-7-2.png" width="700"></p>
+<!-- `fn_figs()`:   Creates a customized scatter plot with the observed values (points), -->
+<!-- fitted regression (solid line), and its confidence interval (shaded area). -->
+</div>
+</div>
+<div class="section level3">
+<h3 id="fn_freq">
+<code>fn_freq()</code><a class="anchor" aria-label="anchor" href="#fn_freq"></a>
+</h3>
+<p>It is used as an internal function within
+<code><a href="../reference/fn_freqw.html">fn_freqw()</a></code>.</p>
+<p>The <code><a href="../reference/fn_freq.html">fn_freq()</a></code> function calculates a frequency
+distribution of data using the <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> and
+<code><a href="https://rdrr.io/r/base/table.html" class="external-link">table()</a></code> functions from the R base. It produces a data frame
+that displays frequencies categorized by class interval.</p>
+<p>Within the function, the non-cumulative absolute frequency is
+calculated for each user-defined class interval based on the
+<code>breaks</code> object. The <code>breaks</code> object must be
+defined outside the function by the user.</p>
+<p>The attributes and examples of <code><a href="../reference/fn_freq.html">fn_freq()</a></code> are detailed in
+the documentation for the <code><a href="../reference/fn_freqw.html">fn_freqw()</a></code> function below.</p>
+<p><strong>See also</strong> <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> and <code><a href="https://rdrr.io/r/base/table.html" class="external-link">table()</a></code>
+from the R base package.</p>
+</div>
+<div class="section level3">
+<h3 id="fn_freqw">fn_freqw()<a class="anchor" aria-label="anchor" href="#fn_freqw"></a>
+</h3>
+<p><code><a href="../reference/fn_freqw.html">fn_freqw()</a></code> calculate the percentage frequencies of
+weights by model adjusted using the robust regression approach. The
+function calculates the relative frequency distribution using the
+function <code><a href="../reference/fn_freq.html">fn_freq()</a></code> from <code>Morefi</code> package. It
+returns a table with frequencies by class interval.</p>
+<p>The breaks object must be defined. To incorporate the number of
+non-weighted values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}=1)</annotation></semantics></math>,
+a class interval “1” is added to the sequence inside the function.</p>
+<p>The function requires defining:</p>
+<ul>
+<li>
+<code>df</code> A vector of data values.</li>
+<li>
+<code>breaks</code> A vector with class intervals.</li>
+<li>
+<code>right</code> Logical, indicating if the intervals should be
+closed on the right (and open on the left) or vice versa.</li>
+</ul>
+<p><strong>See also</strong> <code><a href="../reference/fn_freq.html">Morefi::fn_freq</a></code>;
+<code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> and <code><a href="https://rdrr.io/r/base/table.html" class="external-link">table()</a></code> from the R base package.</p>
+<div class="section level4">
+<h4 id="example-5">Example<a class="anchor" aria-label="anchor" href="#example-5"></a>
+</h4>
+<p>The weighted values were obtained from the summary of linear and
+power models fitted using robust regression and stored in
+<code>dfa1</code> and <code>dfa2</code>, which were generated with the
+<code><a href="../reference/fn_dfa.html">fn_dfa()</a></code> example. In each data frame, the weighted values
+are stored in the column labeled “wi.”</p>
+<p>The function <code><a href="../reference/fn_freqw.html">fn_freqw()</a></code> calculates the frequency of
+weighted values within a defined interval based on a weighted scale
+classification: unweighted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}=1)</annotation></semantics></math>,
+weighted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>&gt;</mo><msub><mi>w</mi><mi>i</mi></msub><mo>≥</mo><mn>0.25</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1&gt;w_{i}≥0.25)</annotation></semantics></math>,
+and outliers
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>w</mi><mi>i</mi></msub><mo>&lt;</mo><mn>0.25</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(w_{i}&lt;0.25)</annotation></semantics></math>.
+The weighted scale is stored in <code>breaks</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">breaks</span>  <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.25</span>,<span class="fl">1</span>,<span class="cn">Inf</span><span class="op">)</span> <span class="co"># Weighted scale</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">dfa1</span><span class="op">$</span><span class="va">wi</span>    <span class="co"># Data frame 1</span></span>
+<span><span class="va">freq1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_freqw.html">fn_freqw</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">breaks</span>, right<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">dfa2</span><span class="op">$</span><span class="va">wi</span>    <span class="co"># Data frame 2</span></span>
+<span><span class="va">freq2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fn_freqw.html">fn_freqw</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">breaks</span>, right<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Merging the two data sets (as example) </span></span>
+<span><span class="va">freqw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">freq1</span>, <span class="va">freq2</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<caption>
+Percentage frequencies of weights (wi) based on a weighted scale
+classification
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+freq1
+</th>
+<th style="text-align:right;">
+freq2
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+[0,0.25)
+</td>
+<td style="text-align:right;">
+1.216893
+</td>
+<td style="text-align:right;">
+3.364352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[0.25,1)
+</td>
+<td style="text-align:right;">
+30.064424
+</td>
+<td style="text-align:right;">
+27.057981
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+[1,Inf)
+</td>
+<td style="text-align:right;">
+68.718683
+</td>
+<td style="text-align:right;">
+69.577666
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section level3">
+<h3 id="fn_fyield">fn_fyield()<a class="anchor" aria-label="anchor" href="#fn_fyield"></a>
+</h3>
+<p><code><a href="../reference/fn_fyield.html">fn_fyield()</a></code>: Calculates the fillet yield by dividing a
 defined weight reference point <strong>bm</strong> by the mean, lower,
 and upper confidence interval of 95% (IC95%) of the estimated fillet
 weight, respectively.</p>
-<p><code>fn_intervals</code>: Calculates a non-parametric confidence and
-predicted intervals using the function predFit() from the package
+</div>
+<div class="section level3">
+<h3 id="fn_intervals">fn_intervals()<a class="anchor" aria-label="anchor" href="#fn_intervals"></a>
+</h3>
+<p><code><a href="../reference/fn_intervals.html">fn_intervals()</a></code>: Calculates a non-parametric confidence
+and predicted intervals using the function predFit() from the package
 investr (version 1.4.2).</p>
-<p><code>fn_R2RV</code>: Calculates a robust version of the coefficient
-of determination
+</div>
+<div class="section level3">
+<h3 id="fn_r2rv">fn_R2RV()<a class="anchor" aria-label="anchor" href="#fn_r2rv"></a>
+</h3>
+<p><code><a href="../reference/fn_R2RV.html">fn_R2RV()</a></code>: Calculates a robust version of the
+coefficient of determination
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>R</mi><mrow><mi>R</mi><mi>V</mi></mrow><mn>2</mn></msubsup><annotation encoding="application/x-tex">R^{2}_{RV}</annotation></semantics></math>
 (Renaud &amp; Victoria-Feser, 2010).</p>
-<p><code>fn_summary</code>: Customizes and stores the summary of each
+</div>
+<div class="section level3">
+<h3 id="fn_summary">fn_summary()<a class="anchor" aria-label="anchor" href="#fn_summary"></a>
+</h3>
+<p><code><a href="../reference/fn_summary.html">fn_summary()</a></code>: Customizes and stores the summary of each
 fitted regression.</p>
-<p><code>fn_Wlive</code>: The live weight, which is the total weight of
-an organism, is estimated based on the weights of different landing
+</div>
+<div class="section level3">
+<h3 id="fn_wlive">fn_Wlive()<a class="anchor" aria-label="anchor" href="#fn_wlive"></a>
+</h3>
+<p><code><a href="../reference/fn_Wlive.html">fn_Wlive()</a></code>: The live weight, which is the total weight
+of an organism, is estimated based on the weights of different landing
 categories, such as eviscerated weight and fillet weight. These
 estimates are derived using regression parameters that relate total
 weight to the weight of each landing category.</p>
-<p><code>fn_xseq</code>: Generates a data frame with a sequence for
+</div>
+<div class="section level3">
+<h3 id="fn_xseq">fn_xseq()<a class="anchor" aria-label="anchor" href="#fn_xseq"></a>
+</h3>
+<p><code><a href="../reference/fn_xseq.html">fn_xseq()</a></code>: Generates a data frame with a sequence for
 independent variables (including minimum and maximum values) and selects
 it according to the model.</p>
 </div>
 </div>
-</div>
 <div class="section level2">
-<h2 id="more-details">More details<a class="anchor" aria-label="anchor" href="#more-details"></a>
-</h2>
-<p>For more information, please refer to the respective vignettes, which
-offer detailed descriptions of each function, its operations, and
-examples.</p>
-</div>
-<div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="example-6">Example<a class="anchor" aria-label="anchor" href="#example-6"></a>
 </h2>
 <p>To demonstrate how the package works, please follow the step-by-step
-process outlined in the “Morefi_steps” vignette, which reconstructs the
-results presented in the article by Aguirre-Villaseñor et
-al. (FISH13711).</p>
+process outlined in the <code>Example-Analysis</code> vignette, which
+reconstructs the results presented in the article by Aguirre-Villaseñor
+et al. (FISH13711).</p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
