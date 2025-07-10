@@ -23,7 +23,6 @@ knitr::opts_chunk$set(
 library(Morefi)
 ```
 
-Morefi <a href=https://github.com/Macrurido/Morefi/blob/"><img src="master/images/MOREFI_2025v2.png" align="right" height="139" alt="Morefi website" /></a>
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
 
@@ -238,7 +237,7 @@ kable(dfa1[1:6,], format = "html", caption = "The first six rows of the table ar
 kable(dfa2[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.")
 ```
 
-### `fn_freq()`
+### fn_freq()
 
 It is used as an internal function within `fn_freqw()`.
 
@@ -361,21 +360,37 @@ The function calculates the fillet yield by dividing a defined weight reference 
 
 If the analyzed regression has fillet weight as an independent variable, then values are calculated. An "if statement" is written for this propose.
 
-Fillet yield was calculated for a sequence of the independent variable (including minimum and maximum values).
-
-Inside the function, the mean (Ymean), lower (Ymin), and upper (Ymax) CI95% are stored in a table (Table_Y).
+Fillet yield was calculated for a sequence of the independent variable (including minimum and maximum values). The function `fn_fyield()` returms a table with fillet yield results.
 
 
 The function requires defining:
 
-
-
-
+ * `i` An integer value that indicates which regression analysis to use.
+ * `bm` An integer value used as a benchmark.
+ * `df` A data frame with landed weights for each category.
 
 #### Example
 
+`CI` comes from `fn_intervals()` example
 
+```{r fn_fyield, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+bm <- 18
+df <- CI
+i <- 1
+yield1 <- fn_fyield(i,bm,df)
+i <- 1
+yield2 <- fn_fyield(i,bm,df)
+```
 
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+# Load necessary libraries
+library(knitr)
+library(kableExtra)
+
+kable(yield1[1:10,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus LS relationship results.  In this context, x1 represents the independent variable, while fit refers to the fitted values. Additionally, CI_L indicates the lower confidence interval, and CI_U indicates the upper confidence interval. Similarly, PI_L represents the lower predicted interval, and PI_U denotes the upper predicted interval.") 
+
+kable(yield2[1:10,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.  In this context, x1 represents the independent variable, while fit refers to the fitted values. Additionally, CI_L indicates the lower confidence interval, and CI_U indicates the upper confidence interval. Similarly, PI_L represents the lower predicted interval, and PI_U denotes the upper predicted interval.")
+```
 
 
 ### fn_R2RV()
@@ -432,51 +447,60 @@ The object`eq2` originates from the example `fn_dfa()`.
 R2wa <- fn_R2RV(eq=eq2)
 ```
 
+### fn_summary()
 
-```{r}
-eq <- eq2
+The function creates a customized table that displays the regression summary categorized by model and landed weight types: Fresh, Frozen-thawed (Frozen), and Total. The 95% confidence interval is noted in parentheses. Additionally, the adjusted coefficient of determination (R2) and the degrees of freedom (DF) are also reported.
 
-
-fn_R2RV <- function(eq){
-  w <- eq$rweights   # w a vector of weights values
-  yc <- eq$fitted.values # yc a vector of predicted values
-  ywea <-  (1/sum(w)) * sum(w*yc) # a value of the Weighted Estimate Average
-  df <- summary(eq)$df[2]
-  SSEw <- sum(w*(yc-ywea)^2)
-  SSRw <- (eq2[["Scale"]]^2)*df
-  a <- environment(eq[["psi"]])[["cc"]]
-  R2wa <- SSEw/(SSEw+a*SSRw)
-  R2wa_adj <- 1-(1-R2wa)*((length(yc)-1)/df)
-  R2was <- c(R2wa,R2wa_adj)
-  print(R2was)
-}
+The function requires defining:
 
 
+ * `List_Tables` A list to store summary regression results.
+ * `modelos` A character vector containing the variables of a function.
+ * `catego` A character vector containing the landed weight categories.
+ * `eq` Summary of the equation fitted.
+ * `R2` A numeric value of the adjusted robust version of the coefficient of determination.
+ * `i` An integer value indicating the ith regression analyzed. 
+ * `j` An integer value indicating the jth categorie analyzed.
 
-w <- eq$rweights   # w a vector of weights values
-  yc <- eq$fitted.values # yc a vector of predicted values
-  ywea <-  (1/sum(w)) * sum(w*yc) # a value of the Weighted Estimate Average
-  y1 <- eq$model[,1]
-  SSEw <- sum(w*(yc-ywea)^2)
-  SSRw <- eq[["Scale"]]
-  a <- environment(eq[["psi"]])[["cc"]]
-  R2wa <- SSEw/(SSEw+(a*SSRw))
-  R2wa_adj <- 1-(1-R2wa)*((length(y1)-1)/summary(eq)$df[2])
-  R2was <- c(R2wa,R2wa_adj)
-  print(R2was)
+#### Example
+
+# Aqui
+<!-- La funcion esta definida para botete, si tengo diferentes nodelos no jala, utilizo  -->
+<!-- ifelse (i<7,"Linear","Potential") -->
+
+```{r fn_summary, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+
+#List_Tables <- list(eq1, eq2)
+#modelos <- modelos
+#catego <- c("Total")
+#eq <-
+#R2 <- 
+#i <- 
+#j <- 1
+
+
+
+# T1 <- fn_summary(List_Tables, modelos, catego, eq, R2, i, j)
+
+
 ```
 
 
-
-
-### fn_summary()
-`fn_summary()`:	Customizes and stores the summary of each fitted regression.
+# Aqui
 
 ### fn_Wlive()
 `fn_Wlive()`: The live weight, which is the total weight of an organism, is estimated based
 on the weights of different landing categories, such as eviscerated weight and
 fillet weight. These estimates are derived using regression parameters that
 relate total weight to the weight of each landing category.
+
+```{r fn_Wlive, , echo=FALSE, message=FALSE, warning=FALSE, results='asis' }
+
+#Table1 <- fn_Wlive(List_Tables, mfi, List_TCCT, Biomass)
+```
+
+#### Example
+
 
 # Plot functions
 
