@@ -1,6 +1,6 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
 ================
-13 junio 2025
+06 marzo 2026
 
 Morefi
 <a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
@@ -88,7 +88,7 @@ install_github("Macrurido/Morefi")
 ### Bullseye puffer measures
 
 To demonstrate how the package functions, we utilize the dataset
-`botete`, containing 1,405 fish across 7 variables: the total
+`botete`, containing 1,397 fish across 7 variables: the total
 length(LT), standard length (SL), body trunk length (LB), total weight
 (WT), body trunk weight (WB), and fillet weight (Wfi) of the bullseye
 puffer (*Sphoeroides annulatus*), collected from the Eastern Central
@@ -223,3 +223,17 @@ Inference. 140(7), 1852-1862. doi: 10.1016/j.jspi.2010.01.008.
 SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA.
 Comisión Nacional de Pesca y Acuacultura.
 <https://sipesca.conapesca.gob.mx> (accessed 7 February 2024).
+
+# Citation
+
+Aguirre-Villaseñor H (2025). Morefi: Morphological Relationships Fitted
+by Robust Regression. R package version 0.1.0,
+<https://macrurido.github.io/Morefi/>.
+
+    @Manual{,
+      title = {Morefi: Morphological Relationships Fitted by Robust Regression},
+      author = {Hugo Aguirre-Villaseñor},
+      year = {2025},
+      note = {R package version 0.1.0},
+      url = {https://macrurido.github.io/Morefi/},
+    }

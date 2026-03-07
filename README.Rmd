@@ -185,9 +185,7 @@ in the article by Aguirre-Villaseñor et al. (FISH13711).
 
 ## References
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
-relationships as a fisheries management tool: A case study of the bullseye puffer
-(*Sphoeroides annulatus*. Tetraodontidae). Fisheries Research.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593.
 
 Chen, Y., Jackson, D. A., Harvey, H. H. 1992. A comparison of von Bertalanffy and
 polynomial functions in modelling fish growth data. Canadian Journal of Fisheries
@@ -204,4 +202,16 @@ doi: 10.1016/j.jspi.2010.01.008.
 SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA. Comisión
 Nacional de Pesca y Acuacultura. https://sipesca.conapesca.gob.mx (accessed 7 
 February 2024).
+
+# Citation
+
+Aguirre-Villaseñor H (2025). Morefi: Morphological Relationships Fitted by Robust Regression. R package version 0.1.0, https://macrurido.github.io/Morefi/.
+
+    @Manual{,
+      title = {Morefi: Morphological Relationships Fitted by Robust Regression},
+      author = {Hugo Aguirre-Villaseñor},
+      year = {2025},
+      note = {R package version 0.1.0},
+      url = {https://macrurido.github.io/Morefi/},
+    }
 

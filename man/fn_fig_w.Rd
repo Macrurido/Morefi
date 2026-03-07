@@ -4,7 +4,7 @@
 \alias{fn_fig_w}
 \title{fn_fig_w}
 \usage{
-fn_fig_w(df, opacity, tint, my_labeller, order)
+fn_fig_w(df, opacity, tint, my_labeller, order, lab_x, lab_y)
 }
 \arguments{
 \item{df}{A data frame contains the following variables: independent (x) and dependent (y) variables, the fitted variable (fitt), a weighted variable (wi), and additional details including the weights (wi), fitted values (fitt), residuals (ei), and the scale.}
@@ -16,6 +16,10 @@ fn_fig_w(df, opacity, tint, my_labeller, order)
 \item{my_labeller}{Transforms objects to labeller functions. Used internally by labeller().}
 
 \item{order}{A vector determines the sequence of the plots.}
+
+\item{lab_x}{A string contains the x-axis label.}
+
+\item{lab_y}{A string contains the y-axis label.}
 }
 \value{
 A customized multi-panel plot that uses a color scale for the residual points.
@@ -33,13 +37,32 @@ residual distance, such as studentized residuals, can be used due to the
 varying dimensions of the variables.
 
  Since the parameters contain subscripts, the labels were customized using the
-`ggplot2::as_labeller()` function and are stored in `my_labeller`.
+`ggplot2::as_labeller()` function and are stored in `my_labeller`. The axis
+labels also contain subscripts and are defined in x-axis and y-axis.
 }
 \examples{
  \dontrun{
+ ## Data frame
+ seed <- set.seed(123)
+ id <- rep("LT_LS"," LT_LB", "LS_LB", each=30)
+ ei <- c(runif(90, -2.5,2.5),runif(10, -4,4)
+ scale <- ifelse(abs(ei) < 2, "u", ifelse(abs(ei) >= 2 & abs(ei) <2.5, "W", "o"))
+ wi <- round(ifelse(scale=="u", runif(1, 0.9, 1), ifelse(scale=="W",
+                    runif(1, 0.3, 0.89), runif(1, 0, 0.29))),2)
+ df <-data.frame(id=id, ei=ei, wi=wi, scale=scale)
 
- p <- fn_fig_w(df, opacity,tint, my_labeller,
-               order= X_names)
+ opacity <- 1/5  # alpha
+ tint <- c("#000000","#009E73", "#56B4E9")
+ my_labeller <- as_labeller(c(LT_LS=  "L[T]-L[S]",
+                              LT_LB=  "L[T]-L[B]",
+                              LS_LB=  "L[S]-L[B]",
+                              default = label_parsed)
+ order <- c("LT_LS", "LT_LB",  "LS_LB")
+ lab_x <- expression(italic(e[i]))
+ lab_y <- expression(italic(w[i]))
+
+
+ p <- fn_fig_w(df, opacity, tint, my_labeller, order, lab_x, lab_y)
 }
 
 }

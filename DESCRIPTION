@@ -2,10 +2,16 @@ Package: Morefi
 Type: Package
 Title: Morphological Relationships Fitted by Robust Regression 
 Version: 0.1.0
-Author: Hugo Aguirre-Villaseñor
-Maintainer: Hugo Aguirre-Villaseñor <hugo.aguirre@inapesca.gob.mx>
+Authors@R: c(
+    person(
+      "Hugo", "Aguirre-Villaseñor",
+      email = "hugo.aguirre@imipas.gob.mx",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-9846-0915")
+    )
+  )
 Description: This is a methodological package developed in R to analyze the 
-              submitted article by Aguirre-Villaseñor et al. (FISH13711). Many
+              submitted article by Aguirre-Villaseñor et al. (2025). Many
               species are marketed through artisanal fishing in various commercial
               forms. However, there are currently no biometric relationships that
               allow for predicting live weight (the total weight of the fish)
@@ -31,7 +37,7 @@ Suggests:
     htmltools (>= 0.5.8),
     rmdformats (>= 1.0.4)
 Config/testthat/edition: 3
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports:
     broom (>= 1.0.8),
     dplyr (>= 1.1.4),

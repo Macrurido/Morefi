@@ -16,6 +16,16 @@ knitr::opts_chunk$set(
   comment = "#>"
 #  fig.path = "master/images/Morefi.png",
 #  out.width = "100%"
+
+# Place this chunk at the top of your R Markdown file.
+## Set the default echo to FALSE 
+
+# knitr::opts_chunk$set() is used to set global options for all chunks in the document.
+
+# If you need to override this setting for specific chunks, you can explicitly set
+#echo = TRUE in those chunks.
+
+
 )
 ```
 
@@ -39,9 +49,7 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a
 
 This is a methodological package developed in R for analyzing the submitted article:
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
-relationships as a fisheries management tool: A case study of the bullseye puffer
-(*Sphoeroides annulatus*. Tetraodontidae). Fisheries Research.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric Relationships as a Fisheries Management Tool: A Case Study on the Bullseye Puffer (*Sphoeroides annulatus*) in an Artisanal Fishery. Fisheries Research.
 
 In fisheries monitoring, body length is the most commonly measured parameter because it is quick and easy to obtain. In contrast, measuring weight requires a level and stable scale, which can be difficult to secure in field sampling. Biometric relationships are crucial in fisheries biology. When accurately calculated, these relationships can be very useful for management purposes, especially for estimating an organism's total length or weight based on other body measurements.
 
@@ -104,9 +112,11 @@ To call the `theme_papers()` function use the following statement:
 theme_papers <- Morefi::theme_papers()
 ```
 
-# Values to define for the examples
+# Values to define for the examples{#Values_to_define}
 
-<!-- Revisar si solo se usa en un ejemplo, se pasa al ejemplo, si se usa en más de uno, o se deja aquí, o se define en el primer ejemplo que lo requiera -->
+[Esto no lo se Rick](#No_lo_se_Rick)
+
+The following objects, data frames, and lists will be utilized in multiple examples to avoid repetition of information.
 
 ## List: modelos
 
@@ -116,7 +126,6 @@ A list that defines the variables that will be taken into account for the model.
 modelos <- list (LTvs.LS  =  c(1,2),
                  LTvs.WT  =  c(1,4))
 ```
-
 
 # Morefi functions
 
@@ -154,7 +163,7 @@ In the table the first row displays the Analysis of Residual Sum of Squares (ARS
 
 The adjusted models show the following data: Fresh SSR=   and DF= 742; Frozen SSR= 1280131.81 and DF= 651; and the total sample SSR= 6115874.53 and DF= 1395. Values are stored in the table `Table_CC`, this is stored in a list, and the name of each item is built with the acronyms of the model variables (e.g. LTWT).
 
-```{r fn_ARSS, warning=FALSE, message=FALSE, results='asis'}
+```{r fn_ARSS, warning=FALSE, message=FALSE}
 Table_CC <- data.frame(matrix(NA,nrow=4,ncol=8))
 Table_CC[1,1] <- "Lt-WT" 
 Table_CC[,2] <- c("Fresh","Frozen","Total","Joined")
@@ -179,6 +188,7 @@ ARSS <- fn_ARSS(List_ARSS, i,  alfa= 0.05)
 library(knitr)
 kable(ARSS[[i]], format = "html", caption = "Table of the Coincident Curve Test.")
 ```
+> **&#9432;** To enhance the visualization of the function results, tables and their headers were constructed using the knitr and kableExtra packages. The code is not displayed.
 
 ### fn_dfa()
 
@@ -200,7 +210,7 @@ Using the biometric data from `Morefi::botete`, a linear relationship between To
 
 For optimal functionality of `fn_dfa()`, the data frames used for fitting relationships must be formatted as tibble.
 
-```{r fn_dfa, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+```{r fn_dfa, message=FALSE, warning=FALSE}
 library(dplyr)
 library(tibble)
 
@@ -236,6 +246,7 @@ kable(dfa1[1:6,], format = "html", caption = "The first six rows of the table ar
 
 kable(dfa2[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.")
 ```
+> **&#9432;** To enhance the visualization of the function results, tables and their headers were constructed using the knitr and kableExtra packages. The code is not displayed.
 
 ### fn_freq()
 
@@ -271,7 +282,7 @@ which were generated with the `fn_dfa()` example. In each data frame, the weight
 The function `fn_freqw()` calculates the frequency of weighted values within a defined interval based on a weighted scale classification:
 unweighted $(w_{i}=1)$, weighted $(1>w_{i}≥0.25)$, and outliers $(w_{i}<0.25)$. The weighted scale is stored in `breaks`.
 
-```{r fn_freqw, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+```{r fn_freqw, message=FALSE, warning=FALSE}
 breaks  <-  c(0,0.25,1,Inf) # Weighted scale
 
 df <- dfa1$wi    # Data frame 1
@@ -281,7 +292,8 @@ df <- dfa2$wi    # Data frame 2
 freq2 <- fn_freqw(df, breaks, right=FALSE)
 
 # Merging the two data sets (as example) 
-freqw <- cbind(freq1, freq2)
+freqw <- as.data.frame(t(cbind(freq1, freq2)))
+
 ```
 
 
@@ -289,7 +301,7 @@ freqw <- cbind(freq1, freq2)
 kable(freqw, format = "html", caption = "Percentage frequencies of weights (wi) based on a weighted scale classification")
 
 ```
-
+> **&#9432;** To enhance the visualization of the function results, tables and their headers were constructed using the knitr and kableExtra packages. The code is not displayed.
 
 ### fn_xseq() 
  
@@ -312,7 +324,7 @@ Using biometric data from `Morefi::botete`, the sequence of independent variable
 
 The object `modelos` was defined earlier in the section titled **Values to Define for the Examples**.
 
-```{r fn_xseq, echo=FALSE, message=FALSE, warning=FALSE, results='asis' }
+```{r fn_xseq, message=FALSE, warning=FALSE}
 df <- mydata
 bin <- c(2)
 i=1
@@ -321,13 +333,15 @@ xseq1 <- fn_xseq(df, modelos, bin, i)
 bin <- c(5)
 i=2
 xseq2 <- fn_xseq(df, modelos, bin, i)
+
 ```
 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
-xseq <- cbind(head(xseq1, 6), head(xseq2, 6))
+xseq <- t(cbind(head(xseq1, 9), head(xseq2, 9)))
 
-kable(xseq[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the sequence of independent variables for the relationships between Total Length and Standard Length (LT_LS), and between Total Length and Total Weight (LT_WT).")
+kable(xseq[,1:9], format = "html", caption = "The first nine columns of the table are displayed, based on the sequence of independent variables for the relationships between Total Length and Standard Length (LT_LS), and between Total Length and Total Weight (LT_WT).")
 ```
+> **&#9432;** To enhance the visualization of the function results, tables and their headers were constructed using the knitr and kableExtra packages. The code is not displayed.
 
 ### fn_intervals()
 
@@ -343,7 +357,7 @@ The function return a data frame `df` with the xseq (x1), the fitted values for 
 
 #### Example
 
-```{r fn_intervals, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+```{r fn_intervals, message=FALSE, warning=FALSE}
 
 eq <- eq1
 xseq <- xseq1
@@ -353,6 +367,7 @@ CI <- fn_intervals(eq,xseq)
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
 kable(CI[1:6,], format = "html", caption = "The first six rows of the table display the results of the LT versus LS relationship. In this context, x1 represents the independent variable, while fit refers to the fitted values. Additionally, CI_L indicates the lower confidence interval, and CI_U indicates the upper confidence interval. Similarly, PI_L represents the lower predicted interval, and PI_U denotes the upper predicted interval.")
 ```
+> **&#9432;** To enhance the visualization of the function results, tables and their headers were constructed using the knitr and kableExtra packages. The code is not displayed.
 
 ### fn_fyield()
 
@@ -373,7 +388,7 @@ The function requires defining:
 
 `CI` comes from `fn_intervals()` example
 
-```{r fn_fyield, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+```{r fn_fyield, message=FALSE, warning=FALSE}
 bm <- 18
 df <- CI
 i <- 1
@@ -391,6 +406,7 @@ kable(yield1[1:10,], format = "html", caption = "The first six rows of the table
 
 kable(yield2[1:10,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.  In this context, x1 represents the independent variable, while fit refers to the fitted values. Additionally, CI_L indicates the lower confidence interval, and CI_U indicates the upper confidence interval. Similarly, PI_L represents the lower predicted interval, and PI_U denotes the upper predicted interval.")
 ```
+> **&#9432;** To enhance the visualization of the function results, tables and their headers were constructed using the knitr and kableExtra packages. The code is not displayed.
 
 
 ### fn_R2RV()
@@ -442,8 +458,11 @@ The function returns the a vector with the robust version of the coefficient of 
 #### Example
 
 The object`eq2` originates from the example `fn_dfa()`.
+
+The function returns a vector containing both $R^{2}$ and the adjusted $R^{2}_{adj}$ values.
  
-```{r fn_R2RV, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+ 
+```{r fn_R2RV, message=FALSE, warning=FALSE}
 R2wa <- fn_R2RV(eq=eq2)
 ```
 
@@ -462,28 +481,118 @@ The function requires defining:
  * `i` An integer value indicating the ith regression analyzed. 
  * `j` An integer value indicating the jth categorie analyzed.
 
+#### Summary Regression Table.
+
+To store the summary regression, a customised table `T1` is generated. The type of function model (**Linear** or **Potential**), and its variables, are indicated in the first two columns. The third column indicates the data source used (**Fresh**, **Fresh-Thawed**, or **Total**). By row it is stored: the **Intercept**, its confidence interval **(CI95%)**; the **Slope**; its **(CI95%)**; the adjusted robust coefficient of determination **R2,adj,w,a** and the degrees of freedom **DF**.
+
+```{r T1, warning=FALSE, message=FALSE}
+    # An empty table to store the summary regression results   
+catego <- c("Total") 
+nr <- length(catego)
+
+T1 <- data.frame(matrix(NA, nrow = nr, ncol = 9))
+names(T1) <- c("Function", "Model","Categories",
+               "Intercept", "CI95%","Slope",
+               "CI95%", "R2","DF")
+T1
+```       
+
+#### List_Tables store regression results
+
+To store the results of each fitted model, a list called `List_Tables` was created. Each item in the list contains the customized table `T1`, which is initially filled with `NA` values.
+
+```{r List_Tables, warning=FALSE, message=FALSE}
+
+# Create model list including empty T1 table
+List_Tables <- setNames(lapply(1:length(modelos), function(x)
+T1),names(modelos))
+
+```
+
 #### Example
 
 # Aqui
-<!-- La funcion esta definida para botete, si tengo diferentes nodelos no jala, utilizo  -->
-<!-- ifelse (i<7,"Linear","Potential") -->
+<!-- La funcion esta definida para botete, si tengo diferentes modelos no jala, utilizo  -->
+<!-- ifelse (i<7,"Linear","Potential")
+EN el ejemplo de este manual solo uso dos una lineal y otra potencial, sin embargo en LT vs WT dice lineal porque i = 2.
+Si quiero ver la tabla no la veo directo porque me da la Lista
+si quiero ver la tabla la tengo que hacer lo que hago en Filete.
 
-```{r fn_summary, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
-
-#List_Tables <- list(eq1, eq2)
-#modelos <- modelos
-#catego <- c("Total")
-#eq <-
-#R2 <- 
-#i <- 
-#j <- 1
+Tengo que ver si en la función la dejo en la lista la tabla o solo
+hago la tabla y la guardo en la lista por fuera como en el resto de los ejemplos
+-->
 
 
+```{r}
+# Performing the table
 
-# T1 <- fn_summary(List_Tables, modelos, catego, eq, R2, i, j)
+#T_sum <- dplyr::bind_rows(List_Tables)
 
+# Changing Model labels for the Table
+# Insert three NA between values of vector row_name
+#mdls <- as.vector(t(cbind(row_name, matrix(NA, nrow = length(row_name), ncol = 2))))
+#T_sum$Model <- mdls
+```
+
+
+
+```{r fn_summary, message=FALSE, warning=FALSE}
+
+modelos <- modelos
+catego <- c("Total")
+j <- 1
+i <- 1
+
+# Linnear equation
+eq <- eq1
+# R squared
+R2 <- summary(eq)$r.squared 
+#Non parametric IC 95 for parameters
+#betas_IC95 <- confint(eq, level = 0.95)
+
+List_Tables[[i]][j,] <- fn_summary(List_Tables, modelos, catego, eq, R2, i, j)
+i <- 2
+
+# Non nonlinear regression (Potential)  
+eq <- eq2
+# R2 bobust version
+R2 <- Morefi::fn_R2RV(eq)[2]
+#IC 95 Non parametric for parameters
+betas_IC95 <- confint(eq,method = "Wald")  
+List_Tables[[i]][j,] <- fn_summary(List_Tables, modelos, catego, eq, R2, i, j)
 
 ```
+```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+# Load necessary libraries
+library(knitr)
+library(kableExtra)
+
+# Caption
+L_T_sum <- paste("Regression summarized by model and landed
+                    weight categories: Fresh, Frozen-thawed
+                    (Frozen) and Total, for the bullseye puffer
+                    <i>Sphoeroides annulatus</i>. The 95%
+                    confidence interval parameter is in
+                    parentheses. Adjusted robust coefficient of
+                    determination (", paste("$R^{2}_{adj}$"),
+                    paste(") and Degrees of Freedom (DF) are also
+                    reported. Acronyms used: Total length "),
+                    paste("($L_{T}$)"),
+                    paste("standard length "), paste("($L_{S}$)"),
+                    paste("body trunk length "),paste("($L_{B}$)"),
+                    paste("total weight "),paste("($W_{T}$)"),
+                    paste("body trunk weight "),paste("($W_{B}$)"),
+                    paste("and fillet weight "), 
+                    paste("($W_{fi}$)."))  
+  
+
+
+kable(List_Tables[[1]], format = "html", caption = L_T_sum) 
+
+```
+
+> **&#9432;** To enhance the visualization of the function results, tables and their headers were constructed using the knitr and kableExtra packages. The code is not displayed.
+
 
 
 # Aqui
@@ -494,13 +603,20 @@ on the weights of different landing categories, such as eviscerated weight and
 fillet weight. These estimates are derived using regression parameters that
 relate total weight to the weight of each landing category.
 
-```{r fn_Wlive, , echo=FALSE, message=FALSE, warning=FALSE, results='asis' }
-
-#Table1 <- fn_Wlive(List_Tables, mfi, List_TCCT, Biomass)
-```
 
 #### Example
 
+`catch` cames from Data available in the package/data Bullseye puffer fish landings explanation.
+
+```{r fn_Wlive, message=FALSE, warning=FALSE}
+
+#List_Tables <- 
+#mfi <- 
+#List_TCCT <-  
+
+Biomass <- catch
+#Table1 <- fn_Wlive(List_Tables, mfi, List_TCCT, Biomass)
+```
 
 # Plot functions
 
@@ -513,7 +629,7 @@ To assist with analysis, three functions have been created to generate a composi
  
 The `df` is derived from the results of the `fn_dfa()` function described earlier.
 
-```{r df_plots, echo=FALSE, message=FALSE, warning=FALSE}
+```{r df_plots, message=FALSE, warning=FALSE}
 # Preparing the dataset.
 library(dplyr)
 tmp1 <- dfa1              # Data frame 1
@@ -528,13 +644,13 @@ df <- rbind(tmp1, tmp2)   # Joining data sets
  
  * `opacity` A numeric value for the alpha aesthetic used to control the transparency of elements in a plot.
  
-```{r opacity, echo=FALSE, message=FALSE, warning=FALSE}
+```{r opacity, message=FALSE, warning=FALSE}
 opacity <- 0.7
 ```
  
  * `tint` A vector that specifies the palette colors used to color the points.
  
-```{r tint, echo=FALSE, message=FALSE, warning=FALSE}
+```{r tint, message=FALSE, warning=FALSE}
 tint <- c("#000000", "#009E73", "#56B4E9")
 ```
 
@@ -542,14 +658,14 @@ tint <- c("#000000", "#009E73", "#56B4E9")
  
  The observed data points were coloured based on a weighted scale $(w_{i})$: blue for unweighted $(w_{i}=1)$, green for weighted  $(1>w_{i}≥0.25)$, and black for outliers $(w_{i}<0.25)$. Lengths in cm and weights in g.
  
-```{r scale, echo=FALSE, message=FALSE, warning=FALSE}
+```{r scale, message=FALSE, warning=FALSE}
 # weighted value scale
 wi_scale <- c(0.000, 0.249, 0.990, 1.000)
 ```
  
  * `order` A vector determines the sequence of the plots.
  
-```{r order, echo=FALSE, message=FALSE, warning=FALSE}
+```{r order, message=FALSE, warning=FALSE}
 # To order facet wrap plots in ggplot2
 X_names <- c("LT_LS", "LT_WT")
 ```
@@ -558,7 +674,7 @@ X_names <- c("LT_LS", "LT_WT")
  
 Since the parameters contain subscripts, the labels were customized using the `ggplot2::as_labeller()` function and are stored in `my_labeller`.
 
-```{r my_labeller, echo=FALSE, message=FALSE, warning=FALSE}
+```{r my_labeller, message=FALSE, warning=FALSE}
 # The labels in the ggplot composite chart are customized to include subscripts.
 library(ggplot2)
 my_labeller <- as_labeller(c(LT_LS=  "L[T]-L[S]",
@@ -614,12 +730,18 @@ The residual structure was analyzed by graphing residuals against weighted value
 
 The Residual Structures classified by a Weighted Scale was analyzed using combined data sets for the pufferfish *Sphoeroides annulatus*. The label in the grey box indicates the variables used for each model; the raw residuals are shown on the x-axis, and the weighted residuals (wi) are displayed on the y-axis.
 
+The x-axis label is defined in the lab_x object, while the y-axis label is defined in the lab_y object. In this example, both labels are italicized, with the i-th label formatted as a subscript.
+ 
 The standard graphical output, along with the one customized using the `theme papers()` function, is displayed.
 
 ```{r fn_fig_w, warning=FALSE, message=FALSE, out.width="100%"}
 # standard graphical output
-p <- fn_fig_w(df, opacity,tint, my_labeller,
-              order= X_names)
+lab_x <- expression(italic(e[i]))
+lab_y <- expression(italic(w[i]))
+
+# Plot of Residual Structures Classified by a Weighted Scale.
+p <- fn_fig_w(df, opacity,tint, my_labeller,order= X_names, lab_x, lab_y) 
+ 
 # theme papers()
 p + theme_papers
 ```
@@ -630,9 +752,7 @@ p + theme_papers
 
 # References
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
-relationships as a fisheries management tool: A case study of the bullseye puffer
-(*Sphoeroides annulatus*. Tetraodontidae). Fisheries Research.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593.
 
 Chen, Y., Jackson, D. A., Harvey, H. H. 1992. A comparison of von Bertalanffy and
 polynomial functions in modelling fish growth data. Canadian Journal of Fisheries
@@ -650,158 +770,163 @@ SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA. Comis
 Nacional de Pesca y Acuacultura. https://sipesca.conapesca.gob.mx (accessed 7 
 February 2024).
 
+# Citation
+
+Aguirre-Villaseñor H (2025). Morefi: Morphological Relationships Fitted by Robust Regression. R package version 0.1.0, https://macrurido.github.io/Morefi/.
+
+    @Manual{,
+      title = {Morefi: Morphological Relationships Fitted by Robust Regression},
+      author = {Hugo Aguirre-Villaseñor},
+      year = {2025},
+      note = {R package version 0.1.0},
+      url = {https://macrurido.github.io/Morefi/},
+    }
 
 
 
 
 
+<!-- # Esto no lo se Rick {#No_lo_se_Rick} -->
 
-# Esto no lo se Rick
-
-
-<!-- # Lists and tables to organize and store results -->
-<!-- ## Lists to store summaries -->
-
-<!-- Lists must be created to store the relevant summaries. To organize the regression results, a nested list structure is used. This design allows for a hierarchical or multi-level data organization. At the first level, models are categorized, while the second level categorizes the datasets into Fresh, Frozen-thawed (Frozen), and Total sample (Total). Finally, at the third level, sub-lists contain the results from the various fitted models. -->
-
-```{r list, }
-# First hierarchical level: Models
-    X_list <- vector(mode='list', length=2)
-    X_names <- c("LT_LS", "LT_WT")
-    names(X_list) <- X_names 
-# Second hierarchical level: Category
-    Fresh <- X_list
-    Frozen <- X_list
-    Total <- X_list
-# Third hierarchical level: 
-    List_fit <- list(Fresh,Frozen,Total) # Fitting results
-    List_ICmodels <- List_fit # Confidence interval of the models. 
-```
-
-## List to store Coincident Curves Test Tables. 
-
-To store the results of each model regressions, an empty matrix of 4 rows and 8 columns are created. The table `CCT` stores the values and calculus for the Coincident Curves Test between weight categories: **Fresh**, **Frozen**, **Total** and **Joined** (sum of values of **Fresh**, **Frozen**): the residual sum of squares **RSS**, degree of freedom **DF**, Analysis of the Residual Sum of Squares **ARSS**,  **F-table**, **p-value** and decision criteria for $\alpha$= 0.05 **Criteria**. 
-
-To store the results of each fitted model, a list called `List_TCCT` was created. Each item in the list contains the customized table `CCT`, which is initially filled with `NA` values.
+<!-- A ver si si [Values to define for the examples](#Values_to_define) -->
 
 
+<!-- <!-- # Lists and tables to organize and store results --> -->
+<!-- <!-- ## Lists to store summaries --> -->
 
-```{r List_TCCT, warning=FALSE, message=FALSE, results="hide"}
-             
-CCT <- (matrix(NA,nrow=4,ncol=8))
-CCT[,2] <-  c("Fresh","Frozen","Total","Joined")
-colnames(CCT) <- c("Model","Data","RSS","DF","ARSS","F-table",
-                   "p-value","Criteria")
+<!-- <!-- Lists must be created to store the relevant summaries. To organize the regression results, a nested list structure is used. This design allows for a hierarchical or multi-level data organization. At the first level, models are categorized, while the second level categorizes the datasets into Fresh, Frozen-thawed (Frozen), and Total sample (Total). Finally, at the third level, sub-lists contain the results from the various fitted models. --> -->
 
-# Create model list including empty T1 table
-List_TCCT <- setNames(lapply(1:length(modelos), function(x)
-CCT),names(modelos))
+<!-- ```{r list, } -->
+<!-- # # First hierarchical level: Models -->
+<!-- #     X_list <- vector(mode='list', length=2) -->
+<!-- #     X_names <- c("LT_LS", "LT_WT") -->
+<!-- #     names(X_list) <- X_names  -->
+<!-- # # Second hierarchical level: Category -->
+<!-- #     Fresh <- X_list -->
+<!-- #     Frozen <- X_list -->
+<!-- #     Total <- X_list -->
+<!-- # # Third hierarchical level:  -->
+<!-- #     List_fit <- list(Fresh,Frozen,Total) # Fitting results -->
+<!-- #    List_ICmodels <- List_fit # Confidence interval of the models.  -->
+<!-- ``` -->
 
-CCT
-```
+<!-- ## List to store Coincident Curves Test Tables.  -->
 
-## List to store summary regression tables.
+<!-- To store the results of each model regressions, an empty matrix of 4 rows and 8 columns are created. The table `CCT` stores the values and calculus for the Coincident Curves Test between weight categories: **Fresh**, **Frozen**, **Total** and **Joined** (sum of values of **Fresh**, **Frozen**): the residual sum of squares **RSS**, degree of freedom **DF**, Analysis of the Residual Sum of Squares **ARSS**,  **F-table**, **p-value** and decision criteria for $\alpha$= 0.05 **Criteria**.  -->
 
-To store the summary regression, a customised table `T1` is generated. The type of function model (**Linear** or **Potential**), and its variables, are indicated in the first two columns. The third column indicates the data source used (**Fresh**, **Fresh-Thawed**, or **Total**). By row it is stored: the **Intercept**, its confidence interval **(CI95%)**; the **Slope**; its **(CI95%)**; the adjusted robust coefficient of determination **R2,adj,w,a** and the degrees of freedom **DF**.
-
-```{r T1, warning=FALSE, message=FALSE}
-    # An empty table to store the summary regression results   
- 
-T1 <- data.frame(matrix(NA, nrow = 3, ncol = 9))
-names(T1) <- c("Function", "Model","Categories",
-               "Intercept", "CI95%","Slope",
-               "CI95%", "R2","DF")
-# Create model list including empty T1 table
-List_Tables <- setNames(lapply(1:length(modelos), function(x)
-T1),names(modelos))
-
-T1
-```     
-
-
-# Fitting modeles
-
-Using the biometric data from `Morefi::botete`, a linear relationship between Total Length and Standard Length (LT_LS) was established using
-the `robustbase::lmrob` function. Additionally, the relationship between Total Length and Total Weight (LT_WT) was fitted using the
-`robustbase::nlm` function, with an input value of a = 0.1 and a slope of b = 3.
-
-Both relationships are fitted for the landed categories: Fresh, Frozen-thawed (Frozen), Total (All samples).
-
-In the for loop, the jth landed categories is selected: 1 for  Fresh, 2 for Frozen-thawed, 3 for the total sample.
-
-```{r fitting, }
-# for (j in 1:3) {
-#       if (j <3)  {
-#             tmp <- mydata[mydata$Fleet == j,]
-#             df <- dplyr::tibble(x1 = tmp[,1],y1 = tmp[,2])
-#             # Fitting model
-#             eq <- robustbase::lmrob(y1 ~ x1, data= df,
-#                                      setting = "KS2014",
-#                                      doCov = TRUE)
-#             # Storing values
-#             # Estimate confidence interval function
-#           List_ICmodels[[j]][[1]] <- Morefi::fn_intervals(eq,xseq)
-#           List_fit [[j]][[1]] <- fn_dfa(eq= eq)
-#             
-#             
-#                 
-#                 
-#                 
-#                 
-#         }else{
-#                 tmp <- mydata
-#       } # End if
-#   
-#       df <- dplyr::tibble(x1 = tmp[,1],
-#                 y1 = tmp[,2])
-# 
-# eq1 <- robustbase::lmrob(y1 ~ x1, data= df,
-#                                   setting = "KS2014",
-#                                               doCov = TRUE)
-# 
-# 
-# 
-# 
-# 
-# #  Power Model
-# df <- dplyr::tibble(x1 = tmp[,1],
-#                 y1 = tmp[,4])
-# 
-# a=0.01
-# b=3
-# 
-# eq2 <- robustbase::nlrob(y1 ~ a*x1^b, data= df,
-#                         start = list(a= a, b= b),
-#                         trace = FALSE)
-# 
-#   
-#   
-#   
-#   
-#         # In the for loop, the ith model is selected.
-# 
-#     
-#    # Linnear equation
-#           eq <- robustbase::lmrob(y1 ~ x1, data= datos,
-#                                   setting = "KS2014",
-#                                               doCov = TRUE)
-#     # R squared
-#           R2 <- summary(eq)$r.squared    
-#           #Non parametric IC 95 for parameters
-#           betas_IC95 <- confint(eq, level = 0.95)
-# 
-#       }
-          
-```
-
-
-The Total length (LT) - Total weight (WT) was estimated for the bullseye puffer *Sphoeroides annulatus* for landed categories: Fresh, Frozen-thawed (Frozen), Total (All sample) and Joined (sum of values of Fresh and Frozen). The Residual Sum of Squares (RSS) and the degrees of freedom (DF) are provided for each data source.
-
-# Aqui termina esto no lo sé Rick
+<!-- To store the results of each fitted model, a list called `List_TCCT` was created. Each item in the list contains the customized table `CCT`, which is initially filled with `NA` values. -->
 
 
 
+<!-- ```{r List_TCCT, warning=FALSE, message=FALSE, results="hide"} -->
+
+<!-- CCT <- (matrix(NA,nrow=4,ncol=8)) -->
+<!-- CCT[,2] <-  c("Fresh","Frozen","Total","Joined") -->
+<!-- colnames(CCT) <- c("Model","Data","RSS","DF","ARSS","F-table", -->
+<!--                    "p-value","Criteria") -->
+
+<!-- # Create model list including empty T1 table -->
+<!-- List_TCCT <- setNames(lapply(1:length(modelos), function(x) -->
+<!-- CCT),names(modelos)) -->
+
+<!-- CCT -->
+<!-- ``` -->
+
+<!-- ## List to store summary regression tables. -->
+
+<!-- To store the summary regression, a customised table `T1` is generated. The type of function model (**Linear** or **Potential**), and its variables, are indicated in the first two columns. The third column indicates the data source used (**Fresh**, **Fresh-Thawed**, or **Total**). By row it is stored: the **Intercept**, its confidence interval **(CI95%)**; the **Slope**; its **(CI95%)**; the adjusted robust coefficient of determination **R2,adj,w,a** and the degrees of freedom **DF**. -->
+
+<!-- ```{r Nell_T1, warning=FALSE, message=FALSE} -->
+<!--     # An empty table to store the summary regression results    -->
+
+<!-- T1 <- data.frame(matrix(NA, nrow = 3, ncol = 9)) -->
+<!-- names(T1) <- c("Function", "Model","Categories", -->
+<!--                "Intercept", "CI95%","Slope", -->
+<!--                "CI95%", "R2","DF") -->
+<!-- # Create model list including empty T1 table -->
+<!-- List_Tables <- setNames(lapply(1:length(modelos), function(x) -->
+<!-- T1),names(modelos)) -->
+
+<!-- T1 -->
+<!-- ```      -->
 
 
+<!-- # Fitting modeles -->
+
+<!-- Using the biometric data from `Morefi::botete`, a linear relationship between Total Length and Standard Length (LT_LS) was established using -->
+<!-- the `robustbase::lmrob` function. Additionally, the relationship between Total Length and Total Weight (LT_WT) was fitted using the -->
+<!-- `robustbase::nlm` function, with an input value of a = 0.1 and a slope of b = 3. -->
+
+<!-- Both relationships are fitted for the landed categories: Fresh, Frozen-thawed (Frozen), Total (All samples). -->
+
+<!-- In the for loop, the jth landed categories is selected: 1 for  Fresh, 2 for Frozen-thawed, 3 for the total sample. -->
+
+<!-- ```{r fitting, } -->
+<!-- # for (j in 1:3) { -->
+<!-- #       if (j <3)  { -->
+<!-- #             tmp <- mydata[mydata$Fleet == j,] -->
+<!-- #             df <- dplyr::tibble(x1 = tmp[,1],y1 = tmp[,2]) -->
+<!-- #             # Fitting model -->
+<!-- #             eq <- robustbase::lmrob(y1 ~ x1, data= df, -->
+<!-- #                                      setting = "KS2014", -->
+<!-- #                                      doCov = TRUE) -->
+<!-- #             # Storing values -->
+<!-- #             # Estimate confidence interval function -->
+<!-- #           List_ICmodels[[j]][[1]] <- Morefi::fn_intervals(eq,xseq) -->
+<!-- #           List_fit [[j]][[1]] <- fn_dfa(eq= eq) -->
+<!-- #              -->
+<!-- #              -->
+<!-- #                  -->
+<!-- #                  -->
+<!-- #                  -->
+<!-- #                  -->
+<!-- #         }else{ -->
+<!-- #                 tmp <- mydata -->
+<!-- #       } # End if -->
+<!-- #    -->
+<!-- #       df <- dplyr::tibble(x1 = tmp[,1], -->
+<!-- #                 y1 = tmp[,2]) -->
+<!-- #  -->
+<!-- # eq1 <- robustbase::lmrob(y1 ~ x1, data= df, -->
+<!-- #                                   setting = "KS2014", -->
+<!-- #                                               doCov = TRUE) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #  Power Model -->
+<!-- # df <- dplyr::tibble(x1 = tmp[,1], -->
+<!-- #                 y1 = tmp[,4]) -->
+<!-- #  -->
+<!-- # a=0.01 -->
+<!-- # b=3 -->
+<!-- #  -->
+<!-- # eq2 <- robustbase::nlrob(y1 ~ a*x1^b, data= df, -->
+<!-- #                         start = list(a= a, b= b), -->
+<!-- #                         trace = FALSE) -->
+<!-- #  -->
+<!-- #    -->
+<!-- #    -->
+<!-- #    -->
+<!-- #    -->
+<!-- #         # In the for loop, the ith model is selected. -->
+<!-- #  -->
+<!-- #      -->
+<!-- #    # Linnear equation -->
+<!-- #           eq <- robustbase::lmrob(y1 ~ x1, data= datos, -->
+<!-- #                                   setting = "KS2014", -->
+<!-- #                                               doCov = TRUE) -->
+<!-- #     # R squared -->
+<!-- #           R2 <- summary(eq)$r.squared     -->
+<!-- #           #Non parametric IC 95 for parameters -->
+<!-- #           betas_IC95 <- confint(eq, level = 0.95) -->
+<!-- #  -->
+<!-- #       } -->
+
+<!-- ``` -->
 
 
+<!-- The Total length (LT) - Total weight (WT) was estimated for the bullseye puffer *Sphoeroides annulatus* for landed categories: Fresh, Frozen-thawed (Frozen), Total (All sample) and Joined (sum of values of Fresh and Frozen). The Residual Sum of Squares (RSS) and the degrees of freedom (DF) are provided for each data source. -->
+
+<!-- # Aqui termina esto no lo sé Rick -->

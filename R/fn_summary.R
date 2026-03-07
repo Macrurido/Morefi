@@ -37,6 +37,14 @@ fn_summary <- function(List_Tables, modelos, catego, eq, R2, i, j){
   T1[1,1] <- ifelse (i<7,"Linear","Potential")
   T1[1,2] <- paste0(substr(lvar,1,2)," vs. ",
                     substr(lvar,3,nchar(lvar)))
+  ### Aqui deberia extraer los nombres de las Columnas
+  ### T1[1,2] <- paste0(substr(lvar,1,2)," vs. ",
+  ### substr(lvar,3,nchar(lvar)))
+  ### names(T1)[modelos[[2]][2]]
+  ### La funcio no usa modelos
+  ### Ver si puedo sacar los nombres de las variables de T1 en el ejemplo
+  ### de filete.
+
   T1[j,3] <- catego[j]
   T1[j,4] <- eq$coefficients[1]                          # b0
   T1[j,5] <- paste0("(",round(confint.default(eq)[1,1],2)," to ",
