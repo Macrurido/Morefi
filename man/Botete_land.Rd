@@ -36,9 +36,10 @@ body trunk Fresh-Thawed (WB_Fresh_Thawed); fillet fresh (Wfi_Fresh),
 and the sum of total (Total).
 }
 \references{
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711).Biometric
-relationships as a fisheries management tool: A case study of the bullseye puffer
-(Sphoeroides annulatus. Tetraodontidae). Fisheries Research.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025).
+Biometric relationships as a fisheries management tool: A case study on the
+bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries
+ Research, 292, 107593.
 
 SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA.
 Comisión Nacional de Pesca y Acuacultura. <https://sipesca.conapesca.gob.mx>

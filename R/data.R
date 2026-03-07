@@ -54,9 +54,10 @@
 #'
 #' @source <https://github.com/Macrurido/Morefi.git>
 #' @references
-#' Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711).Biometric
-#' relationships as a fisheries management tool: A case study of the bullseye puffer
-#' (Sphoeroides annulatus. Tetraodontidae). Fisheries Research.
+#' Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025).
+#' Biometric relationships as a fisheries management tool: A case study on the
+#' bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries
+#'  Research, 292, 107593.
 #'
 #' @references
 #' SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA.
