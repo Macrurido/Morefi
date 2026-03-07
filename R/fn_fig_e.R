@@ -41,7 +41,7 @@
 #'
 #' @export
   fn_fig_e <- function(df, opacity, tint, scale, order, my_labeller){
-    p <- ggplot(df,aes(x= x, y= ei, colour= wi)) +
+    p <- ggplot(df,aes(x= .data$x, y= .data$ei, colour= .data$wi)) +
               geom_point(shape = 19,
                          size = 1.3,
                          stroke = 1,

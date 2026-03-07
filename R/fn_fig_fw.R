@@ -41,14 +41,14 @@
 #'
 #' @export
 fn_fig_fw <- function(df, opacity, tint, scale, order, my_labeller){
-    p <- ggplot(df, aes(x= x, y= y, color = wi)) +
+    p <- ggplot(df, aes(x= .data$x, y= .data$y, color = .data$wi)) +
     geom_point(shape = 19,
                size = 1.3,
                stroke = 1,
                alpha = opacity) +
     scale_color_stepsn(colours = tint,
                        breaks = scale) +
-    geom_line(aes(y = fitt),
+    geom_line(aes(y = .data$fitt),
               colour="#000000",
               linewidth = 1) +
     facet_wrap(~forcats::fct_relevel(id, order),

@@ -201,10 +201,10 @@ al. (FISH13711).
 
 ## References
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata
-(FISH13711). Biometric relationships as a fisheries management tool: A
-case study of the bullseye puffer (*Sphoeroides annulatus*.
-Tetraodontidae). Fisheries Research.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á.
+(2025). Biometric relationships as a fisheries management tool: A case
+study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal
+fishery. Fisheries Research, 292, 107593.
 
 Chen, Y., Jackson, D. A., Harvey, H. H. 1992. A comparison of von
 Bertalanffy and polynomial functions in modelling fish growth data.

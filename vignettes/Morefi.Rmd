@@ -666,6 +666,8 @@ The attributes associated with this function: `df`, `opacity`, `tint`, `wi_scale
 
 The objects `dfa1`, and `dfa2` were derived from the `fn_dfa()` example.
 
+The x-axis label is defined in the lab_x object, while the y-axis label is defined in the lab_y object. In this example, both labels are italicized, with the i-th label formatted as a subscript.
+
 ```{r}
 # Preparing the dataset.
 library(dplyr)
@@ -693,6 +695,9 @@ library(ggplot2)
 my_labeller <- as_labeller(c(LT_LS=  "L[T]-L[S]",
                              LT_WT=  "L[T]-W[T]"),
                            default = label_parsed)
+# Axis labels
+lab_x <- expression(italic(e[i]))
+lab_y <- expression(italic(w[i]))
 
 # The plot
 p <- fn_fig_w(df, opacity,tint, my_labeller,order= X_names, lab_x, lab_y) 

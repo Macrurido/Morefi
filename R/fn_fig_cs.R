@@ -29,14 +29,14 @@ fn_fig_cs <- function(df, opacity, tint, scale, etiquetas, modelos, i){
 #  x <- y <- wi <- fitt <-   NULL
 #  utils::globalVariables(names(df), package="Morefi", add=F)
   #The plot
-    p <- ggplot(df, aes(x, y, color = wi)) +
+    p <- ggplot(df, aes(.data$x, .data$y, color = .data$wi)) +
     geom_point(shape = 19,
                size = 1.3,
                stroke = 1,
                alpha = opacity) +
     scale_color_stepsn(colours = tint,
                        breaks = scale) +
-    geom_line(aes(y = fitt),
+    geom_line(aes(y = .data$fitt),
               colour="#000000",
               linewidth = 1)+
     labs(tag = letters[i],

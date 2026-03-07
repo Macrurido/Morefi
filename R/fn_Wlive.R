@@ -14,6 +14,8 @@
 #'
 #' @returns A data frame containing official catch data and estimated live weights.
 #'
+#' @importFrom utils type.convert
+#'
 #' @examples
 #'  \dontrun{
 #'  wlive <- fn_Wlive(List_Tables, mfi, List_TCCT, Biomass)
@@ -27,7 +29,8 @@ fn_Wlive <- function(List_Tables, mfi, List_TCCT, Biomass){
     SE <- sqrt(as.numeric(List_TCCT[[mfi[i]]][i,3])/
                  as.numeric(List_TCCT[[mfi[i]]][i,4]))
     # Biomass calculation
-    Bio_med <- ((catch_g$Landed[i+1]/b1)-b0)/1000
+ #   Bio_med <- ((catch_g$Landed[i+1]/b1)-b0)/1000
+    Bio_med <- ((Biomass$Landed[i+1]/b1)-b0)/1000
     Biomass[3,i] <- Bio_med
     Biomass[4,i] <- (Bio_med - 1.96 * SE)     # CI95% lower
     Biomass[5,i] <- (Bio_med + 1.96 * SE)     # CI95% upper

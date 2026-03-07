@@ -57,8 +57,8 @@
 #'
 #'@export
 fn_fig_w <- function(df, opacity, tint, my_labeller, order, lab_x, lab_y){
-  p <- ggplot(df, aes(x = ei,
-                      y = wi, color= scale))+
+  p <- ggplot(df, aes(x = .data$ei,
+                      y = .data$wi, color= scale))+
     geom_point(shape = 19,
                size = 1,
                stroke = 1,
