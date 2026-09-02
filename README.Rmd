@@ -28,7 +28,7 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a
 The *Morefi* package: *Morphological Relationships Fitted by Robust Regression*.
 It is a methodological package developed in R to analyze the article:
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593. [DOI](https://doi.org/10.1016/j.fishres.2025.107593)
 
 In fisheries monitoring, body length is the most commonly measured parameter because
 it is quick and easy to obtain. In contrast, measuring weight requires a level 
