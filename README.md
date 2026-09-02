@@ -1,6 +1,6 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
 ================
-07 marzo 2026
+01 septiembre 2026
 
 Morefi
 <a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
@@ -204,20 +204,22 @@ Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á.
 (2025). Biometric relationships as a fisheries management tool: A case
 study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal
 fishery. Fisheries Research, 292, 107593.
+[DOI](https://doi.org/10.1016/j.fishres.2025.107593)
 
 Chen, Y., Jackson, D. A., Harvey, H. H. 1992. A comparison of von
 Bertalanffy and polynomial functions in modelling fish growth data.
 Canadian Journal of Fisheries and Aquatic Sciences 49(6): 1228–1235.
-<https://doi.org/10.1139/f92-13>
+[DOI](https://doi.org/10.1139/f92-13)
 
 Maechler M, Rousseeuw P, Croux C, Todorov V, Ruckstuhl A,
 Salibian-Barrera M, Verbeke T, Koller M, Conceicao EL, Anna di Palma M
-(2024). robustbase: Basic Robust Statistics. R package version 0.99-4-1,
-<http://robustbase.r-forge.r-project.org/>.
+(2024). robustbase: Basic Robust Statistics. R package version 0.99-4-1.
+[DOI](http://robustbase.r-forge.r-project.org/)
 
 Renaud, O., Victoria-Feser, M. P. (2010). A robust coefficient of
 determination for regression. Journal of Statistical Planning and
-Inference. 140(7), 1852-1862. doi: 10.1016/j.jspi.2010.01.008.
+Inference. 140(7), 1852-1862.
+[DOI](https://doi.org/10.1016/j.jspi.2010.01.008)
 
 SIPESCA. 2024. Sistema de Información de Pesca y Acuacultura – SIPESCA.
 Comisión Nacional de Pesca y Acuacultura.
