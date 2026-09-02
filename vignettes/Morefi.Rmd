@@ -38,11 +38,9 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
 
-This is a methodological package developed in R for analyzing the submitted article:
+This is a methodological package developed in R for analyzing the article:
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric
-relationships as a fisheries management tool: A case study of the bullseye puffer
-(*Sphoeroides annulatus*. Tetraodontidae). Fisheries Research.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593.
 
 In fisheries monitoring, body length is the most commonly measured parameter because
 it is quick and easy to obtain. In contrast, measuring weight requires a level 
@@ -457,7 +455,6 @@ kable(dfa1[1:6,], format = "html", caption = "The first six rows of the table ar
 kable(dfa2[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.")
 ```
 
-
 <!-- ### fn_fig_cs() -->
 
 <!-- This function creates an individual plot displaying the fitted model -->
@@ -801,7 +798,7 @@ relate total weight to the weight of each landing category.
 
 To demonstrate how the package works, please follow the step-by-step process
 outlined in the `Example-Analysis` vignette, which reconstructs the results presented
-in the article by Aguirre-Villaseñor et al. (FISH13711).
+in the article by Aguirre-Villaseñor et al. (2025).
 
 # References
 

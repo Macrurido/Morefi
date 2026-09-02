@@ -47,9 +47,9 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a
 
 # Morefi: Example Analysis
 
-This is a methodological package developed in R for analyzing the submitted article:
+This is a methodological package developed in R for analyzing the article:
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata (FISH13711). Biometric Relationships as a Fisheries Management Tool: A Case Study on the Bullseye Puffer (*Sphoeroides annulatus*) in an Artisanal Fishery. Fisheries Research.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593.
 
 In fisheries monitoring, body length is the most commonly measured parameter because it is quick and easy to obtain. In contrast, measuring weight requires a level and stable scale, which can be difficult to secure in field sampling. Biometric relationships are crucial in fisheries biology. When accurately calculated, these relationships can be very useful for management purposes, especially for estimating an organism's total length or weight based on other body measurements.
 

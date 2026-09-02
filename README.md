@@ -21,12 +21,12 @@ License](http://creativecommons.org/licenses/by/4.0/).
 
 The *Morefi* package: *Morphological Relationships Fitted by Robust
 Regression*. It is a methodological package developed in R to analyze
-the submitted article:
+the article:
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., Cisneros-Mata
-(FISH13711). Biometric relationships as a fisheries management tool: A
-case study of the bullseye puffer (*Sphoeroides annulatus*.
-Tetraodontidae). Fisheries Research.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á.
+(2025). Biometric relationships as a fisheries management tool: A case
+study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal
+fishery. Fisheries Research, 292, 107593.
 
 In fisheries monitoring, body length is the most commonly measured
 parameter because it is quick and easy to obtain. In contrast, measuring
@@ -196,8 +196,7 @@ examples.
 
 To demonstrate how the package works, please follow the step-by-step
 process outlined in the “Morefi_steps” vignette, which reconstructs the
-results presented in the article by Aguirre-Villaseñor et
-al. (FISH13711).
+results presented in the article by Aguirre-Villaseñor et al. (2025).
 
 ## References
 
