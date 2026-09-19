@@ -37,7 +37,6 @@ Suggests:
     htmltools (>= 0.5.8),
     rmdformats (>= 1.0.4)
 Config/testthat/edition: 3
-RoxygenNote: 7.3.3
 Imports:
     broom (>= 1.0.8),
     dplyr (>= 1.1.4),
@@ -50,3 +49,4 @@ Imports:
 VignetteBuilder: knitr
 URL: https://macrurido.github.io/Morefi/, https://macrurido.github.io/Morefi/
 Config/Needs/website: rmarkdown
+Config/roxygen2/version: 8.1.0
