@@ -1,9 +1,9 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
 ================
-01 septiembre 2026
+23 septiembre 2026
 
 Morefi
-<a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
+<a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/Morefi.png" align="right" height="139" alt="Morefi website" /></a>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -86,16 +86,23 @@ install_github("Macrurido/Morefi")
 
 ## Data available in the package
 
+The package contains two data sets. Data are available under the terms
+of the [The Creative Commons Attribution 4.0 International (CC BY
+4.0)](https://creativecommons.org/licenses/by/4.0/legalcode).
+
 ### Bullseye puffer measures
 
 To demonstrate how the package functions, we utilize the dataset
 `botete`, containing 1,397 fish across 7 variables: the total
 length(LT), standard length (SL), body trunk length (LB), total weight
-(WT), body trunk weight (WB), and fillet weight (Wfi) of the bullseye
-puffer (*Sphoeroides annulatus*), collected from the Eastern Central
-Pacific. In this dataset, the landing category is included in the
-“Fleet” variable, which is categorized as follows: 1 indicates Fresh,
-while 2 denotes Frozen-thawed.
+(WT), body trunk weight (WB), fillet weight (Wfi) and Fleet of the
+bullseye puffer (*Sphoeroides annulatus*), collected from the Eastern
+Central Pacific. In this dataset, the landing category is included in
+the “Fleet” variable, which is categorized as follows: 1 indicates
+Fresh, while 2 denotes Frozen-thawed. This biometric data file, is
+included in the package with permission from the Instituto Mexicano de
+Investigación en Pesca y Acuacultura Sustentables (Mexican Institute for
+Research in Sustainable Fishing and Aquaculture).
 
 To access the data file, the data frame is stored in an object, such as
 ‘mydata’.
@@ -134,10 +141,6 @@ fitted regression summary. An additional column has been added to code
 errors on a scale. It then transforms these components into tidy
 tibbles.
 
-`fn_fig_cs`: This function creates an individual plot displaying the
-fitted model alongside the observed values, which are colored according
-to a weighted color scale.
-
 `fn_fig_e`: The function creates a graph that displays residuals on the
 vertical axis and either the independent variable or predicted values on
 the horizontal axis, as determined by the researcher. The residuals are
@@ -148,14 +151,10 @@ category were displayed as a multi-panel plot. The observed data points
 for each fitted relationship were categorized according to a weighted
 color scale.
 
-`fn_fig_w`: The residual structure was analyzed by graphing  
-residuals against weighted values. A custom multi-panel plot illustrates
-the structure of each fitted relationship, categorized by a
-color-weighted scale of values.
-
-`fn_figs`: Creates a customized scatter plot with the observed values
-(points), fitted regression (solid line), and its confidence interval
-(shaded area).
+`fn_fig_w`: The residual structure was analyzed by graphing residuals
+against weighted values. A custom multi-panel plot illustrates the
+structure of each fitted relationship, categorized by a color-weighted
+scale of values.
 
 `fn_freq`: The function calculates a frequency distribution of data.
 
