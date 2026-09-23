@@ -42,7 +42,6 @@ This is a methodological package developed in R for analyzing the article:
 
 Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593. [DOI](https://doi.org/10.1016/j.fishres.2025.107593)
 
-
 In fisheries monitoring, body length is the most commonly measured parameter because it is quick and easy to obtain. In contrast, measuring weight requires a level and stable scale, which can be difficult to secure in field sampling. Biometric relationships are crucial in fisheries biology. When accurately calculated, these relationships can be very useful for management purposes, especially for estimating an organism's total length or weight based on other body measurements.
 
 Many species are marketed through artisanal fishing in various commercial forms. However, there are currently no biometric relationships that allow for predicting live weight (the total weight of the fish) from the different categories of landed weight, such as fillet weight, gutted weight, or frozen weight.
@@ -51,7 +50,7 @@ The objective of this package is to provide quantitative analysis for various mo
 
 For this purpose, some functions and a vignette were created to explain the process step by step. Its implementation streamlines the methodology and enhances the clarity and impact of both the results and graphical presentations (tables and figures are personalized).
 
-The functions included in the Morefi package enable the evaluation of length-length, weight-weight and length-weight biometric relationships using data that exhibit high variability and do not meet the assumptions necessary for adjustment via least squares. Given this variability, a robust regression method is employed for analysis. The "robustbase" package (version 0.99-2) was utilized to fit robust regression models, using the functions lmrob() for linear and nlrob() for non-linear regression (Maechler *et al*., 2024).
+The functions included in the Morefi package enable the evaluation of length-length, weight-weight and length-weight biometric relationships using data that exhibit high variability and do not meet the assumptions necessary for adjustment via least squares. Given this variability, a robust regression method is employed for analysis. The "robustbase" package (version 0.99-2) was utilized to fit  robust regression models, using the functions lmrob() for linear and nlrob() for non-linear regression (Maechler *et al*., 2024).
 
 # Installation
 
@@ -73,9 +72,11 @@ install_github("Macrurido/Morefi")
 
 To showcase the functionality of the Morefi package, the two data sets from Aguirre-Villaseñor *et al*. (2025) are included.
 
+Data are available under the terms of the [The Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/legalcode).
+
 ## Bullseye puffer measures
 
-To demonstrate how the package functions, we utilize the dataset `botete`, containing 1,397 fish across 7 variables: the total length(LT), standard length (SL), body trunk length (LB), total weight (WT), body trunk weight (WB), and fillet weight (Wfi) of the bullseye puffer (*Sphoeroides annulatus*), collected from the Eastern Central Pacific. In this dataset, the landing category is included in the "Fleet" variable, which is categorized as follows: 1 indicates Fresh, while 2 denotes Frozen-thawed. 
+To demonstrate how the package functions, we utilize the dataset `botete`, containing 1,397 fish across 7 variables: the total length(LT), standard length (SL), body trunk length (LB), total weight (WT), body trunk weight (WB), fillet weight (Wfi) and Fleet of the bullseye puffer (*Sphoeroides annulatus*), collected from the Eastern Central Pacific. In this dataset, the landing category is included in the "Fleet" variable, which is categorized as follows: 1 indicates Fresh, while 2 denotes Frozen-thawed. This biometric data file, is included in the package with permission from the Instituto Mexicano de Investigación en Pesca y Acuacultura Sustentables (Mexican Institute for Research in Sustainable Fishing and Aquaculture).
 
 To access the data file, the data frame is stored in an object, such as 'mydata'.
 
@@ -126,7 +127,7 @@ Lists must be created to store the relevant summaries. To organize the regressio
 
 ## List to store Coincident Curves Test Tables. 
 
-To store the results of each model regressions, an empty matrix of 4 rows and 8 columns are created. The table `CCT` stores the values and calculus for the Coincident Curves Test between weight categories: **Fresh**, **Frozen**, **Total** and **Joined** (sum of values of **Fresh**, **Frozen**): the residual sum of squares **RSS**, degree of freedom **DF**, Analysis of the Residual Sum  of Squares **ARSS**,  **F-table**, **p-value** and decision criteria for $\alpha$= 0.05 **Criteria**. 
+To store the results of each model regressions, an empty matrix of 4 rows and 8 columns are created. The table `CCT` stores the values and calculus for the Coincident Curves Test between weight categories: **Fresh**, **Frozen**, **Total** and **Joined** (sum of values of **Fresh**, **Frozen**): the residual sum of squares **RSS**, degree of freedom **DF**, Analysis of the Residual Sum of Squares **ARSS**,  **F-table**, **p-value** and decision criteria for $\alpha$= 0.05 **Criteria**. 
 
 To store the results of each fitted model, a list called `List_TCCT` was created. Each item in the list contains the customized table `CCT`, which is initially filled with `NA` values.
 
@@ -254,10 +255,10 @@ The Morefi package includes functions that facilitate data analysis and ensure r
 
 The function `fn_ARSS()` perform the Coincident Curves Test, to determine if there are significant differences between the fitted curves for each database. It is based on the Analysis of the Residual Sum of Squares (ARSS) (Chen et al. 1992).
 
+
 $$F=\frac{\frac{RSS_{p}-RSS_{s}}{3\bullet \left( K-1 \right)}}{\frac{RSS_{s}}{N-3\bullet K}}$$
 
-$RSS_{p}= RSS$ of each regression fitted by pooled data, $RSS_{s}$= sum of the 
-$RSS$ of each regression fitted for each individual sample, $N$= total sample size, and $K$ = number of samples in the comparison.
+$RSS_{p}= RSS$ of each regression fitted by pooled data, $RSS_{s}$= sum of the $RSS$ of each regression fitted for each individual sample, $N$= total sample size, and $K$ = number of samples in the comparison.
 
 The residual sum of squares $RSS$ and the degrees of freedom $DF$ for each fitted regression are previously stored in the `List_TCCT` list. For each regression, the calculations are stored in a data frame `T1`, which is stored iteratively using a loop for in a list `T`.
 
@@ -275,7 +276,7 @@ The function return a data frame containing the results of the Coincident Curves
 
 The Total length (LT) - Total weight (WT) was estimated for the bullseye puffer *Sphoeroides annulatus* for landed categories: Fresh, Frozen-thawed (Frozen), Total (All sample) and Joined (sum of values of Fresh and Frozen). The Residual Sum of Squares (RSS) and the degrees of freedom (DF) are provided for each data source. In the table the first row displays the Analysis of Residual Sum of Squares (ARSS), the p-value (p), and the decision criteria for the ARSS test (Criteria).
 
-In the table the first row displays the Analysis of Residual Sum of Squares (ARSS), the p-value (p), and the decision criteria for the ARSS test (Criteria). 
+In the table the first row displays the Analysis of Residual Sum of Squares (ARSS),the p-value (p), and the decision criteria for the ARSS test (Criteria). 
 
 The adjusted models show the following data: Fresh SSR=   and DF= 742; Frozen SSR= 1280131.81 and DF= 651; and the total sample SSR= 6115874.53 and DF= 1395. Values are stored in the table `Table_CC`, this is stored in a list, and the name of each item is built with the acronyms of the model variables (e.g. LTWT).
 
@@ -357,23 +358,6 @@ kable(dfa1[1:6,], format = "html", caption = "The first six rows of the table ar
 
 kable(dfa2[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.")
 ```
-
-<!-- ### fn_fig_cs() -->
-
-<!-- This function creates an individual plot displaying the fitted model -->
-<!-- alongside the observed values, which are colored according to a weighted color scale. -->
-
-<!-- The function requires defining: -->
-
-<!--  * `df` A data frame contains the following variables: independent (x) and dependent (y) variables, the fitted variable (fitt), a weighted variable (wi), and additional details including the weights (wi), fitted values (fitt), residuals (ei), and the scale.  -->
-<!--  * `opacity` A numeric value for the alpha aesthetic used to control the transparency of elements in a plot. -->
-<!--  * `tint` A vector that specifies the palette colors used to color the points. -->
-<!--  * `scale` A numeric vector that defines the thresholds for coloring the points. -->
-<!--  * `etiquetas` A list indicating the labels of the axes and their unit of measurement. -->
-<!--  * `modelos` A list of variables that are used for the regression model. -->
-<!--  * `i` An integer value indicating the regression analyzed. -->
-
-<!-- The function return an individual plots for fitted models with a point color scale. -->
 
 ## fn_fig_e()
 
@@ -565,9 +549,6 @@ p <- fn_fig_w(df, opacity,tint, my_labeller,order= X_names, lab_x, lab_y)
 p + theme_papers
 ```
 
-<!-- `fn_figs()`:	Creates a customized scatter plot with the observed values (points), -->
-<!-- fitted regression (solid line), and its confidence interval (shaded area). -->
-
 ## `fn_freq()`
 
 It is used as an internal function within `fn_freqw()`.
@@ -627,18 +608,18 @@ kable(freqw, format = "html", caption = "Percentage frequencies of weights (wi) 
 
 ## fn_R2RV()
 
-`fn_R2RV()`:	Calculates a robust version of the coefficient of determination
-$R^{2}_{RV}$ (Renaud & Victoria-Feser, 2010).
+`fn_R2RV()`:	Calculates a robust version of the coefficient of determination $R^{2}_{RV}$ (Renaud & Victoria-Feser, 2010).
 
 ## fn_summary()
 `fn_summary()`:	Customizes and stores the summary of each fitted regression.
 
 ## fn_Wlive()
-`fn_Wlive()`: The live weight, which is the total weight of an organism, is estimated based on the weights of different landing categories, such as eviscerated weight and fillet weight. These estimates are derived using regression parameters thatrelate total weight to the weight of each landing category.
+`fn_Wlive()`: The live weight, which is the total weight of an organism, is estimated based on the weights of different landing categories, such as eviscerated weight and fillet weight. These estimates are derived using regression parameters that relate total weight to the weight of each landing category.
 
 ## fn_xseq() 
  
-`fn_xseq()`:	Generates a data frame with a sequence for independent variables (including minimum and maximum values) and selects it according to the model.
+`fn_xseq()`:	Generates a data frame with a sequence for independent variables
+(including minimum and maximum values) and selects it according to the model.
 
 # Example
 
