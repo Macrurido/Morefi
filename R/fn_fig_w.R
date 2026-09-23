@@ -35,7 +35,7 @@
 #'  ## Data frame
 #'  seed <- set.seed(123)
 #'  id <- rep("LT_LS"," LT_LB", "LS_LB", each=30)
-#'  ei <- c(runif(90, -2.5,2.5),runif(10, -4,4)
+#'  ei <- c(runif(80, -2.5,2.5),runif(10, -4,4))
 #'  scale <- ifelse(abs(ei) < 2, "u", ifelse(abs(ei) >= 2 & abs(ei) <2.5, "W", "o"))
 #'  wi <- round(ifelse(scale=="u", runif(1, 0.9, 1), ifelse(scale=="W",
 #'                     runif(1, 0.3, 0.89), runif(1, 0, 0.29))),2)
@@ -46,7 +46,7 @@
 #'  my_labeller <- as_labeller(c(LT_LS=  "L[T]-L[S]",
 #'                               LT_LB=  "L[T]-L[B]",
 #'                               LS_LB=  "L[S]-L[B]",
-#'                               default = label_parsed)
+#'                               default = label_parsed))
 #'  order <- c("LT_LS", "LT_LB",  "LS_LB")
 #'  lab_x <- expression(italic(e[i]))
 #'  lab_y <- expression(italic(w[i]))

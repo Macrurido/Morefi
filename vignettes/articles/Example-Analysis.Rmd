@@ -49,7 +49,7 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a
 
 This is a methodological package developed in R for analyzing the article:
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593. [DOI](https://doi.org/10.1016/j.fishres.2025.107593)
 
 In fisheries monitoring, body length is the most commonly measured parameter because it is quick and easy to obtain. In contrast, measuring weight requires a level and stable scale, which can be difficult to secure in field sampling. Biometric relationships are crucial in fisheries biology. When accurately calculated, these relationships can be very useful for management purposes, especially for estimating an organism's total length or weight based on other body measurements.
 
@@ -76,13 +76,13 @@ or using the **devtools** package
 library(devtools)
 install_github("Macrurido/Morefi")
 ```
-# Data available in the package{.tabset}
+## Data available in the package
 
-To showcase the functionality of the Morefi package, the two data sets from Aguirre-Villaseñor *et al*. (Submitted) are included.
+The package contains two data sets. Data are available under the terms of the [The Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/legalcode).
 
-## Bullseye puffer measures
+### Bullseye puffer measures
 
-To demonstrate how the package functions, we utilize the dataset `botete`, containing 1,397 fish across 7 variables: the total length(LT), standard length (SL), body trunk length (LB), total weight (WT), body trunk weight (WB), and fillet weight (Wfi) of the bullseye puffer (*Sphoeroides annulatus*), collected from the Eastern Central Pacific. In this dataset, the landing category is included in the "Fleet" variable, which is categorized as follows: 1 indicates Fresh, while 2 denotes Frozen-thawed. 
+To demonstrate how the package functions, we utilize the dataset `botete`, containing 1,397 fish across 7 variables: the total length(LT), standard length (SL), body trunk length (LB), total weight (WT), body trunk weight (WB), fillet weight (Wfi) and Fleet of the bullseye puffer (*Sphoeroides annulatus*), collected from the Eastern Central Pacific. In this dataset, the landing category is included in the "Fleet" variable, which is categorized as follows: 1 indicates Fresh, while 2 denotes Frozen-thawed. This biometric data file, is included in the package with permission from the Instituto Mexicano de Investigación en Pesca y Acuacultura Sustentables (Mexican Institute for Research in Sustainable Fishing and Aquaculture). 
 
 To access the data file, the data frame is stored in an object, such as 'mydata'.
 
