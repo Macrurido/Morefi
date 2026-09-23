@@ -21,11 +21,9 @@ reference:
     To facilitate data analysis and ensure reproducibility of results.
 - subtitle: Plotting functions
   contents:
-  - fn_fig_cs
   - fn_fig_e
   - fn_fig_fw
   - fn_fig_w
-  - fn_figs
 - subtitle: Analysis functions
   contents:
   - fn_ARSS

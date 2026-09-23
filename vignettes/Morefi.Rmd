@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 library(Morefi)
 ```
 
-Morefi <a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/logo.png" align="right" height="139" alt="Morefi website" /></a>
+Morefi <a href="https://github.com/Macrurido/Morefi/"><img src="man/figures/Morefi.png" align="right" height="139" alt="Morefi website" /></a>
 
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
@@ -40,7 +40,8 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a
 
 This is a methodological package developed in R for analyzing the article:
 
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593.
+Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á. (2025). Biometric relationships as a fisheries management tool: A case study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal fishery. Fisheries Research, 292, 107593. [DOI](https://doi.org/10.1016/j.fishres.2025.107593)
+
 
 In fisheries monitoring, body length is the most commonly measured parameter because
 it is quick and easy to obtain. In contrast, measuring weight requires a level 
