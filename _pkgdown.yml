@@ -1,4 +1,47 @@
-url: ~
+url: https://github.com/Macrurido/Morefi.git
 template:
+  package: Morefitemplate
   bootstrap: 5
 
+in_header: |
+      </script>
+          data-project-color="#365a7a"
+          data-project-name="Morefi"
+          data-modal-title="Methodological package developed in R to analyze the article: Aguirre-Villaseñor et al. (2025).
+          data-project-logo="https://github.com/Macrurido/Morefi/blob/master/figures/Morefi.png"
+      ></script>
+
+references:
+- title: Data sets
+   desc: >
+    To showcase the functionality of the Morefi package, the two data sets from Aguirre-Villaseñor et al. (2025) are included.
+  contents:
+  - Botete
+  - Botete_land
+- title: ggplot theme
+  desc: >
+    It is created to standardize the graphic format.
+  contents:
+  - theme_papers
+- title: Morefi functions
+  desc: >
+    To facilitate data analysis and ensure reproducibility of results.
+- subtitle: Plotting functions
+  contents:
+  -fn_fig_cs
+  -fn_fig_e
+  -fn_fig_fw
+  -fn_fig_w
+  -fn_figs
+  - subtitle: Analysis functions
+  contents:
+  -fn_ARSS
+  -fn_dfa
+  -fn_freq
+  -fn_freqw
+  -fn_fyield
+  -fn_intervals
+  -fn_R2RV
+  -fn_summary
+  -fn_Wlive
+  -fn_xseq
