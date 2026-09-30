@@ -5,7 +5,7 @@ Version: 0.1.0
 Authors@R: c(
     person(
       "Hugo", "Aguirre-Villaseñor",
-      email = "hugo.aguirre@imipas.gob.mx",
+      email = "macrurido@gmail.com",
       role = c("aut", "cre"),
       comment = c(ORCID = "0000-0002-9846-0915")
     )
