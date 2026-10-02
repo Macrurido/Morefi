@@ -10,8 +10,9 @@ Authors@R: c(
       comment = c(ORCID = "0000-0002-9846-0915")
     )
   )
-Description: This is a methodological package developed in R to analyze the 
-              submitted article by Aguirre-Villaseñor et al. (2025). Many
+Description: This is a methodological package developed in R. It includes functions
+              that support data analysis and ensure reproducibility of the results
+              reported in the article by Aguirre-Villaseñor et al. (2025). Many
               species are marketed through artisanal fishing in various commercial
               forms. However, there are currently no biometric relationships that
               allow for predicting live weight (the total weight of the fish)
@@ -25,6 +26,8 @@ Description: This is a methodological package developed in R to analyze the
               analysis. The "robustbase" package (version 0.99-2) was utilized to
               fit robust regression models, using the functions lmrob() for linear
               and nlrob() for non-linear regression.
+              To showcase the functionality of the Morefi package, the two data sets
+              are included.
 Depends: R (>= 4.4.0)    
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -47,6 +50,6 @@ Imports:
     stats (>= 4.4.0),
     tibble (>= 3.3.0)
 VignetteBuilder: knitr
-URL: https://github.com/Macrurido/Morefi.git, https://macrurido.github.io/Morefi/
+URL: https://github.com/Macrurido.io/Morefi.git, https://macrurido.github.io/Morefi/
 Config/Needs/website: rmarkdown
 Config/roxygen2/version: 8.1.0

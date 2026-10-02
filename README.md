@@ -1,6 +1,6 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
 ================
-29 septiembre 2026
+01 octubre 2026
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -16,15 +16,11 @@ License](http://creativecommons.org/licenses/by/4.0/).
 
 ## Morefi
 
-The *Morefi* package: *Morphological Relationships Fitted by Robust
-Regression*. It is a methodological package developed in R to analyze
-the article:
-
-Aguirre-Villaseñor, H., Morales-Bojórquez, E., & Cisneros-Mata, M. Á.
-(2025). Biometric relationships as a fisheries management tool: A case
-study on the bullseye puffer (*Sphoeroides annulatus*) in an artisanal
-fishery. Fisheries Research, 292, 107593.
-[DOI](https://doi.org/10.1016/j.fishres.2025.107593)
+The *Morefi* package, which stands for *Morphological Relationships
+Fitted by Robust Regression*, is a methodological package developed in
+R. It includes functions that support data analysis and ensure
+reproducibility of the results reported in the article by
+Aguirre-Villaseñor *et al.* (2025).
 
 In fisheries monitoring, body length is the most commonly measured
 parameter because it is quick and easy to obtain. In contrast, measuring
@@ -125,7 +121,10 @@ catch <- Morefi::Botete_land
 ## Morefi functions
 
 The Morefi package includes functions that facilitate data analysis and
-ensure reproducibility of results.
+ensure reproducibility of results. The functions for analysis are
+outlined below, followed by the functions for plotting.
+
+### Analysis functions
 
 `fn_ARSS`: Perform the Coincident Curves Test, to determine if there are
 significant differences between the fitted curves for each database. It
@@ -137,21 +136,6 @@ observed values, predictions, residuals, and weighted values from the
 fitted regression summary. An additional column has been added to code
 errors on a scale. It then transforms these components into tidy
 tibbles.
-
-`fn_fig_e`: The function creates a graph that displays residuals on the
-vertical axis and either the independent variable or predicted values on
-the horizontal axis, as determined by the researcher. The residuals are
-color-coded using a weighted scale.
-
-`fn_fig_fw`: The fitted values of the models for a landed presentation
-category were displayed as a multi-panel plot. The observed data points
-for each fitted relationship were categorized according to a weighted
-color scale.
-
-`fn_fig_w`: The residual structure was analyzed by graphing residuals
-against weighted values. A custom multi-panel plot illustrates the
-structure of each fitted relationship, categorized by a color-weighted
-scale of values.
 
 `fn_freq`: The function calculates a frequency distribution of data.
 
@@ -183,6 +167,26 @@ each landing category.
 variables (including minimum and maximum values) and selects it
 according to the model.
 
+### Plot functions
+
+To assist with analysis, three functions have been created to generate a
+composite figure.
+
+`fn_fig_e`: The function creates a graph that displays residuals on the
+vertical axis and either the independent variable or predicted values on
+the horizontal axis, as determined by the researcher. The residuals are
+color-coded using a weighted scale.
+
+`fn_fig_fw`: The fitted values of the models for a landed presentation
+category were displayed as a multi-panel plot. The observed data points
+for each fitted relationship were categorized according to a weighted
+color scale.
+
+`fn_fig_w`: The residual structure was analyzed by graphing residuals
+against weighted values. A custom multi-panel plot illustrates the
+structure of each fitted relationship, categorized by a color-weighted
+scale of values.
+
 ## More details
 
 For more information, please refer to the respective vignettes, which
@@ -192,8 +196,10 @@ examples.
 ## Example
 
 To demonstrate how the package works, please follow the step-by-step
-process outlined in the “Morefi_steps” vignette, which reconstructs the
-results presented in the article by Aguirre-Villaseñor et al. (2025).
+process outlined in the
+[Example-Analysis](https://macrurido.github.io/Morefi/articles/Example-Analysis.html)
+vignette, which reconstructs the results presented in the article by
+Aguirre-Villaseñor et al. (2025).
 
 ## References
 
@@ -224,14 +230,14 @@ Comisión Nacional de Pesca y Acuacultura.
 
 # Citation
 
-Aguirre-Villaseñor H (2025). Morefi: Morphological Relationships Fitted
+Aguirre-Villaseñor H (2024). Morefi: Morphological Relationships Fitted
 by Robust Regression. R package version 0.1.0,
 <https://macrurido.github.io/Morefi/>.
 
     @Manual{,
       title = {Morefi: Morphological Relationships Fitted by Robust Regression},
       author = {Hugo Aguirre-Villaseñor},
-      year = {2025},
+      year = {2024},
       note = {R package version 0.1.0},
       url = {https://macrurido.github.io/Morefi/},
     }
