@@ -1,15 +1,6 @@
-url: https://macrurido.github.io/Morefi
+url: https://macrurido.github.io/Morefi/
 template:
   bootstrap: 5
-
-in_header: |
-      </script>
-          data-project-color="#365a7a"
-          data-project-name="Morefi"
-          data-modal-title="Methodological package developed in R to analyze the article: Aguirre-Villaseñor et al. (2025).
-          data-project-logo="https://github.com/Macrurido/Morefi/blob/master/figures/Morefi.png"
-      ></script>
-
 
 reference:
 - title: Data sets

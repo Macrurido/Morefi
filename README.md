@@ -1,6 +1,6 @@
 Morefi: Morphological Relationships Fitted by Robust Regression
 ================
-01 octubre 2026
+02 octubre 2026
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -17,6 +17,8 @@ License](http://creativecommons.org/licenses/by/4.0/).
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/Macrurido/Morefi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Macrurido/Morefi/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/r-lib/pkgdown/graph/badge.svg)](https://app.codecov.io/gh/r-lib/pkgdown)
 <!-- badges: end -->
 
 ## Morefi

@@ -50,6 +50,6 @@ Imports:
     stats (>= 4.4.0),
     tibble (>= 3.3.0)
 VignetteBuilder: knitr
-URL: https://github.com/Macrurido.io/Morefi.git, https://macrurido.github.io/Morefi/
+URL: https://macrurido.github.io/Morefi/,  https://macrurido.github.io/Morefi/
 Config/Needs/website: rmarkdown
 Config/roxygen2/version: 8.1.0
