@@ -20,6 +20,10 @@ Morefi © 2024 by Hugo Aguirre Villaseñor is licensed under a [Creative Commons
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/Macrurido/Morefi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Macrurido/Morefi/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
+
 ## Morefi
 
 The *Morefi* package, which stands for *Morphological Relationships Fitted by Robust Regression*, is a methodological package developed in R. It includes functions that support data analysis and ensure reproducibility of the results reported in the article by Aguirre-Villaseñor *et al.* (2025).
