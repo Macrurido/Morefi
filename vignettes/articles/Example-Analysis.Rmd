@@ -919,4 +919,4 @@ Aguirre-Villaseñor H (2024). Morefi: Morphological Relationships Fitted by Robu
 
 <!-- The Total length (LT) - Total weight (WT) was estimated for the bullseye puffer *Sphoeroides annulatus* for landed categories: Fresh, Frozen-thawed (Frozen), Total (All sample) and Joined (sum of values of Fresh and Frozen). The Residual Sum of Squares (RSS) and the degrees of freedom (DF) are provided for each data source. -->
 
-<!-- # Aqui termina esto no lo sé Rick, de verdad no lo sé -->
+<!-- # Aqui termina esto no lo sé Rick -->
