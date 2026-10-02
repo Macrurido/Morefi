@@ -399,6 +399,7 @@ yield2 <- fn_fyield(i,bm,df)
 # Load necessary libraries
 library(knitr)
 library(kableExtra)
+library(magrittr)
 
 kable(yield1[1:10,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus LS relationship results.  In this context, x1 represents the independent variable, while fit refers to the fitted values. Additionally, CI_L indicates the lower confidence interval, and CI_U indicates the upper confidence interval. Similarly, PI_L represents the lower predicted interval, and PI_U denotes the upper predicted interval.") 
 
