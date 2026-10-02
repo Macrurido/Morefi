@@ -183,7 +183,11 @@ ARSS <- fn_ARSS(List_ARSS, i,  alfa= 0.05)
 ```
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE}
+# Load necessary libraries
 library(knitr)
+library(kableExtra)
+library(magrittr)
+
 kable(ARSS[[i]], format = "html", caption = "Table of the Coincident Curve Test.")
 ```
 > **&#9432;** To enhance the visualization of the function results, tables and their headers were constructed using the knitr and kableExtra packages. The code is not displayed.
@@ -236,10 +240,6 @@ dfa2 <- fn_dfa(eq= eq2)
 
 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
-# Load necessary libraries
-library(knitr)
-library(kableExtra)
-
 kable(dfa1[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus LS relationship results.") 
 
 kable(dfa2[1:6,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.")
@@ -396,11 +396,6 @@ yield2 <- fn_fyield(i,bm,df)
 ```
 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
-# Load necessary libraries
-library(knitr)
-library(kableExtra)
-library(magrittr)
-
 kable(yield1[1:10,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus LS relationship results.  In this context, x1 represents the independent variable, while fit refers to the fitted values. Additionally, CI_L indicates the lower confidence interval, and CI_U indicates the upper confidence interval. Similarly, PI_L represents the lower predicted interval, and PI_U denotes the upper predicted interval.") 
 
 kable(yield2[1:10,], format = "html", caption = "The first six rows of the table are displayed, based on the LT versus WT relationship results.  In this context, x1 represents the independent variable, while fit refers to the fitted values. Additionally, CI_L indicates the lower confidence interval, and CI_U indicates the upper confidence interval. Similarly, PI_L represents the lower predicted interval, and PI_U denotes the upper predicted interval.")
@@ -562,10 +557,6 @@ List_Tables[[i]][j,] <- fn_summary(List_Tables, modelos, catego, eq, R2, i, j)
 
 ```
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
-# Load necessary libraries
-library(knitr)
-library(kableExtra)
-
 # Caption
 L_T_sum <- paste("Regression summarized by model and landed
                     weight categories: Fresh, Frozen-thawed
