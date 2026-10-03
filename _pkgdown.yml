@@ -34,3 +34,7 @@ reference:
     - fn_summary
     - fn_Wlive
     - fn_xseq
+
+extra_packages:
+  - knitr
+  - kableExtra
