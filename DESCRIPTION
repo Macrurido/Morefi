@@ -38,7 +38,9 @@ Suggests:
     knitr,
     rmarkdown,
     htmltools (>= 0.5.8),
-    rmdformats (>= 1.0.4)
+    rmdformats (>= 1.0.4),
+    knite (>= 1.52),
+    kableExtra (>= 1.4.1)
 Config/testthat/edition: 3
 Imports:
     broom (>= 1.0.8),
