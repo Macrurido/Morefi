@@ -1,0 +1,72 @@
+# fn_dfa
+
+The \`fn_dfa()\` function uses the \`augment()\` function from the
+\`broom\` package to extract the observed values of the independent
+variable (x) and dependent variable (y), along with the weights (wi),
+fitted values (fitt), and residuals (ei) from the summary of the fitted
+model. It then turns these components into tidy tibbles. For optimal
+functionality of \`fn_dfa()\`, the data frames used for fitting
+relationships must be formatted as tibbles.
+
+## Usage
+
+``` r
+fn_dfa(eq)
+```
+
+## Arguments
+
+- eq:
+
+  Summary of the equation fitted.
+
+## Value
+
+A tibble data frame provides the original data along with information
+about the model.
+
+## Details
+
+The function \`augment()\` does not provide the weights column for the
+\`lmrob()\` function. The function \`fn_dfa()\` contains a conditional
+statement that includes this variable in the output data frame of the
+linear adjustments.
+
+In order to homogenizes the results, the columns names were renamed as
+"y", "wi","x","fitt",and "ei".
+
+An additional column \`scale\` has been included that codes errors using
+a scale based on weighted values: unweighted (u), weighted (w), and
+outliers (o) \`dfa\$scale \<- ifelse(df\$wi \< 0.25, "o",
+ifelse(df\$wi\<1, "w", "u"))\`.
+
+For more information, please refer to the help documentation for
+\`broom::augment()\`.
+
+## See also
+
+broom::augment
+
+## Examples
+
+``` r
+## Example 1: robust linear regression
+ if (FALSE) { # \dontrun{
+df <- df
+eq <- robustbase::lmrob(y1 ~ x1, data= df,setting = "KS2014")
+
+dfa <- fn_dfa(eq)
+} # }
+
+## Example 2: robust nonlinear regression
+if (FALSE) { # \dontrun{
+df <- df
+a <- 0.01
+b <- 3
+eq <- nlrob(y1 ~ a*x1^b, data= datos,
+start = list(a= a, b= b),
+trace = FALSE)
+
+dfa <- fn_dfa(eq)
+} # }
+```
